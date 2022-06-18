@@ -1,0 +1,21 @@
+
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ò¦Œ·
+b
+java:S1659	"GDeclare "votBrancos" and all following declarations on a separate line.(‡Ú‡ûÿÿÿÿ
+k
+java:S1659
+"IDeclare "percVotNulos" and all following declarations on a separate line.(äš¹İşÿÿÿÿ8ƒ×¤º—0
+N	java:S106"9Replace this use of System.out or System.err by a logger.(„Û›½
+N	java:S106"9Replace this use of System.out or System.err by a logger.(íÁ¶Ş
+S	java:S106"9Replace this use of System.out or System.err by a logger.(Æñ»¿üÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(’µ¶¦úÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(éã÷
+m
+java:S3457"Q%n should be used in place of \n to produce the platform-specific line separator.(††â<8™ö§º—0
+T	java:S106"9Replace this use of System.out or System.err by a logger.(††â<8°ì¦º—0
+n
+java:S3457"Q%n should be used in place of \n to produce the platform-specific line separator.(·¤Ôç8±¨º—0
+U	java:S106"9Replace this use of System.out or System.err by a logger.(·¤Ôç8°ì¦º—0
+s
+java:S3457"Q%n should be used in place of \n to produce the platform-specific line separator.(º¤Ñøÿÿÿÿ8á©¨º—0
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(º¤Ñøÿÿÿÿ8°ì¦º—0
