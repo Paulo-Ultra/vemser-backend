@@ -14,8 +14,8 @@ X
 X
 (src/ListaExerciciosAula1/Exercicio7.java,3\5\3569b0b520862734bc9bfd95d690b3fa3370411b
 X
-(src/ListaExerciciosAula1/Exercicio8.java,a\1\a1b9c73aee5521c0b0224e70bed8ea031c2e3e42
-X
 (src/ListaExerciciosAula1/Exercicio9.java,8\d\8d50d6106770c1c6154244969357460ae804ff00
+Y
+)src/ListaExerciciosAula1/Exercicio08.java,9\2\929eacdfcb9d4263da903c105d4dd98bc91ad982
 Y
 )src/ListaExerciciosAula1/Exercicio10.java,1\0\10276b6653f55cbff3a5e064b055783ccbd15694

@@ -2,7 +2,7 @@ package ListaExerciciosAula1;
 
 import java.util.Scanner;
 
-public class Exercicio2 {
+public class Exercicio02 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         double nota1, nota2, nota3, nota4, media;
