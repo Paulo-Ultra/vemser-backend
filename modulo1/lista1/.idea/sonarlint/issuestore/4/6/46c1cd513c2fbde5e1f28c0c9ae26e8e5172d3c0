@@ -1,0 +1,10 @@
+
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ò¦Œ·
+l
+java:S1659"QDeclare "horaNormalTrabalhada" and all following declarations on a separate line.(ØÁ¢æøÿÿÿÿ
+S	java:S106
+"9Replace this use of System.out or System.err by a logger.(ÿ™íõøÿÿÿÿ
+M	java:S106"9Replace this use of System.out or System.err by a logger.(Áïÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(°²¦•
+S	java:S106"9Replace this use of System.out or System.err by a logger.(â‚ßÔýÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ÇŠÈ÷øÿÿÿÿ

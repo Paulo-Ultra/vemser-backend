@@ -1,0 +1,9 @@
+
+U
+java:S1854"?Remove this useless assignment to local variable "outraMatriz".(Š…¶¹
+Q	java:S125"<This block of commented-out lines of code should be removed.(ö²¡º
+S	java:S106"9Replace this use of System.out or System.err by a logger.(Øðâ”ùÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(†«¼ƒüÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(–ËÈ¼
+F
+java:S1481"0Remove this unused "outraMatriz" local variable.(Š…¶¹

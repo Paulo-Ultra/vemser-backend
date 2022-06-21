@@ -1,4 +1,4 @@
-package aula1;
+package br.com.dbc.aula1;
 
 public class CondicionaisSwitch {
     public static void main(String[] args) {

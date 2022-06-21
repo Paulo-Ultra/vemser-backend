@@ -1,0 +1,49 @@
+
+o
+java:S1192"TDefine a constant instead of duplicating this literal "OpÃ§Ã£o invÃ¡lida: " 3 times.(êÉŽõúÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ò¦Œ·
+?
+java:S1659	"$Declare "cidade" on a separate line.(Õ‰ñàøÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(Û¡ª·üÿÿÿÿ
+M
+java:S6126"2Replace this String concatenation with Text block.(Û¡ª·üÿÿÿÿ
+<	java:S131""Add a default case to this switch.(ßƒªçùÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(êöå
+H
+java:S6126"2Replace this String concatenation with Text block.(êöå
+7
+java:S6205"Remove this redundant block.(ò÷Ñäÿÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(€ßÄ‡
+H
+java:S6126"2Replace this String concatenation with Text block.(€ßÄ‡
+7
+java:S6205"Remove this redundant block.(Ž€ø¥ÿÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(³ŠÒìüÿÿÿÿ
+M
+java:S6126"2Replace this String concatenation with Text block.(³ŠÒìüÿÿÿÿ
+S	java:S106 "9Replace this use of System.out or System.err by a logger.(ï œðûÿÿÿÿ
+M
+java:S6126 "2Replace this String concatenation with Text block.(ï œðûÿÿÿÿ
+7
+java:S6205$"Remove this redundant block.(ò÷Ñäÿÿÿÿÿ
+M	java:S106%"9Replace this use of System.out or System.err by a logger.(×Â0
+G
+java:S6126%"2Replace this String concatenation with Text block.(×Â0
+7
+java:S6205("Remove this redundant block.(Ž€ø¥ÿÿÿÿÿ
+N	java:S106)"9Replace this use of System.out or System.err by a logger.(ƒÕ¢¹
+H
+java:S6126)"2Replace this String concatenation with Text block.(ƒÕ¢¹
+S	java:S1061"9Replace this use of System.out or System.err by a logger.(þÍ¸þýÿÿÿÿ
+M
+java:S61261"2Replace this String concatenation with Text block.(þÍ¸þýÿÿÿÿ
+7
+java:S62055"Remove this redundant block.(ò÷Ñäÿÿÿÿÿ
+N	java:S1066"9Replace this use of System.out or System.err by a logger.(à‹µó
+H
+java:S61266"2Replace this String concatenation with Text block.(à‹µó
+7
+java:S62059"Remove this redundant block.(Ž€ø¥ÿÿÿÿÿ
+N	java:S106:"9Replace this use of System.out or System.err by a logger.(…–µˆ
+H
+java:S6126:"2Replace this String concatenation with Text block.(…–µˆ

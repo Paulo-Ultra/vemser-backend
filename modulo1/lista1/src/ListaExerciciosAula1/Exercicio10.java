@@ -25,7 +25,7 @@ public class Exercicio10 {
 
         System.out.println("Representação de votos com relação ao número de eleitores:");
         System.out.printf("\n%.2f%% de votos em branco.", percVotBrancos);
-        System.out.printf("\n%.2f%% de votos nulos.\n", percVotNulos);
+        System.out.printf("\n%.2f%% de votos nulos.", percVotNulos);
         System.out.printf("\n%.2f%% de votos validos.", percVotValidos);
 
     }
