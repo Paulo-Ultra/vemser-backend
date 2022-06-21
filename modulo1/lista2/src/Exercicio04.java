@@ -5,7 +5,7 @@ public class Exercicio04 {
         Scanner sc = new Scanner(System.in);
 
         int[] vetor = new int[3];
-        int menor = 0, controle = 999999999;
+        int menor = 0, controle = Integer.MAX_VALUE;
 
 
         for (int i = 0; i < vetor.length; i++) {

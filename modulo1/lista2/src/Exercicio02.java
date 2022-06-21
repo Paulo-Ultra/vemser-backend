@@ -18,7 +18,7 @@ public class Exercicio02 {
             } else {
                 System.out.println("Tente um número menor que " + numEscolhido);
             }
-            System.out.println("Escollha outro número de 1 a 10: ");
+            System.out.println("Escolha outro número de 1 a 10: ");
             numEscolhido = sc.nextInt();
         }
 
