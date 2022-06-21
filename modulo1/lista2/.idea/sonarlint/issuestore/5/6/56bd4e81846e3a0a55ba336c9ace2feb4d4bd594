@@ -1,0 +1,9 @@
+
+0
+java:S1220""Move this file to a named package.
+T
+java:S1854"9Remove this useless assignment to local variable "valor".(‰¢¼¸ûÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ÕëõÆıÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(óœ¨
+M	java:S106"9Replace this use of System.out or System.err by a logger.(ãÇş'
+S	java:S106"9Replace this use of System.out or System.err by a logger.(¬è–úÿÿÿÿ

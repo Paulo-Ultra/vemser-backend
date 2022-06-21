@@ -1,0 +1,13 @@
+
+0
+java:S1220""Move this file to a named package.
+Y
+java:S1659"CDeclare "coluna" and all following declarations on a separate line.(ÉŠç×
+G
+java:S1659",Declare "maiorNotaFinal" on a separate line.(ò…õ¤ÿÿÿÿÿ
+<	java:S131""Add a default case to this switch.(ÅÝ¶Ìøÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(Çø§øþÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(ÎÖ¥Æ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(Ûý©Åýÿÿÿÿ
+S	java:S106%"9Replace this use of System.out or System.err by a logger.(Ö°—€üÿÿÿÿ
+U	java:S106&"9Replace this use of System.out or System.err by a logger.(Õ§‚†8‡ë’¨˜0

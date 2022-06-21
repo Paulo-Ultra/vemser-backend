@@ -1,6 +1,4 @@
 
-I
-src/aula1/Exercicio1.java,b\6\b675a8f88c33d8b5eb91bce6bc1bed4ead02d9e8
 T
 $src/br/com/dbc/aula2/Exercicio1.java,0\5\057f1c51c8085d0a15172e2b2b4d8478f0d6cb86
 T
