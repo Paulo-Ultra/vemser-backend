@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b50839d5-f545-466e-8671-a86a7db2531b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../aulasOO/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../aulasOO/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../aulasOO/src/aula1/Agregadores.java" beforeDir="false" afterPath="$PROJECT_DIR$/../aulasOO/src/br/com/dbc/aula1/Agregadores.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../aulasOO/src/aula1/Comparadores.java" beforeDir="false" afterPath="$PROJECT_DIR$/../aulasOO/src/br/com/dbc/aula1/Comparadores.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../aulasOO/src/aula1/CondicionaisIf.java" beforeDir="false" afterPath="$PROJECT_DIR$/../aulasOO/src/br/com/dbc/aula1/CondicionaisIf.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../aulasOO/src/aula1/CondicionaisSwitch.java" beforeDir="false" afterPath="$PROJECT_DIR$/../aulasOO/src/br/com/dbc/aula1/CondicionaisSwitch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../aulasOO/src/aula1/Exercicio1.java" beforeDir="false" afterPath="$PROJECT_DIR$/../aulasOO/src/br/com/dbc/aula1/Exercicio1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../aulasOO/src/aula1/MinhaPrimeiraClasse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../aulasOO/src/br/com/dbc/aula1/MinhaPrimeiraClasse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../aulasOO/src/aula1/Operadores.java" beforeDir="false" afterPath="$PROJECT_DIR$/../aulasOO/src/br/com/dbc/aula1/Operadores.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../aulasOO/src/aula1/VariaveisEConstantes.java" beforeDir="false" afterPath="$PROJECT_DIR$/../aulasOO/src/br/com/dbc/aula1/VariaveisEConstantes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lista1/.idea/sonarlint/issuestore/1/0/10276b6653f55cbff3a5e064b055783ccbd15694" beforeDir="false" afterPath="$PROJECT_DIR$/lista1/.idea/sonarlint/issuestore/1/0/10276b6653f55cbff3a5e064b055783ccbd15694" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lista1/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/lista1/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lista1/src/ListaExerciciosAula1/Exercicio10.java" beforeDir="false" afterPath="$PROJECT_DIR$/lista1/src/ListaExerciciosAula1/Exercicio10.java" afterDir="false" />
-    </list>
+    <list default="true" id="b50839d5-f545-466e-8671-a86a7db2531b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,6 +32,7 @@
       <updated>1655550594780</updated>
       <workItem from="1655550596965" duration="34000" />
       <workItem from="1655757035177" duration="40000" />
+      <workItem from="1655775713879" duration="11000" />
     </task>
     <servers />
   </component>
