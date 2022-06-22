@@ -1,7 +1,5 @@
 package br.com.dbc;
 
-import br.com.dbc.Endereco;
-
 public class Main {
     public static void main(String[] args) {
 
