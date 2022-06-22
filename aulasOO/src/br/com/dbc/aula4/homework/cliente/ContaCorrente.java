@@ -1,4 +1,4 @@
-package br.com.dbc;
+package br.com.dbc.aula4.homework.cliente;
 
 public class ContaCorrente {
     Cliente cliente;

@@ -1,0 +1,27 @@
+package br.com.dbc.aula4.homework.cliente;
+
+public class Endereco {
+
+    Integer tipo; //1 residencial, 2 comercial
+    String lograduro;
+    Integer numero;
+    String complemento;
+    String cep;
+    String cidade;
+    String estado;
+    String pais;
+
+    void imprimirEndereco(){
+        if(tipo == 1) {
+            System.out.println("Endereço:\nResidencial: " + tipo + "\nLogradouro: " +  lograduro + ", Número: " + numero
+                    + "\nComplemento: " + complemento + "\nCEP: " + cep + "\nCidade: " + cidade
+                    + "\nEstado: " + estado + "\nPaís: " + pais);
+        } else if(tipo == 2) {
+            System.out.println("Endereço:\nComercial: " + tipo + "\nLogradouro: " +  lograduro + ", Número: " + numero
+                + "\nComplemento: " + complemento + "\nCEP: " + cep + "\nCidade: " + cidade
+                + "\nEstado: " + estado + "\nPaís: " + pais);
+        } else {
+            System.out.println("Número inválido, digite um tipo de endereço correto.");
+        }
+    }
+}
