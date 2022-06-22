@@ -16,10 +16,12 @@ public class Endereco {
             System.out.println("Endereço:\nResidencial: " + tipo + "\nLogradouro: " +  lograduro + ", Número: " + numero
                     + "\nComplemento: " + complemento + "\nCEP: " + cep + "\nCidade: " + cidade
                     + "\nEstado: " + estado + "\nPaís: " + pais);
-        } else { System.out.println("Endereço:\nComercial: " + tipo + "\nLogradouro: " +  lograduro + ", Número: " + numero
+        } else if(tipo == 2) {
+            System.out.println("Endereço:\nComercial: " + tipo + "\nLogradouro: " +  lograduro + ", Número: " + numero
                 + "\nComplemento: " + complemento + "\nCEP: " + cep + "\nCidade: " + cidade
                 + "\nEstado: " + estado + "\nPaís: " + pais);
-
+        } else {
+            System.out.println("Número inválido, digite um tipo de endereço correto.");
         }
     }
 }
