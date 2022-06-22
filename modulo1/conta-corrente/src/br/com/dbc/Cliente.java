@@ -8,7 +8,7 @@ public class Cliente {
 
     void imprimirEndereco(){
        for(int i = 0; i < enderecos.length; i++){
-           if(contatos[i] != null){
+           if(enderecos[i] != null){
                enderecos[i].imprimirEndereco();
                System.out.println(i + 1 +"º Endereço\n---------------------");
            }
