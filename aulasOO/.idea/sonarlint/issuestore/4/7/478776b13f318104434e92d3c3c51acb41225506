@@ -1,0 +1,20 @@
+
+X
+java:S1226#"BIntroduce a new variable instead of reusing the parameter "valor".(ï–•‘
+~
+java:S4165"hRemove this useless assignment; "meuInteiro" already holds the assigned value along all execution paths.(žó ˆ
+[
+java:S1854"@Remove this useless assignment to local variable "meuValorLong".(å€çéùÿÿÿÿ
+Q
+java:S1854";Remove this useless assignment to local variable "meuByte".(¹Ó¬
+T
+java:S1854">Remove this useless assignment to local variable "meuInteiro".(žó ˆ
+N	java:S106
+"9Replace this use of System.out or System.err by a logger.(Šøá°
+N	java:S106"9Replace this use of System.out or System.err by a logger.(«òˆì
+L
+java:S1481"1Remove this unused "meuValorLong" local variable.(å€çéùÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(öûíß
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(ÃëÞøÿÿÿÿÿ8”Ö’¿˜0
+O
+java:S1854#"9Remove this useless assignment to local variable "valor".(ï–•‘

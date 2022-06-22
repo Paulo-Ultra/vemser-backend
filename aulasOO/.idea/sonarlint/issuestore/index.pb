@@ -11,3 +11,17 @@ T
 $src/br/com/dbc/aula2/Exercicio4.java,b\2\b2bffa280a192267f4aec2c025e17387d4141be3
 T
 $src/br/com/dbc/aula2/Repeticoes.java,4\3\43c4b76dea3e75a4465bd7b6439ff35c4d381b24
+R
+"src/br/com/dbc/aula3/Telefone.java,9\b\9b21bfb34654e04803764ab1954249591e4069f7
+N
+src/br/com/dbc/aula3/Main.java,c\a\ca296704c966832f67db0c16c3678ddce8f30b63
+P
+ src/br/com/dbc/aula3/Pessoa.java,b\9\b9423dd17315c8265f76316958b9df057866c1e3
+[
++src/br/com/dbc/aula3/exercicio1/Pessoa.java,0\0\00c070b35bb1286a4ab22aca2f594cba268aed75
+]
+-src/br/com/dbc/aula3/WrappersConversores.java,4\7\478776b13f318104434e92d3c3c51acb41225506
+Y
+)src/br/com/dbc/aula3/exercicio1/Main.java,4\7\475c1adbd5b61c987b681421035872e7ca712f76
+Q
+!src/br/com/dbc/aula3/Pacotes.java,5\a\5a9bd45bebf1eb7d8d0fa5064df832015d2f4b20
