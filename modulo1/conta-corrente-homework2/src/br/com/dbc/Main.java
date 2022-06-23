@@ -91,5 +91,27 @@ public class Main {
         //Teste Métodos Conta Poupança
         contaPoupanca.creditarTaxa();
         contaPoupanca.imprimir();
+
+        contaPoupanca.sacar(200.00);
+        //Teste caso deposite valor além do disponível e sacar nada (0)
+        contaPoupanca.sacar(5000.00);
+        contaPoupanca.sacar(0.0);
+        contaPoupanca.depositar(50.00);
+        //Teste caso deposite valor além do disponível, zero ou negativo
+        contaPoupanca.depositar(0.0);
+        contaPoupanca.depositar(2000.00);
+        contaPoupanca.depositar(-5.0);
+        contaPoupanca.transferir(contaCorrente, 100.00);
+        //Teste Transferência valores além do disponível, zero ou negativo
+        contaPoupanca.transferir(contaCorrente, 0.0);
+        contaPoupanca.transferir(contaCorrente, 5000.00);
+        contaPoupanca.transferir(contaCorrente, -500.00);
+        contaPoupanca.imprimir();
+        System.out.println("-----------------------------");
+        //Teste de conta negativa caso seja sacado o valor do saldo
+        contaPoupanca.sacar(3300.00);
+        contaPoupanca.sacar(2760.00);
+        contaPoupanca.imprimir();
+        System.out.println("-------------------------------");
     }
 }

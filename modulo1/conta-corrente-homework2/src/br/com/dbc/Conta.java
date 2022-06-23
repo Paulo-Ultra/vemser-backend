@@ -69,7 +69,7 @@ public abstract class Conta implements Movimentacao{
         }
         this.setSaldo(getSaldo() + valor);;
         System.out.println(String.format("Depósito de R$%.2f recebido com sucesso", valor));
-        System.out.printf("Seu saldo atual é: R$%.2f", getSaldo());
+        System.out.printf("Seu saldo atual é: R$%.2f%n", getSaldo());
             return true;
     }
 
