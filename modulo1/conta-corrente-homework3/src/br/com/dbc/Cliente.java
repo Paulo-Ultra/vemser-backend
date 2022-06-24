@@ -5,14 +5,14 @@ import java.util.ArrayList;
 public class Cliente {
     private String nome;
     private String cpf;
-    private ArrayList<Contato> contatos_lista;
-    private ArrayList<Endereco> enderecos_lista;
+    private ArrayList<Contato> contatosLista;
+    private ArrayList<Endereco> enderecosLista;
 
-    public Cliente(String nome, String cpf, ArrayList<Contato> contatos_lista,ArrayList<Endereco> enderecos_lista) {
+    public Cliente(String nome, String cpf, ArrayList<Contato> contatosLista,ArrayList<Endereco> enderecosLista) {
         this.nome = nome;
         this.cpf = cpf;
-        this.contatos_lista = contatos_lista;
-        this.enderecos_lista = enderecos_lista;
+        this.contatosLista = contatosLista;
+        this.enderecosLista = enderecosLista;
     }
 
     public String getNome() {
@@ -31,36 +31,40 @@ public class Cliente {
         this.cpf = cpf;
     }
 
-    public ArrayList<Contato> getContatos_lista() {
-        return contatos_lista;
+    public ArrayList<Contato> getContatosLista() {
+        return contatosLista;
     }
 
-    public void setContatos_lista(ArrayList<Contato> contatos_lista) {
-        this.contatos_lista = contatos_lista;
+    public void setContatosLista(ArrayList<Contato> contatosLista) {
+        this.contatosLista = contatosLista;
     }
 
-    public ArrayList<Endereco> getEnderecos_lista() {
-        return enderecos_lista;
+    public ArrayList<Endereco> getEnderecosLista() {
+        return enderecosLista;
     }
 
-    public void setEnderecos_lista(ArrayList<Endereco> enderecos_lista) {
-        this.enderecos_lista = enderecos_lista;
+    public void setEnderecosLista(ArrayList<Endereco> enderecosLista) {
+        this.enderecosLista = enderecosLista;
     }
 
     public void imprimirEndereco(){
-       for(Endereco endereco : enderecos_lista){
-           if(endereco != null){
-               endereco.imprimirEndereco();
-               System.out.println("\n---------------------");
-           }
-       }
+        if(enderecosLista != null){
+            for(Endereco endereco : enderecosLista) {
+                if (endereco != null) {
+                    endereco.imprimirEndereco();
+                    System.out.println("\n---------------------");
+                }
+            }
+        }
     }
 
-    public void imprimirContato(){
-        for(Contato contato : contatos_lista){
-            if(contato != null){
-                contato.imprimirContato();
-                System.out.println("\n---------------------");
+    public void imprimirContato() {
+        if (contatosLista != null) {
+            for (Contato contato : contatosLista) {
+                if (contato != null) {
+                    contato.imprimirContato();
+                    System.out.println("\n---------------------");
+                }
             }
         }
     }

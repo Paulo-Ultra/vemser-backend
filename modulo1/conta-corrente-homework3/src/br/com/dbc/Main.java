@@ -5,29 +5,32 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
 
-        ArrayList<Endereco> enderecos_listaMaicon = new ArrayList<>();
-        ArrayList<Contato> contatos_listaMaicon = new ArrayList<>();
+        ArrayList<Endereco> enderecosListaMaicon = new ArrayList<>();
+        ArrayList<Contato> contatosListaMaicon = new ArrayList<>();
 
-        contatos_listaMaicon.add(new Contato("Telefone duvidas", "\"(51)97254-5108", 2));
-        contatos_listaMaicon.add(new Contato("Instrutor da DBC", "\"(51)98757-5848", 1));
-        enderecos_listaMaicon.add(new Endereco(1, "Rua das Flores", 1502
+        contatosListaMaicon.add(new Contato("Telefone duvidas", "\"(51)97254-5108", 2));
+        contatosListaMaicon.add(new Contato("Instrutor da DBC", "\"(51)98757-5848", 1));
+        enderecosListaMaicon.add(new Endereco(1, "Rua das Flores", 1502
                 , "Apartamento", "30915-000", "Vila Velha"
                 , "Santa Catarina", "Brasil"));
-        enderecos_listaMaicon.add(new Endereco(2, "Avenida São Jorge", 701
+        enderecosListaMaicon.add(new Endereco(2, "Avenida São Jorge", 701
                 , "Apartamento", "33915-000", "Vila Velha"
                 , "Santa Catarina", "Brasil"));
 
-        ArrayList<Endereco> enderecos_listaPaulo = new ArrayList<>();
-        ArrayList<Contato> contatos_listaPaulo = new ArrayList<>();
+        ArrayList<Endereco> enderecosListaPaulo = new ArrayList<>();
+        ArrayList<Contato> contatosListaPaulo = new ArrayList<>();
 
-        contatos_listaPaulo.add(new Contato("WhatsApp", "(61)98888-5731", 1));
-        contatos_listaPaulo.add(new Contato("Telefone para ligação", "(61)954128-5731", 1));
-        enderecos_listaPaulo.add(new Endereco(1, "Rua Presidente Dutra", 9
+        contatosListaPaulo.add(null);
+        enderecosListaPaulo.add(null);
+
+        contatosListaPaulo.add(new Contato("WhatsApp", "(61)98888-5731", 1));
+        contatosListaPaulo.add(new Contato("Telefone para ligação", "(61)954128-5731", 1));
+        enderecosListaPaulo.add(new Endereco(1, "Rua Presidente Dutra", 9
                 , "Esquina com Adalberto Barreto", "44915-000", "São Gabriel"
                 , "Bahia", "Brasil"));
 
-        Cliente clientePaulo = new Cliente("Paulo", "015.151.561-20", contatos_listaPaulo, enderecos_listaPaulo);
-        Cliente clienteMaicon = new Cliente("Maicon", "584.874.021-20", contatos_listaMaicon, enderecos_listaMaicon);
+        Cliente clientePaulo = new Cliente("Paulo", "015.151.561-20", contatosListaPaulo, enderecosListaPaulo);
+        Cliente clienteMaicon = new Cliente("Maicon", "584.874.021-20", contatosListaMaicon, enderecosListaMaicon);
 
         //Método da Classe Contato
         clientePaulo.imprimirContato();
@@ -55,7 +58,7 @@ public class Main {
         ContaPagamento contaPagamentoMaicon = new ContaPagamento(clienteMaicon, "1451-X", "1710", 1000.00);
         ContaPoupanca contaPoupancaPaulo = new ContaPoupanca(clientePaulo, "4852-X", "7956", 1000.00);
 
-//        //Métodos da ContaCorrente
+        //Métodos da ContaCorrente
         contaCorrenteMaicon.imprimir();
         System.out.println("---------------------");
         contaCorrenteMaicon.sacar(200.00);
@@ -119,6 +122,6 @@ public class Main {
         contaPagamentoMaicon.transferir(contaPoupancaPaulo, 500.00);
         System.out.println("-------------------------");
         contaPagamentoMaicon.imprimir();
-        
+
     }
 }

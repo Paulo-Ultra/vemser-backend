@@ -62,11 +62,9 @@ X
 W
 'src/br/com/dbc/aula4/estatico/Main.java,c\f\cfc3a90235a831e1e9395ec1c7334377553f15b3
 W
-'src/br/com/dbc/aula4/heranca/Carro.java,0\4\04158129989068cb3847fd795275bef3f3d36391
+'src/br/com/dbc/aula4/heranca/Barco.java,9\f\9fac5b3c019bd343987c20ce77503fb43b3cbc26
 ]
 -src/br/com/dbc/aula4/heranca/CarroVoador.java,a\5\a51193c79d594c7365a628ffe174f35150571d0a
-W
-'src/br/com/dbc/aula4/heranca/Barco.java,9\f\9fac5b3c019bd343987c20ce77503fb43b3cbc26
 Y
 )src/br/com/dbc/aula4/heranca/Veiculo.java,4\b\4bf97d020ded0d2f3b291f7a5930f52fbf91ce0d
 V
@@ -77,3 +75,29 @@ X
 (src/br/com/dbc/aula4/homework/Carro.java,c\7\c7c6996a8906e46ac27719b21bc912e6b503328d
 W
 'src/br/com/dbc/aula4/homework/Main.java,4\1\414caaa1338da84cb736f536ed45ba63476ea70d
+\
+,src/br/com/dbc/aula5/exercicio1/Divisao.java,3\8\38e6b35b5c391eb3852a70b2187515ba3baccd06
+b
+2src/br/com/dbc/aula5/exercicio1/Multiplicacao.java,3\b\3b32ebc9dbbcaed65633fa5dc3c703a20455ea07
+^
+.src/br/com/dbc/aula5/exercicio1/Subtracao.java,3\0\3025f9f70df405625d56fc89aa90b3134dea3375
+Y
+)src/br/com/dbc/aula5/exercicio1/Soma.java,0\5\05d334342c560db07a6d10d8faaad499a2c3290b
+g
+7src/br/com/dbc/aula5/exercicio1/OperacaoMatematica.java,6\2\62ace754c8243f0f9de194f4570b9a92569b2c36
+O
+src/br/com/dbc/aula5/Mapas.java,5\9\596a982ef2ffd971735e4742a4906d93b07b5a3b
+W
+'src/br/com/dbc/aula4/heranca/Carro.java,0\4\04158129989068cb3847fd795275bef3f3d36391
+_
+/src/br/com/dbc/aula5/exercicio1/Exercicio1.java,1\6\1651edcfe1e37a5e543f45087f3eceae1f77c31a
+O
+src/br/com/dbc/aula5/Lista.java,9\e\9ed05f99f0848d4b342cab1963215e94dd95d6af
+O
+src/br/com/dbc/aula5/Filas.java,a\9\a9c63afb88d74a8ae9294a693ad00e6d34be6219
+P
+ src/br/com/dbc/aula5/Pilhas.java,e\0\e0f625c762d6668693b223a6ba2569c5c1f9d540
+O
+src/br/com/dbc/aula5/Carro.java,b\b\bba738c05916dac0fafac158e61487370575eab5
+S
+#src/br/com/dbc/aula5/Ordenacao.java,a\7\a7379ede6c2dbf9da469f76dd0e8bf182e3a6149
