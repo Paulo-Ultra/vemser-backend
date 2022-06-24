@@ -23,8 +23,6 @@ public class ContaCorrente extends Conta implements Impressao {
             return false;
         } else {
             this.setSaldo(this.getSaldo() - valor);
-            System.out.println(String.format("Saque de R$%.2f efetuado com sucesso", valor));
-            System.out.println("Seu saldo atual é: R$" + this.getSaldo());
             return true;
         }
     }

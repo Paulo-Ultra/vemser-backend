@@ -55,8 +55,6 @@ public abstract class Conta implements Movimentacao{
             return false;
         } else {
             this.setSaldo(getSaldo() - valor);
-            System.out.println(String.format("Saque de R$%.2f efetuado com sucesso", valor));
-            System.out.println("Seu saldo atual é: R$" + this.saldo);
             return true;
         }
     }
@@ -77,7 +75,6 @@ public abstract class Conta implements Movimentacao{
     public Boolean transferir (Conta conta, Double valor) {
         if (this.sacar(valor)) {
             System.out.println(String.format("Transferência de R$%.2f efetuada com sucesso", valor));
-            System.out.println("Seu saldo atual é: R$" + this.saldo);
             return conta.depositar(valor);
         } else if (valor > saldo) {
             System.out.println("Você não tem saldo na conta para transferir");
