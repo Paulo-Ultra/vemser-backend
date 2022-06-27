@@ -1,0 +1,15 @@
+
+@
+java:S5411L"*Use the primitive boolean expression here.(¤ ™¡
+N
+java:S5993	"9Change the visibility of this constructor to "protected".(ÕœÜ>
+N	java:S1063"9Replace this use of System.out or System.err by a logger.(Ïúê
+N	java:S1066"9Replace this use of System.out or System.err by a logger.(§æ·‚
+M	java:S106A"9Replace this use of System.out or System.err by a logger.(¶şñ\
+7
+java:S1116D"Remove this empty statement.(Ì£ì´øÿÿÿÿ
+N	java:S106E"9Replace this use of System.out or System.err by a logger.(÷èò½
+S	java:S106F"9Replace this use of System.out or System.err by a logger.(˜ú­´ùÿÿÿÿ
+M	java:S106M"9Replace this use of System.out or System.err by a logger.(ŒÅä|
+S	java:S106P"9Replace this use of System.out or System.err by a logger.(ê‰şşÿÿÿÿ
+T	java:S106S"9Replace this use of System.out or System.err by a logger.(„¢¤z8É÷‘Œ™0

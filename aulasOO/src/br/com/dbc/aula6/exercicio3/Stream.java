@@ -69,10 +69,8 @@ public class Stream {
                 .collect(Collectors.toMap(Pessoa::getId, Pessoa::getNome));
         System.out.println(meuMapaDePessoasPorId);
         //9- com o mapa da 8, retornar o nome com o id=2
-//        meuMapaDePessoasPorId = lista.stream()
-//        .filter(pessoa -> pessoa.getId() == 2)
-//                .toList();
-        System.out.println(meuMapaDePessoasPorId);
+        String nomePessoa = meuMapaDePessoasPorId.get(2);
+        System.out.println(nomePessoa);
     }
 
     static class Pessoa {
