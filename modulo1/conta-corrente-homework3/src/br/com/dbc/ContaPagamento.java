@@ -28,16 +28,13 @@ public class ContaPagamento extends Conta implements Impressao{
     }
 
         @Override
-        public Boolean transferir(Conta conta, Double valor){
-            if (this.sacar(valor)) {
-                System.out.println(String.format("Transferência de R$%.2f efetuada com sucesso", valor));
-                return conta.depositar(valor);
-            } else if (valor > getSaldo()) {
-                System.out.println("Você não tem saldo na conta para transferir");
-                return false;
-            } else {
-                System.out.println("Valor deve ser maior que R$ 0 para tranferência");
-                return false;
+        public Boolean transferir(Conta conta, Double valor) {
+            if (valor <= this.getSaldo() && valor > 0) {
+                this.setSaldo(this.getSaldo() - valor);
+                conta.depositar(valor);
             }
+            return false;
         }
 }
+
+

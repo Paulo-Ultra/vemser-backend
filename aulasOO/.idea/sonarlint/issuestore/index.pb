@@ -85,19 +85,55 @@ Y
 )src/br/com/dbc/aula5/exercicio1/Soma.java,0\5\05d334342c560db07a6d10d8faaad499a2c3290b
 g
 7src/br/com/dbc/aula5/exercicio1/OperacaoMatematica.java,6\2\62ace754c8243f0f9de194f4570b9a92569b2c36
-O
-src/br/com/dbc/aula5/Mapas.java,5\9\596a982ef2ffd971735e4742a4906d93b07b5a3b
 W
 'src/br/com/dbc/aula4/heranca/Carro.java,0\4\04158129989068cb3847fd795275bef3f3d36391
 _
 /src/br/com/dbc/aula5/exercicio1/Exercicio1.java,1\6\1651edcfe1e37a5e543f45087f3eceae1f77c31a
+\
+,src/br/com/dbc/aula6/exercicio1/Calculo.java,4\3\4355b39937a2c6f0654fbc862dfccfae342ed4f1
+[
++src/br/com/dbc/aula6/exercicio1/Lambda.java,8\9\891e6db08c4e834857a3074e358fd0f6b8771992
+Q
+!src/br/com/dbc/aula6/Streams.java,3\6\36cccd93a35d9b66aa3ef1fea95949b7d0f68d0e
 O
-src/br/com/dbc/aula5/Lista.java,9\e\9ed05f99f0848d4b342cab1963215e94dd95d6af
+src/br/com/dbc/aula5/Carro.java,b\b\bba738c05916dac0fafac158e61487370575eab5
 O
 src/br/com/dbc/aula5/Filas.java,a\9\a9c63afb88d74a8ae9294a693ad00e6d34be6219
 P
- src/br/com/dbc/aula5/Pilhas.java,e\0\e0f625c762d6668693b223a6ba2569c5c1f9d540
+ src/br/com/dbc/aula5/Listas.java,1\7\1714968c22baa05d12fc6d790431cf49045ccff9
 O
-src/br/com/dbc/aula5/Carro.java,b\b\bba738c05916dac0fafac158e61487370575eab5
+src/br/com/dbc/aula5/Mapas.java,5\9\596a982ef2ffd971735e4742a4906d93b07b5a3b
 S
 #src/br/com/dbc/aula5/Ordenacao.java,a\7\a7379ede6c2dbf9da469f76dd0e8bf182e3a6149
+P
+ src/br/com/dbc/aula5/Pilhas.java,e\0\e0f625c762d6668693b223a6ba2569c5c1f9d540
+P
+ src/br/com/dbc/aula6/Funcao.java,b\9\b9db31d3b270e1345bf81b140f4ea9fb618737e4
+`
+0src/br/com/dbc/aula6/crud/PessoaManipulacao.java,f\1\f1b950cc583fe92ddb61ae1eb727ca0a23a2e4ec
+P
+ src/br/com/dbc/aula6/Lambda.java,6\d\6de90a12852d8bec6143a3cf202e41053f9e0a71
+P
+ src/br/com/dbc/aula6/Pessoa.java,4\8\4830372037bc73bb69094eb4113157fc179c924c
+V
+&src/br/com/dbc/aula6/PessoaNomeId.java,7\0\70eaf6402aa3995b6c70cd260da319bf29064be8
+S
+#src/br/com/dbc/aula6/crud/Main.java,3\a\3a908fa6bc17ebefbec856f7e3d8e365af869cef
+U
+%src/br/com/dbc/aula6/crud/Pessoa.java,6\6\66ceeeb6bc352858361c734068e4a9d7b397cd36
+U
+%src/br/com/dbc/aula7/TipoUsuario.java,b\c\bcdfbd6829d0f295c7b96e30afea4d9c86a404c7
+Y
+)src/br/com/dbc/aula7/Exercicio1/Main.java,a\6\a67d69fc99c62e7299c1b1f74eca0eb0f68607f3
+X
+(src/br/com/dbc/aula7/MinhaException.java,b\c\bc73f63bca5ce81cefb0ff5d1c93dbcf4f48ab43
+N
+src/br/com/dbc/aula7/Main.java,1\f\1f6e5d3fbc8376c006ed26238cc731d9574b3187
+R
+"src/br/com/dbc/aula7/Calcular.java,0\f\0f85aa47b830189f72988ba0c84b0423da95c671
+_
+/src/br/com/dbc/aula7/Exercicio1/TipoComida.java,0\6\06f4318ef38efda604079798c1535fb7a114103a
+U
+%src/br/com/dbc/aula6/StreamsAula.java,d\5\d5f17df50616c559c165cf29721cec981666824c
+[
++src/br/com/dbc/aula6/exercicio3/Stream.java,f\6\f656d25f27c77d033a007a77bb37369c91ee388f

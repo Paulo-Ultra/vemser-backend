@@ -119,7 +119,7 @@ public class Main {
         contaPagamentoMaicon.sacar(0.0);
         contaPagamentoMaicon.imprimir();
         System.out.println("----------------------------------");
-        contaPagamentoMaicon.transferir(contaPoupancaPaulo, 500.00);
+        contaPagamentoMaicon.transferir(contaPoupancaPaulo, 200.00);
         System.out.println("-------------------------");
         contaPagamentoMaicon.imprimir();
 

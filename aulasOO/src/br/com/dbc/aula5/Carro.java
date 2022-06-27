@@ -1,51 +1,39 @@
 package br.com.dbc.aula5;
 
-import br.com.dbc.aula4.heranca.Veiculo;
+public class Carro {
+    private String modelo;
+    private Integer quilometragem;
 
-public class Carro extends Veiculo {
-
-    private String modeloMotor;
-    private Integer potencia;
-    private Integer velocidadeMaxima;
-
-    public Carro(String modeloMotor, Integer potencia, Integer velocidadeMaxima) {
-        this.modeloMotor = modeloMotor;
-        this.potencia = potencia;
-        this.velocidadeMaxima = velocidadeMaxima;
+    public Carro(String modelo, int quilometragem) {
+        this.modelo = modelo;
+        this.quilometragem = quilometragem;
     }
 
-    public Carro(String nome, String modeloMotor, Integer potencia, Integer velocidadeMaxima) {
-        super(nome);
-        this.modeloMotor = modeloMotor;
-        this.potencia = potencia;
-        this.velocidadeMaxima = velocidadeMaxima;
+    public Carro(String modelo){
+        this.modelo = modelo;
     }
 
-    public String getModeloMotor() {
-        return modeloMotor;
+    public void setModelo(String modelo){
+        this.modelo = modelo;
     }
 
-    public void setModeloMotor(String modeloMotor) {
-        this.modeloMotor = modeloMotor;
+    public String getModelo(){
+        return this.modelo;
     }
 
-    public Integer getPotencia() {
-        return potencia;
+    public void setQuilometragem(Integer quilometragem){
+        this.quilometragem = quilometragem;
     }
 
-    public void setPotencia(Integer potencia) {
-        this.potencia = potencia;
+    public Integer getQuilometragem(){
+        return quilometragem;
     }
 
-    public Integer getVelocidadeMaxima() {
-        return velocidadeMaxima;
-    }
-
-    public void setVelocidadeMaxima(Integer velocidadeMaxima) {
-        this.velocidadeMaxima = velocidadeMaxima;
-    }
-
-    public int acelerar(){
-        return ++velocidadeMaxima;
+    @Override
+    public String toString() {
+        return "Carro{" +
+                "modelo='" + modelo + '\'' +
+                ", quilometragem=" + quilometragem +
+                '}';
     }
 }

@@ -1,0 +1,22 @@
+
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(”Û‡úùÿÿÿÿ8šó¿¹š0
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(¾ŒÖÿÿÿÿÿ8ó¿¹š0
+}
+java:S4276"[Refactor this code to use the more specialised Functional Interface 'UnaryOperator<Double>'(õşÙÔøÿÿÿÿ8Ï’À¹š0
+U
+java:S1611"3Remove the parentheses around the "value" parameter(õşÙÔøÿÿÿÿ8Ÿó¿¹š0
+X
+java:S1612"6Replace this lambda with method reference 'Math::log'.(õşÙÔøÿÿÿÿ8ë’À¹š0
+v
+java:S4276"YRefactor this code to use the more specialised Functional Interface 'DoubleUnaryOperator'(Úé“¤8ò’À¹š0
+P
+java:S1611"3Remove the parentheses around the "value" parameter(Úé“¤8¡ó¿¹š0
+T
+java:S1612"7Replace this lambda with method reference 'Math::sqrt'.(Úé“¤8ó’À¹š0
+{
+java:S4276"YRefactor this code to use the more specialised Functional Interface 'DoubleUnaryOperator'(±ñîŒùÿÿÿÿ8ö’À¹š0
+U	java:S106"9Replace this use of System.out or System.err by a logger.(¥¶¢ 8¤ó¿¹š0
+X	java:S125"<This block of commented-out lines of code should be removed.(‡›¿Ò8¥ó¿¹š0
+{
+java:S4276"YRefactor this code to use the more specialised Functional Interface 'DoubleUnaryOperator'(á¦Ê•úÿÿÿÿ8ú’À¹š0
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(õÒ‡Áÿÿÿÿÿ8§ó¿¹š0
