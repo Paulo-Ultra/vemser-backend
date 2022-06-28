@@ -4,14 +4,23 @@ import java.util.Scanner;
 
 public class Calcular {
     public static void main(String[] args) {
-        System.out.println(calcularDivisao(1, 0));
+//        calularDivisao(1, 1);
+
+        try {
+            System.out.println(calcular(1, -5));
+        } catch (NumberFormatException ex){
+            ex.printStackTrace();
+        } catch (DivisaoNegativaException ex){
+            System.out.println(ex.getMessage());
+        }
+
     }
 
-    public static int calcularDivisao(int numero1, int numero2) {
+    public static int calcular(int numero1, int numero2) throws DivisaoNegativaException {
         Scanner scanner = new Scanner(System.in);
         try {
-            Integer.parseInt(scanner.nextLine());
-            return numero1 / numero2;
+//            Integer.parseInt(scanner.nextLine());
+            return calularDivisao(numero1, numero2);
         } catch (ArithmeticException ex) {
             ex.printStackTrace();
             System.out.println("não é possível dividir por zero");
@@ -22,5 +31,15 @@ public class Calcular {
             System.out.println("finally calculo");
         }
         return 0;
+    }
+
+    public static int calularDivisao(int n1, int n2) throws NumberFormatException, DivisaoNegativaException {
+        if(n2 == 0){
+            throw new NumberFormatException("Não é possível dividir por zero.");
+        }
+        if(n2 < 0){
+            throw new DivisaoNegativaException("Não é possível dividir por números negativos");
+        }
+        return n1 / n2;
     }
 }

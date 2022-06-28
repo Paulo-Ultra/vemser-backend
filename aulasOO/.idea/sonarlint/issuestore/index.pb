@@ -119,9 +119,3 @@ S
 #src/br/com/dbc/aula6/crud/Main.java,3\a\3a908fa6bc17ebefbec856f7e3d8e365af869cef
 U
 %src/br/com/dbc/aula6/crud/Pessoa.java,6\6\66ceeeb6bc352858361c734068e4a9d7b397cd36
-Y
-)src/br/com/dbc/aula7/Exercicio1/Main.java,a\6\a67d69fc99c62e7299c1b1f74eca0eb0f68607f3
-X
-(src/br/com/dbc/aula7/MinhaException.java,b\c\bc73f63bca5ce81cefb0ff5d1c93dbcf4f48ab43
-_
-/src/br/com/dbc/aula7/Exercicio1/TipoComida.java,0\6\06f4318ef38efda604079798c1535fb7a114103a

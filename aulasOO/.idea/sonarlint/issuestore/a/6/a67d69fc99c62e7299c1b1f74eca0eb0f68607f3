@@ -1,21 +1,0 @@
-
-h
-java:S1192"RDefine a constant instead of duplicating this literal "Valor da comida: " 3 times.(Òß²»
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¸â®¥ıÿÿÿÿ
-N	java:S106"9Replace this use of System.out or System.err by a logger.(‹ï’Ê
-S	java:S106"9Replace this use of System.out or System.err by a logger.(›¥‘úüÿÿÿÿ
-N	java:S106"9Replace this use of System.out or System.err by a logger.(ÕÓ†®
-S	java:S106"9Replace this use of System.out or System.err by a logger.(Ğùãşùÿÿÿÿ
-S	java:S106"9Replace this use of System.out or System.err by a logger.(óÍğ¶şÿÿÿÿ
-7
-java:S6205"Remove this redundant block.(ò÷Ñäÿÿÿÿÿ
-N	java:S106"9Replace this use of System.out or System.err by a logger.(Òß²»
-7
-java:S6205"Remove this redundant block.(€ø¥ÿÿÿÿÿ
-S	java:S106"9Replace this use of System.out or System.err by a logger.(Üá‘Èûÿÿÿÿ
-2
-java:S6205"Remove this redundant block.(ÁŸò
-S	java:S106"9Replace this use of System.out or System.err by a logger.(áààúøÿÿÿÿ
-2
-java:S6205"Remove this redundant block.(üØô
-N	java:S106"9Replace this use of System.out or System.err by a logger.(ó¸¶Ê
