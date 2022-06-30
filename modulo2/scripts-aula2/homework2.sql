@@ -7,13 +7,13 @@ SELECT * FROM dual;
 
 CREATE TABLE VEM_SER.PAIS(
 	id_pais NUMBER(38) PRIMARY KEY NOT NULL,
-	nome VARCHAR(50) UNIQUE NOT NULL
+	nome VARCHAR2(50) UNIQUE NOT NULL
 );
 
 CREATE TABLE VEM_SER.ESTADO(
 	id_estado NUMBER(38) PRIMARY KEY NOT NULL,
 	id_pais NUMBER(38) NOT NULL,
-	nome VARCHAR(50),
+	nome VARCHAR2(50),
 	CONSTRAINT FK_id_pais FOREIGN KEY (id_pais) REFERENCES pais(id_pais)
 );
 
@@ -29,7 +29,7 @@ CREATE TABLE Endereco (
                 ID_BAIRRO NUMBER(38) NOT NULL,
                 ID_CIDADE NUMBER(38) NOT NULL,
                 LOGRADOURO VARCHAR2(255) NOT NULL,
-                NUMERO VARCHAR2(38) NOT NULL,
+                NUMERO number(38) NOT NULL,
                 COMPLEMENTO VARCHAR2(100),
                 CEP CHAR(9),
                 PRIMARY KEY (ID_ENDERECO),
@@ -41,7 +41,7 @@ CREATE TABLE VEM_SER.BAIRRO(
 	id_bairro NUMBER(38) NOT NULL,
 	id_cidade NUMBER(38) NOT NULL,
 	id_estado NUMBER(38) NOT NULL,
-	nome VARCHAR(50) NOT NULL,
+	nome VARCHAR2(50) NOT NULL,
 	PRIMARY KEY (ID_BAIRRO, ID_CIDADE),
 	CONSTRAINT FK_BAIRRO_CIDADE FOREIGN KEY (ID_CIDADE, ID_ESTADO) REFERENCES CIDADE (ID_CIDADE, ID_ESTADO)
 );
@@ -49,7 +49,7 @@ CREATE TABLE VEM_SER.BAIRRO(
 CREATE TABLE VEM_SER.CIDADE(
 	id_cidade NUMBER(38) NOT NULL,
 	id_estado NUMBER(38) NOT NULL,
-	nome VARCHAR(50) NOT NULL,
+	nome VARCHAR2(50) NOT NULL,
 	PRIMARY KEY (ID_CIDADE, ID_ESTADO),
 	CONSTRAINT FK_id_estado FOREIGN KEY (id_estado) REFERENCES estado(id_estado)
 );
@@ -64,6 +64,8 @@ ALTER TABLE "Bairro" ADD CONSTRAINT "Bairro_fk0" FOREIGN KEY ("id_cidade") REFER
 
 ALTER TABLE "Endereco" ADD CONSTRAINT "Endereco_fk0" FOREIGN KEY ("id_bairro") REFERENCES "Bairro"("id_bairro");
 
+-- DROP SEQUENCE vem_ser.seq_pais
+
 CREATE SEQUENCE VEM_SER.SEQ_PAIS
 START WITH 1
 INCREMENT BY 1
@@ -76,6 +78,8 @@ VALUES(seq_pais.nextval, 'Brasil');
 INSERT INTO VEM_SER.PAIS 
 (ID_PAIS, NOME)
 VALUES(seq_pais.nextval, 'Argentina');
+
+-- DROP SEQUENCE vem_ser.seq_estado
 
 CREATE SEQUENCE VEM_SER.SEQ_ESTADO
 START WITH 1
@@ -98,6 +102,7 @@ INSERT INTO VEM_SER.ESTADO
 (ID_ESTADO, ID_PAIS, NOME)
 VALUES(seq_estado.nextval, 2, 'Santa Catarina');
 
+-- DROP SEQUENCE vem_ser.seq_cidade
 
 CREATE SEQUENCE VEM_SER.SEQ_CIDADE
 START WITH 1
@@ -112,6 +117,32 @@ INSERT INTO VEM_SER.CIDADE
 (ID_CIDADE, ID_ESTADO, NOME)
 VALUES(seq_cidade.nextval, 1, 'Salvador');
 
+INSERT INTO VEM_SER.CIDADE 
+(ID_CIDADE, ID_ESTADO, NOME)
+VALUES(seq_cidade.nextval, 2, 'Brasília');
+
+INSERT INTO VEM_SER.CIDADE 
+(ID_CIDADE, ID_ESTADO, NOME)
+VALUES(seq_cidade.nextval, 2, 'Ceilandia');
+
+INSERT INTO VEM_SER.CIDADE 
+(ID_CIDADE, ID_ESTADO, NOME)
+VALUES(seq_cidade.nextval, 3, 'Porto Alegre');
+
+INSERT INTO VEM_SER.CIDADE 
+(ID_CIDADE, ID_ESTADO, NOME)
+VALUES(seq_cidade.nextval, 3, 'Caxias');
+
+INSERT INTO VEM_SER.CIDADE 
+(ID_CIDADE, ID_ESTADO, NOME)
+VALUES(seq_cidade.nextval, 4, 'Florianópolis');
+
+INSERT INTO VEM_SER.CIDADE 
+(ID_CIDADE, ID_ESTADO, NOME)
+VALUES(seq_cidade.nextval, 4, 'São José');
+
+--DROP SEQUENCE vem_ser.seq_bairro
+
 CREATE SEQUENCE VEM_SER.SEQ_BAIRRO
 START WITH 1
 INCREMENT BY 1
@@ -123,7 +154,65 @@ VALUES(seq_bairro.nextval, 1, 1, 'Maria Candida');
 
 INSERT INTO VEM_SER.BAIRRO  
 (ID_BAIRRO, ID_CIDADE, ID_ESTADO, NOME)
-VALUES(seq_bairro.nextval, 2, 1, 'Avenida Rui Barbosa');
+VALUES(seq_bairro.nextval, 1, 1, 'Praça Barretão');
+
+INSERT INTO VEM_SER.BAIRRO  
+(ID_BAIRRO, ID_CIDADE, ID_ESTADO, NOME)
+VALUES(seq_bairro.nextval, 2, 1, 'Governador Magalhães');
+
+INSERT INTO VEM_SER.BAIRRO  
+(ID_BAIRRO, ID_CIDADE, ID_ESTADO, NOME)
+VALUES(seq_bairro.nextval, 2, 1, 'Farrol da Barra');
+
+INSERT INTO VEM_SER.BAIRRO  
+(ID_BAIRRO, ID_CIDADE, ID_ESTADO, NOME)
+VALUES(seq_bairro.nextval, 3, 2, 'Asa Sul');
+
+INSERT INTO VEM_SER.BAIRRO  
+(ID_BAIRRO, ID_CIDADE, ID_ESTADO, NOME)
+VALUES(seq_bairro.nextval, 3, 2, 'Asa Norte');
+
+INSERT INTO VEM_SER.BAIRRO  
+(ID_BAIRRO, ID_CIDADE, ID_ESTADO, NOME)
+VALUES(seq_bairro.nextval, 4, 2, 'Guariroba');
+
+INSERT INTO VEM_SER.BAIRRO  
+(ID_BAIRRO, ID_CIDADE, ID_ESTADO, NOME)
+VALUES(seq_bairro.nextval, 4, 2, '5 da Norte');
+
+INSERT INTO VEM_SER.BAIRRO  
+(ID_BAIRRO, ID_CIDADE, ID_ESTADO, NOME)
+VALUES(seq_bairro.nextval, 5, 3, 'Grenal');
+
+INSERT INTO VEM_SER.BAIRRO  
+(ID_BAIRRO, ID_CIDADE, ID_ESTADO, NOME)
+VALUES(seq_bairro.nextval, 5, 3, 'Barbaridade Tche');
+
+INSERT INTO VEM_SER.BAIRRO  
+(ID_BAIRRO, ID_CIDADE, ID_ESTADO, NOME)
+VALUES(seq_bairro.nextval, 6,3, 'Matias');
+
+INSERT INTO VEM_SER.BAIRRO  
+(ID_BAIRRO, ID_CIDADE, ID_ESTADO, NOME)
+VALUES(seq_bairro.nextval, 6, 3, 'Farias');
+
+INSERT INTO VEM_SER.BAIRRO  
+(ID_BAIRRO, ID_CIDADE, ID_ESTADO, NOME)
+VALUES(seq_bairro.nextval, 7, 4, 'Campesche');
+
+INSERT INTO VEM_SER.BAIRRO  
+(ID_BAIRRO, ID_CIDADE, ID_ESTADO, NOME)
+VALUES(seq_bairro.nextval, 7, 4, 'Praia dos Ricos');
+
+INSERT INTO VEM_SER.BAIRRO  
+(ID_BAIRRO, ID_CIDADE, ID_ESTADO, NOME)
+VALUES(seq_bairro.nextval, 8, 4, 'Getulião');
+
+INSERT INTO VEM_SER.BAIRRO  
+(ID_BAIRRO, ID_CIDADE, ID_ESTADO, NOME)
+VALUES(seq_bairro.nextval, 8, 4, 'Quinxadá de Marangadá');
+
+--DROP SEQUENCE vem_ser.seq_endereco
 
 CREATE SEQUENCE VEM_SER.SEQ_ENDERECO
 START WITH 1
@@ -132,215 +221,136 @@ nocache nocycle;
 
 INSERT INTO VEM_SER.ENDERECO
 (ID_ENDERECO, ID_BAIRRO, ID_CIDADE, LOGRADOURO, NUMERO, COMPLEMENTO, CEP)
-VALUES(seq_endereco.nextval, 1, 1, 'Rua Presidente Dutra', '11A', 'Esquina com Adalberto', '44915-000');
+VALUES(seq_endereco.nextval, 1, 1, 'Rua Presidente Dutra', 11, 'Esquina com Adalberto', '44915-000');
 
 INSERT INTO VEM_SER.ENDERECO
 (ID_ENDERECO, ID_BAIRRO, ID_CIDADE, LOGRADOURO, NUMERO, COMPLEMENTO, CEP)
-VALUES(seq_endereco.nextval, 3, 2, 'Avenida Salvador', '1565', 'Apartamento', '44200-000');
-
-INSERT INTO VEM_SER.CIDADE 
-(ID_CIDADE, ID_ESTADO, NOME)
-VALUES(seq_cidade.nextval, 2, 'Porto Alegre');
-
-INSERT INTO VEM_SER.CIDADE 
-(ID_CIDADE, ID_ESTADO, NOME)
-VALUES(seq_cidade.nextval, 2, 'Caxias');
-
-INSERT INTO VEM_SER.CIDADE 
-(ID_CIDADE, ID_ESTADO, NOME)
-VALUES(seq_cidade.nextval, 3, 'Ceilândia');
-
-INSERT INTO VEM_SER.CIDADE 
-(ID_CIDADE, ID_ESTADO, NOME)
-VALUES(seq_cidade.nextval, 3, 'Brasília');
-
-INSERT INTO VEM_SER.CIDADE 
-(ID_CIDADE, ID_ESTADO, NOME)
-VALUES(seq_cidade.nextval, 4, 'Florianópolis');
-
-INSERT INTO VEM_SER.CIDADE 
-(ID_CIDADE, ID_ESTADO, NOME)
-VALUES(seq_cidade.nextval, 4, 'São Jose');
-
-INSERT INTO VEM_SER.BAIRRO  
-(ID_BAIRRO, ID_CIDADE, ID_ESTADO, NOME)
-VALUES(seq_bairro.nextval, 3, 2, 'Baixo do Rio');
-
-INSERT INTO VEM_SER.BAIRRO  
-(ID_BAIRRO, ID_CIDADE, ID_ESTADO, NOME)
-VALUES(seq_bairro.nextval, 4, 2, 'Alvorada');
-
-INSERT INTO VEM_SER.BAIRRO  
-(ID_BAIRRO, ID_CIDADE, ID_ESTADO, NOME)
-VALUES(seq_bairro.nextval, 5, 3, 'Sul');
-
-INSERT INTO VEM_SER.BAIRRO  
-(ID_BAIRRO, ID_CIDADE, ID_ESTADO, NOME)
-VALUES(seq_bairro.nextval, 6, 3, 'Plano');
-
-INSERT INTO VEM_SER.BAIRRO  
-(ID_BAIRRO, ID_CIDADE, ID_ESTADO, NOME)
-VALUES(seq_bairro.nextval, 7, 4, 'Campesche');
-
-INSERT INTO VEM_SER.BAIRRO  
-(ID_BAIRRO, ID_CIDADE, ID_ESTADO, NOME)
-VALUES(seq_bairro.nextval, 8, 4, 'Centro');
-
-INSERT INTO VEM_SER.BAIRRO  
-(ID_BAIRRO, ID_CIDADE, ID_ESTADO, NOME)
-VALUES(seq_bairro.nextval, 1, 1, 'Praça Barretão');
-
-INSERT INTO VEM_SER.BAIRRO  
-(ID_BAIRRO, ID_CIDADE, ID_ESTADO, NOME)
-VALUES(seq_bairro.nextval, 2, 1, 'Farol da Barra');
-
-INSERT INTO VEM_SER.BAIRRO  
-(ID_BAIRRO, ID_CIDADE, ID_ESTADO, NOME)
-VALUES(seq_bairro.nextval, 3, 2, 'Grenal');
-
-INSERT INTO VEM_SER.BAIRRO  
-(ID_BAIRRO, ID_CIDADE, ID_ESTADO, NOME)
-VALUES(seq_bairro.nextval, 4, 2, 'Matias');
-
-INSERT INTO VEM_SER.BAIRRO  
-(ID_BAIRRO, ID_CIDADE, ID_ESTADO, NOME)
-VALUES(seq_bairro.nextval, 5, 3, 'Guariroba');
-
-INSERT INTO VEM_SER.BAIRRO  
-(ID_BAIRRO, ID_CIDADE, ID_ESTADO, NOME)
-VALUES(seq_bairro.nextval, 6, 3, 'Setor Habitacional Sul');
-
-INSERT INTO VEM_SER.BAIRRO  
-(ID_BAIRRO, ID_CIDADE, ID_ESTADO, NOME)
-VALUES(seq_bairro.nextval, 7, 4, 'Praia do Ruivo');
-
-INSERT INTO VEM_SER.BAIRRO  
-(ID_BAIRRO, ID_CIDADE, ID_ESTADO, NOME)
-VALUES(seq_bairro.nextval, 8, 4, 'Quinxadá de Marangadá');
+VALUES(seq_endereco.nextval, 1, 1, 'Rua Barreto Rocha', 55, 'Esquina com Adalberto', '44915-000');
 
 INSERT INTO VEM_SER.ENDERECO
 (ID_ENDERECO, ID_BAIRRO, ID_CIDADE, LOGRADOURO, NUMERO, COMPLEMENTO, CEP)
-VALUES(seq_endereco.nextval, 1, 1, 'Rua Barreto Rocha', '55B', 'Esquina com Adalberto', '44915-000');
+VALUES(seq_endereco.nextval, 2, 1, 'Avenida Salvador', 1565, 'Apartamento', '44200-000');
 
 INSERT INTO VEM_SER.ENDERECO
 (ID_ENDERECO, ID_BAIRRO, ID_CIDADE, LOGRADOURO, NUMERO, COMPLEMENTO, CEP)
-VALUES(seq_endereco.nextval, 3, 2, 'Passo Fundo', '135', '', '55900-000');
+VALUES(seq_endereco.nextval, 2, 1, 'Avenida Joaquim Grava', 99, 'Apartamento', '44200-000');
 
 INSERT INTO VEM_SER.ENDERECO
 (ID_ENDERECO, ID_BAIRRO, ID_CIDADE, LOGRADOURO, NUMERO, COMPLEMENTO, CEP)
-VALUES(seq_endereco.nextval, 4, 3, 'Alto Rio', '545', 'Centro', '55915-000');
+VALUES(seq_endereco.nextval, 3, 2, 'Avenida Principal', 135, '', '44900-008');
 
 INSERT INTO VEM_SER.ENDERECO
 (ID_ENDERECO, ID_BAIRRO, ID_CIDADE, LOGRADOURO, NUMERO, COMPLEMENTO, CEP)
-VALUES(seq_endereco.nextval, 4, 3, 'Sul do Sul', '17A', 'Alvorada do Sul', '55915-000');
+VALUES(seq_endereco.nextval, 3, 2, 'Alto Rio', 745, 'Centro', '44915-000');
 
 INSERT INTO VEM_SER.ENDERECO
 (ID_ENDERECO, ID_BAIRRO, ID_CIDADE, LOGRADOURO, NUMERO, COMPLEMENTO, CEP)
-VALUES(seq_endereco.nextval, 5, 4, 'Norte de Brigadeiro', '915', 'Duque de Ferraz', '55815-000');
+VALUES(seq_endereco.nextval, 4, 2, 'Rua dos Prazeres', 14, 'Centro', '44915-021');
 
 INSERT INTO VEM_SER.ENDERECO
 (ID_ENDERECO, ID_BAIRRO, ID_CIDADE, LOGRADOURO, NUMERO, COMPLEMENTO, CEP)
-VALUES(seq_endereco.nextval, 5, 4, 'Norte de Brigadeiro2', '548', 'Centro', '55815-000');
+VALUES(seq_endereco.nextval, 4, 2, 'Praça Baianada', 88, 'Centro', '44915-000');
 
 INSERT INTO VEM_SER.ENDERECO
 (ID_ENDERECO, ID_BAIRRO, ID_CIDADE, LOGRADOURO, NUMERO, COMPLEMENTO, CEP)
-VALUES(seq_endereco.nextval, 6, 5, 'QNN 10 Conjunto H', '20', 'Sul', '72220-000');
+VALUES(seq_endereco.nextval, 5, 3, 'SHS', 38, 'Asa Sul', '70210-000');
 
 INSERT INTO VEM_SER.ENDERECO
 (ID_ENDERECO, ID_BAIRRO, ID_CIDADE, LOGRADOURO, NUMERO, COMPLEMENTO, CEP)
-VALUES(seq_endereco.nextval, 6, 5, 'SHS', '38', 'Asa Sul', '70210-000');
+VALUES(seq_endereco.nextval, 5, 3, 'SHSN', 126, 'Asa Sul', '71250-000');
 
 INSERT INTO VEM_SER.ENDERECO
 (ID_ENDERECO, ID_BAIRRO, ID_CIDADE, LOGRADOURO, NUMERO, COMPLEMENTO, CEP)
-VALUES(seq_endereco.nextval, 7, 6, 'SHSN', '126', 'Asa Sul', '71250-000');
+VALUES(seq_endereco.nextval, 6, 3, 'SHSS', 114, 'Asa Norte', '70250-133');
 
 INSERT INTO VEM_SER.ENDERECO
 (ID_ENDERECO, ID_BAIRRO, ID_CIDADE, LOGRADOURO, NUMERO, COMPLEMENTO, CEP)
-VALUES(seq_endereco.nextval, 7, 6, 'SPW', '12564', 'Park Way', '70120-000');
+VALUES(seq_endereco.nextval, 6, 3, 'SHSS', 85, 'Asa Norte', '71000-000');
 
 INSERT INTO VEM_SER.ENDERECO
 (ID_ENDERECO, ID_BAIRRO, ID_CIDADE, LOGRADOURO, NUMERO, COMPLEMENTO, CEP)
-VALUES(seq_endereco.nextval, 8, 7, 'Avenida dos Mares', '123', 'Centro Campesche', '65000-000');
+VALUES(seq_endereco.nextval, 7, 4, 'QNN 10, Conjunto H', 50, 'Do lado da estação Ceilândia Sul', '72900-120');
 
 INSERT INTO VEM_SER.ENDERECO
 (ID_ENDERECO, ID_BAIRRO, ID_CIDADE, LOGRADOURO, NUMERO, COMPLEMENTO, CEP)
-VALUES(seq_endereco.nextval, 8, 7, 'Avenida das Marés', '321', 'Centro Campesche', '65978-000');
+VALUES(seq_endereco.nextval, 7, 4, 'QNM 10, Conjunto H', 10, 'Do lado do norte da Cei', '72750-120');
 
 INSERT INTO VEM_SER.ENDERECO
 (ID_ENDERECO, ID_BAIRRO, ID_CIDADE, LOGRADOURO, NUMERO, COMPLEMENTO, CEP)
-VALUES(seq_endereco.nextval, 9, 8, 'Rua Mario Oswaldo', '719', 'Do lado da Avenida Itaguaçu', '65745-000');
+VALUES(seq_endereco.nextval, 8, 4, 'QNP 32, Conjunto S', 10, 'PSUL', '72150-120');
 
 INSERT INTO VEM_SER.ENDERECO
 (ID_ENDERECO, ID_BAIRRO, ID_CIDADE, LOGRADOURO, NUMERO, COMPLEMENTO, CEP)
-VALUES(seq_endereco.nextval, 9, 8, 'Rua Oswaldino', '346', 'Do lado da serrinha', '65015-000');
+VALUES(seq_endereco.nextval, 8, 4, 'QNN 10, Conjunto C', 50, 'Do lado da estação Guatriroba', '72980-120');
 
 INSERT INTO VEM_SER.ENDERECO
 (ID_ENDERECO, ID_BAIRRO, ID_CIDADE, LOGRADOURO, NUMERO, COMPLEMENTO, CEP)
-VALUES(seq_endereco.nextval, 9, 8, 'avenida Dino', '396', 'Do lado da serrinha', '65123-000');
+VALUES(seq_endereco.nextval, 9, 5, 'Avenida Barbaridade', 31, 'Do lado da Caxinilides', '35900-120');
 
 INSERT INTO VEM_SER.ENDERECO
 (ID_ENDERECO, ID_BAIRRO, ID_CIDADE, LOGRADOURO, NUMERO, COMPLEMENTO, CEP)
-VALUES(seq_endereco.nextval, 6, 5, 'QNP 35, Conjunto P', '55', 'P-Sul', '75123-002');
+VALUES(seq_endereco.nextval, 9, 5, 'avenida Barbaridade2', 31, 'Do lado da Caxinilides', '34800-120');
 
 INSERT INTO VEM_SER.ENDERECO
 (ID_ENDERECO, ID_BAIRRO, ID_CIDADE, LOGRADOURO, NUMERO, COMPLEMENTO, CEP)
-VALUES(seq_endereco.nextval, 10, 1, 'Rua da Day', '552', 'Na frente da Delicidas da Day', '45915-007');
+VALUES(seq_endereco.nextval, 9, 5, 'Rua dos Pampas', 77, 'Bá', '35900-250');
 
 INSERT INTO VEM_SER.ENDERECO
 (ID_ENDERECO, ID_BAIRRO, ID_CIDADE, LOGRADOURO, NUMERO, COMPLEMENTO, CEP)
-VALUES(seq_endereco.nextval, 11, 2, 'Flamengo, Praia', '47', 'De frente à praia do Flamengo', '44915-120');
+VALUES(seq_endereco.nextval, 10, 5, 'Rua da briga do Sul tchê', 88, 'Esquina com estádio olímpico', '32900-120');
 
 INSERT INTO VEM_SER.ENDERECO
 (ID_ENDERECO, ID_BAIRRO, ID_CIDADE, LOGRADOURO, NUMERO, COMPLEMENTO, CEP)
-VALUES(seq_endereco.nextval, 11, 2, 'Flamengo, Praia', '150', 'De costas à praia do Flamengo', '44915-120');
+VALUES(seq_endereco.nextval, 10, 5, 'Rua do Gaucho', 548, 'Do lado do vizim', '35400-120');
 
 INSERT INTO VEM_SER.ENDERECO
 (ID_ENDERECO, ID_BAIRRO, ID_CIDADE, LOGRADOURO, NUMERO, COMPLEMENTO, CEP)
-VALUES(seq_endereco.nextval, 12, 3, 'Rua da briga do Sul tchê', '88', 'Esquina com estádio olímpico', '32900-120');
+VALUES(seq_endereco.nextval, 11, 6, 'Rua que rima com Caxias', 100, '', '35300-000');
 
 INSERT INTO VEM_SER.ENDERECO
 (ID_ENDERECO, ID_BAIRRO, ID_CIDADE, LOGRADOURO, NUMERO, COMPLEMENTO, CEP)
-VALUES(seq_endereco.nextval, 12, 3, 'Rua da briga do Sul tchê', '784', 'Esquina com estádio beira-rio', '32900-120');
+VALUES(seq_endereco.nextval, 11, 6, 'Avenida dos Seguros', 45, 'Próximo ao Centro', '35312-000');
 
 INSERT INTO VEM_SER.ENDERECO
 (ID_ENDERECO, ID_BAIRRO, ID_CIDADE, LOGRADOURO, NUMERO, COMPLEMENTO, CEP)
-VALUES(seq_endereco.nextval, 13, 4, 'Rua Caxinildes', '99', '', '35900-121');
+VALUES(seq_endereco.nextval, 12, 6, 'Praça Caxianoloulo', 1, 'Praça', '34320-000');
 
 INSERT INTO VEM_SER.ENDERECO
 (ID_ENDERECO, ID_BAIRRO, ID_CIDADE, LOGRADOURO, NUMERO, COMPLEMENTO, CEP)
-VALUES(seq_endereco.nextval, 13, 4, 'Avenida Barbaridade', '31', 'Do lado da Caxinilides', '35900-120');
+VALUES(seq_endereco.nextval, 12, 6, 'Rua sem conhecimento', 101, 'Longe do Centro', '34000-000');
 
 INSERT INTO VEM_SER.ENDERECO
 (ID_ENDERECO, ID_BAIRRO, ID_CIDADE, LOGRADOURO, NUMERO, COMPLEMENTO, CEP)
-VALUES(seq_endereco.nextval, 14, 5, 'QNN 10, Conjunto H', '50', 'Do lado da estação Ceilândia Sul', '72900-120');
+VALUES(seq_endereco.nextval, 13, 7, 'Praia dos surfistas', 19, 'Aqui do lado', '54000-000');
 
 INSERT INTO VEM_SER.ENDERECO
 (ID_ENDERECO, ID_BAIRRO, ID_CIDADE, LOGRADOURO, NUMERO, COMPLEMENTO, CEP)
-VALUES(seq_endereco.nextval, 14, 5, 'QNM 10, Conjunto H', '10', 'Do lado do norte da Cei', '72750-120');
+VALUES(seq_endereco.nextval, 13, 7, 'Avenida Camps', 159, 'Principal', '54500-001');
 
 INSERT INTO VEM_SER.ENDERECO
 (ID_ENDERECO, ID_BAIRRO, ID_CIDADE, LOGRADOURO, NUMERO, COMPLEMENTO, CEP)
-VALUES(seq_endereco.nextval, 15, 6, 'SHSN', '150', 'Asa Sul', '72000-120');
+VALUES(seq_endereco.nextval, 14, 7, 'Rua Riqueza dos Ricos', 145, 'Centro', '54147-120');
 
 INSERT INTO VEM_SER.ENDERECO
 (ID_ENDERECO, ID_BAIRRO, ID_CIDADE, LOGRADOURO, NUMERO, COMPLEMENTO, CEP)
-VALUES(seq_endereco.nextval, 15, 6, 'SHSS', '31', 'Asa Norte', '72000-100');
+VALUES(seq_endereco.nextval, 14, 7, 'Avenida dos Milhionários', 67, 'Centro', '54500-000');
 
 INSERT INTO VEM_SER.ENDERECO
 (ID_ENDERECO, ID_BAIRRO, ID_CIDADE, LOGRADOURO, NUMERO, COMPLEMENTO, CEP)
-VALUES(seq_endereco.nextval, 16, 7, 'Rua de Floripa', '14A', 'Próximo a Vila Distante', '44000-120');
+VALUES(seq_endereco.nextval, 15, 8, 'Rua de São José', 17, 'Centro', '59000-000');
 
 INSERT INTO VEM_SER.ENDERECO
 (ID_ENDERECO, ID_BAIRRO, ID_CIDADE, LOGRADOURO, NUMERO, COMPLEMENTO, CEP)
-VALUES(seq_endereco.nextval, 16, 7, 'Vila Distante', '124', 'Não tão perto assim da rua de Floripa', '44100-120');
+VALUES(seq_endereco.nextval, 15, 8, 'Avenida dos Milagres', 88, 'Centro', '54500-000');
 
 INSERT INTO VEM_SER.ENDERECO
 (ID_ENDERECO, ID_BAIRRO, ID_CIDADE, LOGRADOURO, NUMERO, COMPLEMENTO, CEP)
-VALUES(seq_endereco.nextval, 17, 8, 'Rua dos Navegantes', '321', 'Sem complemento', '33100-122');
+VALUES(seq_endereco.nextval, 16, 8, 'Avenida Quinxa', 987, 'Quixá 2', '54000-000');
 
 INSERT INTO VEM_SER.ENDERECO
 (ID_ENDERECO, ID_BAIRRO, ID_CIDADE, LOGRADOURO, NUMERO, COMPLEMENTO, CEP)
-VALUES(seq_endereco.nextval, 17, 8, 'Rua dos Tripulantes', '1', 'Ao lado do mercado de coxinhas', '33100-110');
+VALUES(seq_endereco.nextval, 16, 8, 'Rua Marangaga', 17, 'Centro', '54500-000');
+
 
 SELECT * FROM PAIS;
 SELECT * FROM ESTADO;
@@ -363,7 +373,7 @@ WHERE NUMERO BETWEEN 1 AND 100;
 SELECT * FROM ENDERECO
 WHERE UPPER(LOGRADOURO) LIKE 'RUA%';
 
-SELECT COUNT(ID_ENDERECO) FROM ENDERECO;
+SELECT COUNT(ID_ENDERECO) FROM ENDERECO
 
 SELECT logradouro, cep FROM ENDERECO
 ORDER BY ID_ENDERECO
