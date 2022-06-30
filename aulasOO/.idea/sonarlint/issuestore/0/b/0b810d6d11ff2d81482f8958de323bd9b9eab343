@@ -5,5 +5,3 @@ N	java:S106"9Replace this use of System.out or System.err by a logger.( ÉÇæ
 N	java:S106"9Replace this use of System.out or System.err by a logger.(óîŞ½
 S	java:S106"9Replace this use of System.out or System.err by a logger.(½À°ùÿÿÿÿ
 S	java:S106 "9Replace this use of System.out or System.err by a logger.(ÑòÓÔşÿÿÿÿ
-c
-java:S1128"FRemove this unused import 'br.com.dbc.aula7.DivisaoNegativaException'.(ÂÓ¿—8¥¬íÛš0
