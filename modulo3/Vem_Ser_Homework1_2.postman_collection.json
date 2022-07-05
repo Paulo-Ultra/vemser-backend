@@ -150,7 +150,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n        \"idContato\": 6,\r\n        \"tipoContato\": \"Residencial\",\r\n        \"numero\": \"0619955876566\",\r\n        \"descricao\": \"whatsapp\"\r\n}",
+							"raw": "{\r\n        \"idPessoa\": 1,\r\n        \"tipoContato\": \"Residencial\",\r\n        \"numero\": \"0619955876566\",\r\n        \"descricao\": \"whatsapp2\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
