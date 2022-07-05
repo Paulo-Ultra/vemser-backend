@@ -48,7 +48,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"Teste Vem-Ser\",\r\n    \"body\": \"Olá\",\r\n    \"userId\": 3\r\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -107,7 +107,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"Teste Vem-Ser\",\r\n    \"body\": \"Olá\",\r\n    \"userId\": 3\r\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
