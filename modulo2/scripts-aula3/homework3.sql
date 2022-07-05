@@ -56,7 +56,8 @@ WHERE EXISTS
 	
 SELECT p.id_pessoa, p.NOME, ep.ID_ENDERECO, ep.LOGRADOURO 
 FROM PESSOA p
-FULL JOIN
-	ENDERECO_PESSOA ep ON p.ID_PESSOA = ep.ID_ENDERECO
+FULL JOIN PESSOA_X_PESSOA_ENDERECO PXPE ON P.ID_PESSOA = PXPE.ID_PESSOA 
+FULL JOIN ENDERECO_PESSOA EP ON PXPE.ID_ENDERECO  = EP.ID_ENDERECO
+	
 	
 --O resultado o Full Join e do Right Join é o mesmo, só vai alterar a ordem dos id_endereco onde id_pessoa e nome são nulos
