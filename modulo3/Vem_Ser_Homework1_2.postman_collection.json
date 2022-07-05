@@ -150,7 +150,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n        \"idPessoa\": 1,\r\n        \"tipoContato\": \"Residencial\",\r\n        \"numero\": \"0619955876566\",\r\n        \"descricao\": \"whatsapp2\"\r\n}",
+							"raw": "{\r\n        \"tipoContato\": \"RESIDENCIAL\",\r\n        \"numero\": \"0619955876566\",\r\n        \"descricao\": \"whatsapp2\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -180,7 +180,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n        \"idPessoa\": 1,\r\n        \"tipoContato\": \"Residencial\",\r\n        \"numero\": \"048885876566\",\r\n        \"descricao\": \"whatsapp\"\r\n}",
+							"raw": "{\r\n        \"idPessoa\": 1,\r\n        \"tipoContato\": \"RESIDENCIAL\",\r\n        \"numero\": \"048885876566\",\r\n        \"descricao\": \"whatsapp\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
