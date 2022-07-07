@@ -1,6 +1,7 @@
 package br.com.vemser.pessoaapi.service;
 
 import br.com.vemser.pessoaapi.entity.Contato;
+import br.com.vemser.pessoaapi.entity.Endereco;
 import br.com.vemser.pessoaapi.entity.Pessoa;
 import br.com.vemser.pessoaapi.repository.ContatoRepository;
 import br.com.vemser.pessoaapi.repository.PessoaRepository;
@@ -17,6 +18,9 @@ public class ContatoService {
     private ContatoRepository contatoRepository;
 
     @Autowired
+    private PessoaService pessoaService;
+
+    @Autowired
     private PessoaRepository pessoaRepository;
 
 //    public ContatoService(){
@@ -24,10 +28,7 @@ public class ContatoService {
 //    }
 
     public Contato create(Integer idPessoa, Contato contato) throws Exception {
-        Pessoa pessoaCriada = pessoaRepository.list().stream()
-                .filter(pessoa -> pessoa.getIdPessoa().equals(idPessoa))
-                .findFirst()
-                .orElseThrow(() -> new Exception("Contato não encontrado"));
+        pessoaService.findById(idPessoa);
         contato.setIdPessoa(idPessoa);
         return contatoRepository.create(idPessoa, contato);
     }
@@ -37,10 +38,7 @@ public class ContatoService {
     }
 
     public Contato update(Integer id, Contato contatoAtualizar) throws Exception{
-        Contato contatoAtualizado = contatoRepository.list().stream()
-                .filter(contato -> contato.getIdContato().equals(id))
-                .findFirst()
-                .orElseThrow(() -> new Exception("Contato não encontrado"));
+        Contato contatoAtualizado = findByIdContato(id);
         contatoAtualizado.setTipoContato(contatoAtualizar.getTipoContato());
         contatoAtualizado.setNumero(contatoAtualizar.getNumero());
         contatoAtualizado.setDescricao(contatoAtualizar.getDescricao());
@@ -58,6 +56,14 @@ public class ContatoService {
         return contatoRepository.list().stream()
                 .filter(contato -> contato.getIdPessoa().equals(idPessoa))
                 .collect(Collectors.toList());
+    }
+
+    public Contato findByIdContato(Integer idContato) throws Exception {
+        Contato contatoById = contatoRepository.list().stream()
+                .filter(endereco -> endereco.getIdContato().equals(idContato))
+                .findFirst()
+                .orElseThrow(() -> new Exception("Endereço não encontrado"));
+        return contatoById;
     }
 }
 

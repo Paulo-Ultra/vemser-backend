@@ -47,4 +47,13 @@ public class PessoaService {
     public List<Pessoa> listByName(String nome) {
         return pessoaRepository.listByName(nome);
     }
+
+    public Pessoa findById(Integer idPessoa) throws Exception {
+        Pessoa pessoaRecuperada = pessoaRepository.list().stream()
+                .filter(pessoa -> pessoa.getIdPessoa().equals(idPessoa))
+                .findFirst()
+                .orElseThrow(() -> new Exception("Pessoa não encontrada"));
+
+        return pessoaRecuperada;
+    }
 }

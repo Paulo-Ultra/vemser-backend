@@ -2,6 +2,7 @@ package br.com.vemser.pessoaapi.service;
 
 import br.com.vemser.pessoaapi.entity.Endereco;
 import br.com.vemser.pessoaapi.repository.EnderecoRepository;
+import br.com.vemser.pessoaapi.repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,24 +15,21 @@ public class EnderecoService {
     @Autowired
     private EnderecoRepository enderecoRepository;
 
+    @Autowired
+    private PessoaService pessoaService;
+
     public Endereco create(Integer idPessoa, Endereco endereco) throws Exception {
-        enderecoRepository.list().stream()
-                .filter(pessoa -> pessoa.getIdPessoa().equals(idPessoa))
-                .findFirst()
-                .orElseThrow(() -> new Exception("Pessoa não encontrada"));
+        pessoaService.findById(idPessoa);
         endereco.setIdPessoa(idPessoa);
         return enderecoRepository.create(idPessoa, endereco);
     }
 
-    public List<Endereco> list (){
+    public List<Endereco> list() {
         return enderecoRepository.list();
     }
 
-    public Endereco update(Integer id, Endereco enderecoAtualizar) throws Exception{
-        Endereco enderecoAtualizado = enderecoRepository.list().stream()
-                .filter(endereco -> endereco.getIdEndereco().equals(id))
-                .findFirst()
-                .orElseThrow(() -> new Exception("Endereço não encontrado"));
+    public Endereco update(Integer id, Endereco enderecoAtualizar) throws Exception {
+        Endereco enderecoAtualizado = finByIdEndereco(id);
         enderecoAtualizado.setTipo(enderecoAtualizar.getTipo());
         enderecoAtualizado.setLogradouro(enderecoAtualizar.getLogradouro());
         enderecoAtualizado.setNumero(enderecoAtualizar.getNumero());
@@ -61,4 +59,13 @@ public class EnderecoService {
                 .filter(pessoa -> pessoa.getIdPessoa().equals(idPessoa))
                 .collect(Collectors.toList());
     }
+
+    public Endereco finByIdEndereco(Integer idEndereco) throws Exception {
+        Endereco enderecoById = enderecoRepository.list().stream()
+                .filter(endereco -> endereco.getIdEndereco().equals(idEndereco))
+                .findFirst()
+                .orElseThrow(() -> new Exception("Endereço não encontrado"));
+        return enderecoById;
+    }
 }
+
