@@ -47,7 +47,7 @@ public class EnderecoService {
         enderecoRepository.list().stream()
                 .filter(endereco -> endereco.getIdEndereco().equals(id))
                 .findFirst()
-                .orElseThrow(() -> new Exception("Contato não encontrado"));
+                .orElseThrow(() -> new Exception("Endereço não encontrado"));
     }
 
     public List<Endereco> listByIdEndereco(Integer idEndereco) {
