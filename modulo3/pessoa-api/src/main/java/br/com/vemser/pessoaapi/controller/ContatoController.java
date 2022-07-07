@@ -37,7 +37,6 @@ public class ContatoController {
         return contatoService.list();
     }
 
-    //Fiquei na dúvida qual era para criar ao certo criei com parãmetro também
     @GetMapping("/byIdPessoa") //localhost:8080/contato/byIdPessoa?idPessoa=1
     public List<Contato> listByIdPessoaParams (@RequestParam("idPessoa") Integer idPessoa) {
         return contatoService.listByIdPessoa(idPessoa);

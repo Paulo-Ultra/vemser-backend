@@ -1,0 +1,468 @@
+{
+	"info": {
+		"_postman_id": "1d2ecf00-e84b-43d6-bfc9-9dc64a9d15bb",
+		"name": "API-Pessoa-VEM_SER",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17856998"
+	},
+	"item": [
+		{
+			"name": "Pessoa",
+			"item": [
+				{
+					"name": "Hello",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/pessoa/hello",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pessoa",
+								"hello"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pessoa",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"nome\": \"Paulo Ricardo\",\r\n        \"dataNascimento\": \"1986-08-12\",\r\n        \"cpf\": \"12345678911\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/pessoa",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pessoa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pessoa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/pessoa",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pessoa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pessoa/byname",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/pessoa/byname?nome=Paulo",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pessoa",
+								"byname"
+							],
+							"query": [
+								{
+									"key": "nome",
+									"value": "Paulo"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pessoa",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"nome\": \"Paulo Ricardo\",\r\n        \"dataNascimento\": \"1986-08-12\",\r\n        \"cpf\": \"01100000012\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/pessoa/6",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pessoa",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pessoa",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/pessoa/6",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pessoa",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ambiente8080",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/pessoa/ambiente",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pessoa",
+								"ambiente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ambiente8090",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8090/pessoa/ambiente",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"pessoa",
+								"ambiente"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Contato",
+			"item": [
+				{
+					"name": "Contato",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/contato",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"contato"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contato/ByIdPessoa(Params)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/contato/byIdPessoa?idPessoa=5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"contato",
+								"byIdPessoa"
+							],
+							"query": [
+								{
+									"key": "idPessoa",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contato/ByIdPessoa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/contato/10",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"contato",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contato/{idPessoa}",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"idPessoa\": 5,\r\n        \"tipoContato\": \"COMERCIAL\",\r\n        \"numero\": \"713510-4811\",\r\n        \"descricao\": \"Fixo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/contato/5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"contato",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contato/{idContato}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"tipoContato\": \"RESIDENCIAL\",\r\n        \"numero\": \"873510-4811\",\r\n        \"descricao\": \"Celular Novo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/contato/7",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"contato",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contato/{idContato}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/contato/5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"contato",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Endereco",
+			"item": [
+				{
+					"name": "Endereco",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/endereco",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"endereco"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Endereco/{idPessoa}/Pessoa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/endereco/2/pessoa",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"endereco",
+								"2",
+								"pessoa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Endereco/{idEndereco}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/endereco/5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"endereco",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Endereco/{idPessoa}",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n       \r\n        \"tipo\": \"RESIDENCIAL\",\r\n        \"logradouro\": \"Rua Presidente Dutra\",\r\n        \"numero\": 11,\r\n        \"complemento\": \"Bairro Maria Cândida\",\r\n        \"cep\": \"44915-000\",\r\n        \"cidade\": \"São Gabriel\",\r\n        \"estado\": \"Bahia\",\r\n        \"pais\": \"Brasil\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/endereco/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"endereco",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Endereco/{idEndereco}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"tipo\": \"RESIDENCIAL\",\r\n        \"logradouro\": \"Rua Presidente Dutra\",\r\n        \"numero\": 11,\r\n        \"complemento\": \"Bairro Maria Cândida\",\r\n        \"cep\": \"44915-000\",\r\n        \"cidade\": \"São Gabriel\",\r\n        \"estado\": \"Bahia\",\r\n        \"pais\": \"Brasil\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/endereco/5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"endereco",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Endereco/{idEndereco}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/endereco/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"endereco",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
