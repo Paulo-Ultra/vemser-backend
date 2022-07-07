@@ -15,7 +15,7 @@ public class EnderecoService {
     private EnderecoRepository enderecoRepository;
 
     public Endereco create(Integer idPessoa, Endereco endereco) throws Exception {
-        Endereco enderecoCriado = enderecoRepository.list().stream()
+        enderecoRepository.list().stream()
                 .filter(pessoa -> pessoa.getIdPessoa().equals(idPessoa))
                 .findFirst()
                 .orElseThrow(() -> new Exception("Pessoa não encontrada"));
