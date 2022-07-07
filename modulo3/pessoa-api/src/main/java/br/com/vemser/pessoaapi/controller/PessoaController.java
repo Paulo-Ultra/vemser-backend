@@ -4,12 +4,17 @@ import br.com.vemser.pessoaapi.entity.Pessoa;
 import br.com.vemser.pessoaapi.config.PropertieReader;
 import br.com.vemser.pessoaapi.service.PessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
 @RequestMapping("/pessoa")
+@Validated
 public class PessoaController {
 
     @Autowired
@@ -37,8 +42,10 @@ public class PessoaController {
     }
 
     @PostMapping
-    public Pessoa create(@RequestBody Pessoa pessoa) throws Exception {
-        return pessoaService.create(pessoa);
+    public ResponseEntity<Pessoa> create(@RequestBody @Valid Pessoa pessoa) throws Exception {
+//        return ResponseEntity.ok(pessoaService.create(pessoa));
+        //Um ou outro
+        return new ResponseEntity<>(pessoaService.create(pessoa), HttpStatus.CREATED);
     }
 
     @GetMapping
@@ -52,8 +59,8 @@ public class PessoaController {
     }
 
     @PutMapping("/{idPessoa}")
-    public Pessoa update(@PathVariable("idPessoa") Integer id, @RequestBody Pessoa pessoaAtualizar) throws Exception{
-        return pessoaService.update(id, pessoaAtualizar);
+    public ResponseEntity<Pessoa> update(@PathVariable("idPessoa") Integer id, @RequestBody @Valid Pessoa pessoaAtualizar) throws Exception{
+        return new ResponseEntity<>(pessoaService.update(id, pessoaAtualizar), HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/{idPessoa}")

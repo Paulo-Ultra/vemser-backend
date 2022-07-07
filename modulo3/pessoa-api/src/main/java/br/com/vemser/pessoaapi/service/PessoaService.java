@@ -2,6 +2,7 @@ package br.com.vemser.pessoaapi.service;
 
 import br.com.vemser.pessoaapi.entity.Contato;
 import br.com.vemser.pessoaapi.entity.Pessoa;
+import br.com.vemser.pessoaapi.exception.RegraDeNegocioException;
 import br.com.vemser.pessoaapi.repository.PessoaRepository;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -21,15 +22,16 @@ public class PessoaService {
 //    }
 
     public Pessoa create(Pessoa pessoa) throws Exception {
-        boolean pessoaExiste = ObjectUtils.isEmpty(pessoa.getDataNascimento());
-        boolean nomeEmBranco = StringUtils.isBlank(pessoa.getNome());
-        boolean cpfEmBranco = StringUtils.isBlank(pessoa.getCpf());
 
-        if (!nomeEmBranco && !pessoaExiste && !cpfEmBranco && pessoa.getCpf().length() == 11) {
+//        boolean pessoaExiste = ObjectUtils.isEmpty(pessoa.getDataNascimento());
+//        boolean nomeEmBranco = StringUtils.isBlank(pessoa.getNome());
+////        boolean cpfEmBranco = StringUtils.isBlank(pessoa.getCpf());
+//
+//        if (!nomeEmBranco && !pessoaExiste && !cpfEmBranco && pessoa.getCpf().length() == 14) {
             return pessoaRepository.create(pessoa);
-        } else {
-            throw new Exception("Pessoa não foi criada");
-        }
+//        } else {
+//            throw new RegraDeNegocioException("Pessoa não foi criada");
+//        }
     }
 
     public List<Pessoa> list (){
@@ -37,10 +39,12 @@ public class PessoaService {
     }
 
     public Pessoa update(Integer id, Pessoa pessoaAtualizar) throws Exception{
+        findByIdPessoa(id);
         return pessoaRepository.update(id, pessoaAtualizar);
     }
 
     public void delete(Integer id) throws Exception {
+        findByIdPessoa(id);
         pessoaRepository.delete(id);
     }
 
