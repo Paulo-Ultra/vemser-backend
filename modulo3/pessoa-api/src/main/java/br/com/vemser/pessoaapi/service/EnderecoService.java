@@ -19,7 +19,7 @@ public class EnderecoService {
     private PessoaService pessoaService;
 
     public Endereco create(Integer idPessoa, Endereco endereco) throws Exception {
-        pessoaService.findById(idPessoa);
+        pessoaService.findByIdPessoa(idPessoa);
         endereco.setIdPessoa(idPessoa);
         return enderecoRepository.create(idPessoa, endereco);
     }

@@ -28,7 +28,7 @@ public class ContatoService {
 //    }
 
     public Contato create(Integer idPessoa, Contato contato) throws Exception {
-        pessoaService.findById(idPessoa);
+        pessoaService.findByIdPessoa(idPessoa);
         contato.setIdPessoa(idPessoa);
         return contatoRepository.create(idPessoa, contato);
     }

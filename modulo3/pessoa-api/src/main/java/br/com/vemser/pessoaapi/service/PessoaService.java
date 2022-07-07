@@ -48,7 +48,7 @@ public class PessoaService {
         return pessoaRepository.listByName(nome);
     }
 
-    public Pessoa findById(Integer idPessoa) throws Exception {
+    public Pessoa findByIdPessoa(Integer idPessoa) throws Exception {
         Pessoa pessoaRecuperada = pessoaRepository.list().stream()
                 .filter(pessoa -> pessoa.getIdPessoa().equals(idPessoa))
                 .findFirst()
