@@ -144,6 +144,44 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Ambiente8080",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/pessoa/ambiente",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pessoa",
+								"ambiente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ambiente8090",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8090/pessoa/ambiente",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"pessoa",
+								"ambiente"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -199,27 +237,27 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/contato/2",
+							"raw": "localhost:8080/contato/10",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"contato",
-								"2"
+								"10"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Contato",
+					"name": "Contato/{idPessoa}",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idPessoa\": 5,\r\n        \"tipoContato\": \"COMERCIAL\",\r\n        \"numero\": \"713510-4811\",\r\n        \"descricao\": \"Fixo\"\r\n}",
+							"raw": "{\r\n        \"idPessoa\": 5,\r\n        \"tipoContato\": \"COMERCIAL\",\r\n        \"numero\": \"713510-4811\",\r\n        \"descricao\": \"Fixo\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -227,13 +265,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/contato",
+							"raw": "localhost:8080/contato/5",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"contato"
+								"contato",
+								"5"
 							]
 						}
 					},
@@ -246,7 +285,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idPessoa\": 3,\r\n        \"tipoContato\": \"RESIDENCIAL\",\r\n        \"numero\": \"873510-4811\",\r\n        \"descricao\": \"Celular Novo\"\r\n}",
+							"raw": "{\r\n        \"tipoContato\": \"RESIDENCIAL\",\r\n        \"numero\": \"873510-4811\",\r\n        \"descricao\": \"Celular Novo\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -254,14 +293,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/contato/1",
+							"raw": "localhost:8080/contato/7",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"contato",
-								"1"
+								"7"
 							]
 						}
 					},
@@ -273,14 +312,14 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/contato/6",
+							"raw": "localhost:8080/contato/5",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"contato",
-								"6"
+								"5"
 							]
 						}
 					},

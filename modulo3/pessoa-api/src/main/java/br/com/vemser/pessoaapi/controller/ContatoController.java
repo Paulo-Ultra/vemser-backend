@@ -3,6 +3,7 @@ package br.com.vemser.pessoaapi.controller;
 import br.com.vemser.pessoaapi.entity.Contato;
 import br.com.vemser.pessoaapi.entity.Pessoa;
 import br.com.vemser.pessoaapi.service.ContatoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,15 +12,24 @@ import java.util.List;
 @RequestMapping("/contato")
 public class ContatoController {
 
+    //Modelo mais novo
+//    private final ContatoService contatoService;
+
+    //Modelo mais novo
+//        public ContatoController(){
+//        contatoService = new ContatoService();
+//    }
+
+    @Autowired
     private ContatoService contatoService;
 
-    public ContatoController(){
-        contatoService = new ContatoService();
-    }
+//    public ContatoController(ContatoService contatoService){
+//        this.contatoService = contatoService;
+//    }
 
-    @PostMapping //localhost:8080/contato
-    public Contato create(@RequestBody Contato contato) {
-        return contatoService.create(contato);
+    @PostMapping ("/{idPessoa}")//localhost:8080/contato
+    public Contato create(@PathVariable ("idPessoa") Integer idPessoa, @RequestBody Contato contato) throws Exception {
+        return contatoService.create(idPessoa, contato);
     }
 
     @GetMapping //localhost:8080/contato
