@@ -2,7 +2,6 @@ package br.com.vemser.pessoaapi.entity;
 
 import br.com.vemser.pessoaapi.enums.TipoEndereco;
 import org.hibernate.validator.constraints.Length;
-
 import javax.validation.constraints.*;
 
 public class Endereco {
@@ -16,7 +15,7 @@ public class Endereco {
     private Integer numero;
     private String complemento;
     @NotBlank
-    @Size(min = 8, max = 8, message = "CEP deve possuir 8 números")
+    @Size(min = 8, max = 8, message = "CEP deve possuir {max} números")
     private String cep;
     @NotBlank
     @Length(max = 250, message = "Campo cidade pode ter no máximo {max} caracteres")

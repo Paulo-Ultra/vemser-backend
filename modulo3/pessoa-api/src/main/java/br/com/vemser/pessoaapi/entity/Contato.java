@@ -11,7 +11,7 @@ public class Contato {
     @NotNull
     private TipoContato tipoContato;
     @NotBlank
-    @Size(min = 1, max = 13, message = "Número pode ter até 13 números")
+    @Size(min = 1, max = 13, message = "Número pode ter até {max} números")
     private String numero;
     @NotBlank
     private String descricao;

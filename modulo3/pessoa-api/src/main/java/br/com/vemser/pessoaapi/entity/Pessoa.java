@@ -1,8 +1,5 @@
 package br.com.vemser.pessoaapi.entity;
 
-import org.hibernate.validator.constraints.br.CPF;
-
-import javax.validation.Constraint;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
 
