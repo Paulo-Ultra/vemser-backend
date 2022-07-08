@@ -19,7 +19,7 @@ public class PessoaService {
 //        pessoaRepository = new PessoaRepository();
 //    }
 
-    public Pessoa create(Pessoa pessoa) throws Exception {
+    public Pessoa create(Pessoa pessoa) throws RegraDeNegocioException {
 //        boolean pessoaExiste = ObjectUtils.isEmpty(pessoa.getDataNascimento());
 //        boolean nomeEmBranco = StringUtils.isBlank(pessoa.getNome());
 ////        boolean cpfEmBranco = StringUtils.isBlank(pessoa.getCpf());
