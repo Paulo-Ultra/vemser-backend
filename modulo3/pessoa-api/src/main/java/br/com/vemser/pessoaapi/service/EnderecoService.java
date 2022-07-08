@@ -30,8 +30,9 @@ public class EnderecoService {
     }
 
     public Endereco update(Integer id, Endereco enderecoAtualizar) throws RegraDeNegocioException {
-        pessoaService.findByIdPessoa(id);
+        pessoaService.findByIdPessoa(enderecoAtualizar.getIdPessoa());
         Endereco enderecoAtualizado = finByIdEndereco(id);
+        enderecoAtualizado.setIdPessoa(enderecoAtualizar.getIdPessoa());
         enderecoAtualizado.setTipo(enderecoAtualizar.getTipo());
         enderecoAtualizado.setLogradouro(enderecoAtualizar.getLogradouro());
         enderecoAtualizado.setNumero(enderecoAtualizar.getNumero());

@@ -19,7 +19,7 @@ public class Endereco {
     @Size(min = 8, max = 8, message = "CEP deve possuir 8 números")
     private String cep;
     @NotBlank
-    @Length(max = 250, message = "Campo cidade pode ter no máximo 250 caracteres")
+    @Length(max = 250, message = "Campo cidade pode ter no máximo {max} caracteres")
     private String cidade;
     @NotNull
     private String estado;

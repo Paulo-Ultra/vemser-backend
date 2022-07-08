@@ -40,7 +40,8 @@ public class ContatoService {
 
     public Contato update(Integer id, Contato contatoAtualizar) throws RegraDeNegocioException{
         Contato contatoAtualizado = findByIdContato(id);
-        pessoaService.findByIdPessoa(id);
+        pessoaService.findByIdPessoa(contatoAtualizar.getIdPessoa());
+        contatoAtualizado.setIdPessoa(contatoAtualizar.getIdPessoa());
         contatoAtualizado.setTipoContato(contatoAtualizar.getTipoContato());
         contatoAtualizado.setNumero(contatoAtualizar.getNumero());
         contatoAtualizado.setDescricao(contatoAtualizar.getDescricao());
