@@ -1,5 +1,6 @@
 package br.com.vemser.pessoaapi.exception;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolationException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.LinkedHashMap;
@@ -27,7 +30,8 @@ public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler
                                                                   HttpStatus status,
                                                                   WebRequest request) {
         Map<String, Object> body = new LinkedHashMap<>();
-        body.put("timestamp", new Date());
+//        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        body.put("timestamp", new Date()/*formatter.getCalendar()*/);
         body.put("status", status.value());
 
         //Get all errors

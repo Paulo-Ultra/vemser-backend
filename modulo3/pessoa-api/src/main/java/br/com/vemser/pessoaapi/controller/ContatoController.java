@@ -2,12 +2,16 @@ package br.com.vemser.pessoaapi.controller;
 
 import br.com.vemser.pessoaapi.entity.Contato;
 import br.com.vemser.pessoaapi.entity.Pessoa;
+import br.com.vemser.pessoaapi.exception.RegraDeNegocioException;
 import br.com.vemser.pessoaapi.service.ContatoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
+@Validated
 @RestController
 @RequestMapping("/contato")
 public class ContatoController {
@@ -28,7 +32,7 @@ public class ContatoController {
 //    }
 
     @PostMapping ("/{idPessoa}")//localhost:8080/contato
-    public Contato create(@PathVariable ("idPessoa") Integer idPessoa, @RequestBody Contato contato) throws Exception {
+    public Contato create(@PathVariable ("idPessoa") Integer idPessoa, @RequestBody @Valid Contato contato) throws RegraDeNegocioException {
         return contatoService.create(idPessoa, contato);
     }
 
@@ -48,12 +52,12 @@ public class ContatoController {
     }
 
     @PutMapping("/{idContato}") //localhost:8080/contato/{idContato}
-    public Contato update(@PathVariable("idContato") Integer id, @RequestBody Contato contatoAtualizar) throws Exception{
+    public Contato update(@PathVariable("idContato") Integer id, @RequestBody @Valid Contato contatoAtualizar) throws RegraDeNegocioException{
         return contatoService.update(id, contatoAtualizar);
     }
 
     @DeleteMapping("/{idContato}") //localhost:8080/contato/{idContato}
-    public void delete(@PathVariable("idContato") Integer id) throws Exception {
+    public void delete(@PathVariable("idContato") Integer id) throws RegraDeNegocioException {
         contatoService.delete(id);
     }
 }

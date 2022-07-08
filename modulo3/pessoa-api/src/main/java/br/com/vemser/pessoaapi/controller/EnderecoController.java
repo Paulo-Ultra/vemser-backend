@@ -1,12 +1,16 @@
 package br.com.vemser.pessoaapi.controller;
 
 import br.com.vemser.pessoaapi.entity.Endereco;
+import br.com.vemser.pessoaapi.exception.RegraDeNegocioException;
 import br.com.vemser.pessoaapi.service.EnderecoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
+@Validated
 @RestController
 @RequestMapping("/endereco")
 public class EnderecoController {
@@ -15,7 +19,7 @@ public class EnderecoController {
     private EnderecoService enderecoService;
 
     @PostMapping("/{idPessoa}")
-    public Endereco create(@PathVariable("idPessoa") Integer idPessoa, @RequestBody Endereco endereco) throws Exception {
+    public Endereco create(@PathVariable("idPessoa") Integer idPessoa, @RequestBody @Valid Endereco endereco) throws RegraDeNegocioException {
         return enderecoService.create(idPessoa, endereco);
     }
 
@@ -25,7 +29,7 @@ public class EnderecoController {
     }
 
     @GetMapping("/{idEndereco}")
-    public List<Endereco> listByIdEndereco (@PathVariable ("idEndereco") Integer idEndereco) throws Exception {
+    public List<Endereco> listByIdEndereco (@PathVariable ("idEndereco") Integer idEndereco) throws RegraDeNegocioException {
         return enderecoService.listByIdEndereco(idEndereco);
     }
     @GetMapping("/{idPessoa}/pessoa")
@@ -34,7 +38,7 @@ public class EnderecoController {
     }
 
     @PutMapping("/{idEndereco}")
-    public Endereco update(@PathVariable("idEndereco") Integer id, @RequestBody Endereco enderecoAtualizar) throws Exception{
+    public Endereco update(@PathVariable("idEndereco") Integer id, @RequestBody @Valid Endereco enderecoAtualizar) throws Exception{
         return enderecoService.update(id, enderecoAtualizar);
     }
 

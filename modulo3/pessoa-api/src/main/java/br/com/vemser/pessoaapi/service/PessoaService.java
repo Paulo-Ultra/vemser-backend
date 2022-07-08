@@ -22,7 +22,6 @@ public class PessoaService {
 //    }
 
     public Pessoa create(Pessoa pessoa) throws Exception {
-
 //        boolean pessoaExiste = ObjectUtils.isEmpty(pessoa.getDataNascimento());
 //        boolean nomeEmBranco = StringUtils.isBlank(pessoa.getNome());
 ////        boolean cpfEmBranco = StringUtils.isBlank(pessoa.getCpf());
@@ -38,8 +37,10 @@ public class PessoaService {
         return pessoaRepository.list();
     }
 
-    public Pessoa update(Integer id, Pessoa pessoaAtualizar) throws Exception{
+    public Pessoa update(Integer id, Pessoa pessoaAtualizar) throws RegraDeNegocioException{
         findByIdPessoa(id);
+        //Somente um teste
+//        findByName(String.valueOf(pessoaAtualizar));
         return pessoaRepository.update(id, pessoaAtualizar);
     }
 
@@ -52,12 +53,21 @@ public class PessoaService {
         return pessoaRepository.listByName(nome);
     }
 
-    public Pessoa findByIdPessoa(Integer idPessoa) throws Exception {
+    public Pessoa findByIdPessoa(Integer idPessoa) throws RegraDeNegocioException {
         Pessoa pessoaRecuperada = pessoaRepository.list().stream()
                 .filter(pessoa -> pessoa.getIdPessoa().equals(idPessoa))
                 .findFirst()
-                .orElseThrow(() -> new Exception("Pessoa não encontrada"));
+                .orElseThrow(() -> new RegraDeNegocioException("Pessoa não encontrada"));
 
         return pessoaRecuperada;
     }
+
+    //Teste para verificar se consigo recuperar pessoa pelo nome
+//    public Pessoa findByName(String nome) throws RegraDeNegocioException {
+//        Pessoa pessoaNomeRecuperado = pessoaRepository.list().stream()
+//                .filter(pessoa -> pessoa.getNome().equals(nome))
+//                .findFirst()
+//                .orElseThrow(() -> new RegraDeNegocioException("Nome da Pessoa não encontrado"));
+//        return pessoaNomeRecuperado;
+//    }
 }
