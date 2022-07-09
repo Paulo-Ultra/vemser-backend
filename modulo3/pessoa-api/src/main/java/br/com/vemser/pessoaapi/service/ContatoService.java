@@ -4,6 +4,7 @@ import br.com.vemser.pessoaapi.entity.Contato;
 import br.com.vemser.pessoaapi.exception.RegraDeNegocioException;
 import br.com.vemser.pessoaapi.repository.ContatoRepository;
 import br.com.vemser.pessoaapi.repository.PessoaRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class ContatoService {
 
     @Autowired
@@ -29,6 +31,8 @@ public class ContatoService {
     public Contato create(Integer idPessoa, Contato contato) throws RegraDeNegocioException {
         pessoaService.findByIdPessoa(idPessoa);
         contato.setIdPessoa(idPessoa);
+        log.info("Criando o contato...");
+        log.info("Contato da pessoa " + contato.getIdPessoa() + " criado!");
         return contatoRepository.create(idPessoa, contato);
     }
 
@@ -43,6 +47,8 @@ public class ContatoService {
         contatoAtualizado.setTipoContato(contatoAtualizar.getTipoContato());
         contatoAtualizado.setNumero(contatoAtualizar.getNumero());
         contatoAtualizado.setDescricao(contatoAtualizar.getDescricao());
+        log.info("Alterando contato...");
+        log.info("Contato " + contatoAtualizado.getIdContato() + " alterado!");
         return contatoAtualizado;
     }
 
@@ -51,6 +57,8 @@ public class ContatoService {
                 .filter(contato -> contato.getIdContato().equals(id))
                 .findFirst()
                 .orElseThrow(() -> new RegraDeNegocioException("Contato não encontrado"));
+        log.warn("Deletando o contato...");
+        log.info("Contato " + id + " deletado!");
     }
 
     public List<Contato> listByIdPessoa(Integer idPessoa) {

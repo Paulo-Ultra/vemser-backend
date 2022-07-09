@@ -3,6 +3,7 @@ package br.com.vemser.pessoaapi.service;
 import br.com.vemser.pessoaapi.entity.Endereco;
 import br.com.vemser.pessoaapi.exception.RegraDeNegocioException;
 import br.com.vemser.pessoaapi.repository.EnderecoRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class EnderecoService {
 
     @Autowired
@@ -21,6 +23,8 @@ public class EnderecoService {
     public Endereco create(Integer idPessoa, Endereco endereco) throws RegraDeNegocioException {
         pessoaService.findByIdPessoa(idPessoa);
         endereco.setIdPessoa(idPessoa);
+        log.info("Criando o endereço...");
+        log.info("Endereço da pessoa " + idPessoa + " criado!");
         return enderecoRepository.create(idPessoa, endereco);
     }
 
@@ -40,6 +44,8 @@ public class EnderecoService {
         enderecoAtualizado.setCidade(enderecoAtualizar.getCidade());
         enderecoAtualizado.setEstado(enderecoAtualizar.getEstado());
         enderecoAtualizado.setPais(enderecoAtualizar.getPais());
+        log.info("Alterando endereço...");
+        log.info("Endereço " + enderecoAtualizado.getIdPessoa() + " alterado!");
         return enderecoAtualizado;
     }
 
@@ -48,6 +54,8 @@ public class EnderecoService {
                 .filter(endereco -> endereco.getIdEndereco().equals(id))
                 .findFirst()
                 .orElseThrow(() -> new RegraDeNegocioException("Endereço não encontrado"));
+        log.warn("Deletando o endereço...");
+        log.info("Endereço " + id + " deletado!");
     }
 
     public List<Endereco> listByIdEndereco(Integer idEndereco) {

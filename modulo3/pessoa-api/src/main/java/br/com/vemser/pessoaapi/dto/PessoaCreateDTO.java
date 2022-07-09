@@ -1,20 +1,14 @@
-package br.com.vemser.pessoaapi.entity;
+package br.com.vemser.pessoaapi.dto;
 
-import lombok.*;
+import lombok.Data;
 
 import javax.validation.constraints.*;
 import java.time.LocalDate;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-public class Pessoa {
+@Data
+public class PessoaCreateDTO {
 
-    private Integer idPessoa;
     @NotBlank(message = "Insira um nome!" )
-    //Para evitar que o atributo tenha o getter por exemplo
-//    @Getter(AccessLevel.NONE)
     private String nome;
     @NotNull
     @Past
