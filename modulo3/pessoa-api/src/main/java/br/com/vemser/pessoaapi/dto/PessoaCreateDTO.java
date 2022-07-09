@@ -7,7 +7,6 @@ import java.time.LocalDate;
 
 @Data
 public class PessoaCreateDTO {
-
     @NotBlank(message = "Insira um nome!" )
     private String nome;
     @NotNull

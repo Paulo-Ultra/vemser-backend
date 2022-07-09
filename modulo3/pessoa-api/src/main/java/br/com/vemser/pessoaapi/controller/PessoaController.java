@@ -53,7 +53,7 @@ public class PessoaController {
     }
 
     @GetMapping
-    public List<Pessoa> list (){
+    public List<PessoaDTO> list (){
         return pessoaService.list();
     }
 
@@ -63,7 +63,7 @@ public class PessoaController {
     }
 
     @PutMapping("/{idPessoa}")
-    public ResponseEntity<PessoaDTO> update(@PathVariable("idPessoa") Integer id, @RequestBody @Valid PessoaCreateDTO pessoaAtualizar) throws Exception{
+    public ResponseEntity<PessoaDTO> update(@PathVariable("idPessoa") Integer id, @RequestBody @Valid PessoaCreateDTO pessoaAtualizar) throws RegraDeNegocioException{
         return new ResponseEntity<>(pessoaService.update(id, pessoaAtualizar), HttpStatus.ACCEPTED);
     }
 
@@ -71,6 +71,4 @@ public class PessoaController {
     public void delete(@PathVariable("idPessoa") Integer id) throws Exception {
         pessoaService.delete(id);
     }
-
-
 }

@@ -1,16 +1,15 @@
-package br.com.vemser.pessoaapi.entity;
+package br.com.vemser.pessoaapi.dto;
 
 import br.com.vemser.pessoaapi.enums.TipoEndereco;
-import lombok.*;
+import lombok.Data;
 import org.hibernate.validator.constraints.Length;
-import javax.validation.constraints.*;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class Endereco {
-
-    private Integer idEndereco;
+public class EnderecoCreateDTO {
     private Integer idPessoa;
     @NotNull
     private TipoEndereco tipo;

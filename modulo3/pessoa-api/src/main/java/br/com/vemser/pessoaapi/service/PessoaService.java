@@ -48,15 +48,20 @@ public class PessoaService {
 //        }
     }
 
-    public List<Pessoa> list() {
-        return pessoaRepository.list();
+    public List<PessoaDTO> list() {
+        List<PessoaDTO> pessoasDTO = new ArrayList<>();
+        List<Pessoa> pessoasEntity = pessoaRepository.list();
+        for (Pessoa pessoa : pessoasEntity) {
+            pessoasDTO.add(objectMapper.convertValue(pessoa, PessoaDTO.class));
+        }
+        return pessoasDTO;
     }
 
     public PessoaDTO update(Integer id, PessoaCreateDTO pessoaAtualizar) throws RegraDeNegocioException {
         //Somente um teste
 //        findByName(String.valueOf(pessoaAtualizar));
         objectMapper.convertValue(pessoaAtualizar, Pessoa.class);
-        Pessoa pessoaRecuperada = list().stream()
+        PessoaDTO pessoaRecuperada = list().stream()
                 .filter(pessoa -> pessoa.getIdPessoa().equals(id))
                 .findFirst()
                 .orElseThrow(() -> new RegraDeNegocioException("Pessoa não encontrada"));
@@ -90,15 +95,11 @@ public class PessoaService {
         return pessoasDTO;
     }
 
-    public PessoaDTO findByIdPessoa(Integer idPessoa) throws RegraDeNegocioException {
-        objectMapper.convertValue(idPessoa, Pessoa.class);
-        Pessoa pessoaRecuperada = pessoaRepository.list().stream()
+    public Pessoa findByIdPessoa(Integer idPessoa) throws RegraDeNegocioException {
+       return pessoaRepository.list().stream()
                 .filter(pessoa -> pessoa.getIdPessoa().equals(idPessoa))
                 .findFirst()
                 .orElseThrow(() -> new RegraDeNegocioException("Pessoa não encontrada"));
-        PessoaDTO pessoaDTO;
-        pessoaDTO = objectMapper.convertValue(pessoaRecuperada, PessoaDTO.class);
-        return pessoaDTO;
     }
 
     //Teste para verificar se consigo recuperar pessoa pelo nome
