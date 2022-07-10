@@ -36,11 +36,9 @@ public class PessoaService {
 //        if (!nomeEmBranco && !pessoaExiste && !cpfEmBranco && pessoa.getCpf().length() == 14) {
         log.info("Criando a pessoa...");
         Pessoa pessoaEntity = objectMapper.convertValue(pessoa, Pessoa.class);
-        Pessoa pessoaCriada = pessoaRepository.create(pessoaEntity);
+        pessoaRepository.create(pessoaEntity);
 
-        PessoaDTO pessoaDTO;
-        pessoaDTO = objectMapper.convertValue(pessoaCriada, PessoaDTO.class);
-
+        PessoaDTO pessoaDTO = objectMapper.convertValue(pessoaEntity, PessoaDTO.class);
         log.info("Pessoa " + pessoaDTO.getNome() + " criada!");
         return pessoaDTO;
 //        } else {
@@ -49,30 +47,28 @@ public class PessoaService {
     }
 
     public List<PessoaDTO> list() {
-        List<PessoaDTO> pessoasDTO = new ArrayList<>();
-        List<Pessoa> pessoasEntity = pessoaRepository.list();
-        for (Pessoa pessoa : pessoasEntity) {
-            pessoasDTO.add(objectMapper.convertValue(pessoa, PessoaDTO.class));
-        }
-        return pessoasDTO;
+//        List<PessoaDTO> pessoasDTO = new ArrayList<>();
+//        List<Pessoa> pessoasEntity = pessoaRepository.list();
+//        for (Pessoa pessoa : pessoasEntity) {
+//            pessoasDTO.add(objectMapper.convertValue(pessoa, PessoaDTO.class));
+//        }
+//        return pessoasDTO;
+        return pessoaRepository.list().stream()
+                .map(pessoa -> objectMapper.convertValue(pessoa, PessoaDTO.class))
+                .collect(Collectors.toList());
     }
 
     public PessoaDTO update(Integer id, PessoaCreateDTO pessoaAtualizar) throws RegraDeNegocioException {
         //Somente um teste
 //        findByName(String.valueOf(pessoaAtualizar));
+        log.info("Alterando a pessoa...");
         objectMapper.convertValue(pessoaAtualizar, Pessoa.class);
-        PessoaDTO pessoaRecuperada = list().stream()
-                .filter(pessoa -> pessoa.getIdPessoa().equals(id))
-                .findFirst()
-                .orElseThrow(() -> new RegraDeNegocioException("Pessoa não encontrada"));
+        Pessoa pessoaRecuperada = findByIdPessoa(id);
         pessoaRecuperada.setCpf(pessoaAtualizar.getCpf());
         pessoaRecuperada.setNome(pessoaAtualizar.getNome());
         pessoaRecuperada.setDataNascimento(pessoaAtualizar.getDataNascimento());
-        PessoaDTO pessoaDTO;
-        pessoaDTO = objectMapper.convertValue(pessoaRecuperada, PessoaDTO.class);
-        log.info("Alterando a pessoa...");
         log.info("Pessoa " + pessoaRecuperada.getNome() + " alterada!");
-        return pessoaDTO;
+        return objectMapper.convertValue(pessoaRecuperada, PessoaDTO.class);
     }
 
     public void delete(Integer id) throws RegraDeNegocioException {
@@ -103,7 +99,7 @@ public class PessoaService {
     }
 
     //Teste para verificar se consigo recuperar pessoa pelo nome
-//    public PessoaDTO findByName(String nome) throws RegraDeNegocioException {
+//    public List<Pessoa> findByName(String nome) throws RegraDeNegocioException {
 //        objectMapper.convertValue(nome, Pessoa.class);
 //        Pessoa pessoaNomeRecuperado = pessoaRepository.list().stream()
 //                .filter(pessoa -> pessoa.getNome().equals(nome))

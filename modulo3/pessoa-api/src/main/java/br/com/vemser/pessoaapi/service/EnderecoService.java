@@ -36,18 +36,14 @@ public class EnderecoService {
         Endereco enderecoEntity = objectMapper.convertValue(endereco, Endereco.class);
         enderecoEntity = enderecoRepository.create(enderecoEntity);
         enderecoEntity.setIdPessoa(idPessoa);
-        EnderecoDTO enderecoDTO = objectMapper.convertValue(enderecoEntity, EnderecoDTO.class);
         log.info("Endereço da pessoa " + idPessoa + " criado!");
-        return enderecoDTO;
+        return objectMapper.convertValue(enderecoEntity, EnderecoDTO.class);
     }
 
     public List<EnderecoDTO> list() {
-        List<EnderecoDTO> enderecosDTO = new ArrayList<>();
-        List<Endereco> enderecosEntity = enderecoRepository.list();
-        for (Endereco endereco : enderecosEntity){
-            enderecosDTO.add(objectMapper.convertValue(endereco, EnderecoDTO.class));
-        }
-        return enderecosDTO;
+             return enderecoRepository.list().stream()
+                     .map(endereco -> objectMapper.convertValue(endereco, EnderecoDTO.class))
+                     .collect(Collectors.toList());
     }
 
     public EnderecoDTO update(Integer id, EnderecoCreateDTO enderecoAtualizar) throws RegraDeNegocioException {
@@ -64,10 +60,9 @@ public class EnderecoService {
         enderecoAtualizado.setEstado(enderecoAtualizar.getEstado());
         enderecoAtualizado.setPais(enderecoAtualizar.getPais());
 
-        EnderecoDTO enderecoDTO = objectMapper.convertValue(enderecoAtualizado, EnderecoDTO.class);
         log.info("Alterando endereço...");
         log.info("Endereço " + enderecoAtualizado.getIdPessoa() + " alterado!");
-        return enderecoDTO;
+        return objectMapper.convertValue(enderecoAtualizado, EnderecoDTO.class);
     }
 
     public void delete(Integer id) throws RegraDeNegocioException {
