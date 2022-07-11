@@ -26,9 +26,6 @@ public class ContatoService {
     private PessoaService pessoaService;
 
     @Autowired
-    private PessoaRepository pessoaRepository;
-
-    @Autowired
     private ObjectMapper objectMapper;
 
 //    public ContatoService(){

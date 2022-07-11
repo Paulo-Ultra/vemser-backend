@@ -8,6 +8,8 @@ import java.time.LocalDate;
 @Data
 public class PessoaCreateDTO {
     @NotBlank(message = "Insira um nome!" )
+    //Para evitar que o atributo tenha o getter por exemplo
+//    @Getter(AccessLevel.NONE)
     private String nome;
     @NotNull
     @Past
