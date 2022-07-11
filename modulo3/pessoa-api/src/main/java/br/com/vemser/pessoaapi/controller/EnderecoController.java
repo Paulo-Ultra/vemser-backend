@@ -32,12 +32,12 @@ public class EnderecoController {
     }
 
     @GetMapping("/{idEndereco}")
-    public List<EnderecoDTO> listByIdEndereco (@PathVariable ("idEndereco") Integer idEndereco) throws RegraDeNegocioException {
-        return enderecoService.listByIdEndereco(idEndereco);
+    public ResponseEntity<EnderecoDTO> listByIdEndereco (@PathVariable ("idEndereco") Integer idEndereco) throws RegraDeNegocioException {
+        return new ResponseEntity<>(enderecoService.listByIdEndereco(idEndereco), HttpStatus.OK);
     }
     @GetMapping("/{idPessoa}/pessoa")
-    public List<EnderecoDTO> listByIdPessoa (@PathVariable ("idPessoa") Integer idPessoa) {
-        return enderecoService.listByIdPessoa(idPessoa);
+    public ResponseEntity<List<EnderecoDTO>> listByIdPessoa (@PathVariable ("idPessoa") Integer idPessoa) throws RegraDeNegocioException {
+        return new ResponseEntity<>(enderecoService.listByIdPessoa(idPessoa), HttpStatus.OK);
     }
 
     @PutMapping("/{idEndereco}")

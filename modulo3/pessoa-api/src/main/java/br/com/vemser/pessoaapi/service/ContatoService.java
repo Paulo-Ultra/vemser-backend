@@ -40,54 +40,44 @@ public class ContatoService {
         Contato contatoEntity = objectMapper.convertValue(contato, Contato.class);
         contatoEntity = contatoRepository.create(idPessoa, contatoEntity);
         contatoEntity.setIdPessoa(idPessoa);
-        ContatoDTO contatoDTO = objectMapper.convertValue(contatoEntity, ContatoDTO.class);
         log.info("Criando o contato...");
         log.info("Contato da pessoa " + contatoEntity.getIdPessoa() + " criado!");
-        return contatoDTO;
+        return objectMapper.convertValue(contatoEntity, ContatoDTO.class);
     }
 
     public List<ContatoDTO> list (){
-        List<ContatoDTO> contatosDTO = new ArrayList<>();
-        List<Contato> contatosEntity = contatoRepository.list();
-        for (Contato contato : contatosEntity){
-            contatosDTO.add(objectMapper.convertValue(contato, ContatoDTO.class));
-        }
-        return contatosDTO;
+        return contatoRepository.list().stream()
+                .map(contato -> objectMapper.convertValue(contato, ContatoDTO.class))
+                .collect(Collectors.toList());
     }
 
     public ContatoDTO update(Integer id, ContatoCreateDTO contatoAtualizar) throws RegraDeNegocioException{
 
-        Contato contatoAtualizado = findByIdContato(id);
         pessoaService.findByIdPessoa(contatoAtualizar.getIdPessoa());
+        Contato contatoAtualizado = findByIdContato(id);
         contatoAtualizado.setIdPessoa(contatoAtualizar.getIdPessoa());
         contatoAtualizado.setTipoContato(contatoAtualizar.getTipoContato());
         contatoAtualizado.setNumero(contatoAtualizar.getNumero());
         contatoAtualizado.setDescricao(contatoAtualizar.getDescricao());
 
-        ContatoDTO contatoDTO = objectMapper.convertValue(contatoAtualizado, ContatoDTO.class);
         log.info("Alterando contato...");
         log.info("Contato " + contatoAtualizado.getIdContato() + " alterado!");
-        return contatoDTO;
+        return objectMapper.convertValue(contatoAtualizado, ContatoDTO.class);
     }
 
     public void delete(Integer id) throws RegraDeNegocioException {
-        contatoRepository.list().stream()
-                .filter(contato -> contato.getIdContato().equals(id))
-                .findFirst()
-                .orElseThrow(() -> new RegraDeNegocioException("Contato não encontrado"));
+        Contato contatoRecuperado = findByIdContato(id);
+        contatoRepository.list().remove(contatoRecuperado);
         log.warn("Deletando o contato...");
         log.info("Contato " + id + " deletado!");
     }
 
-    public List<ContatoDTO> listByIdPessoa(Integer idPessoa) {
-        List<ContatoDTO> contatosDTO = new ArrayList<>();
-        List<Contato> contatosEntity = contatoRepository.list().stream()
+    public List<ContatoDTO> listByIdPessoa(Integer idPessoa) throws RegraDeNegocioException {
+        pessoaService.findByIdPessoa(idPessoa);
+        return contatoRepository.list().stream()
                 .filter(contato -> contato.getIdPessoa().equals(idPessoa))
+                .map(contato -> objectMapper.convertValue(contato, ContatoDTO.class))
                 .collect(Collectors.toList());
-        for (Contato contato : contatosEntity){
-            contatosDTO.add(objectMapper.convertValue(contato, ContatoDTO.class));
-        }
-        return contatosDTO;
     }
 
     public Contato findByIdContato(Integer idContato) throws RegraDeNegocioException {

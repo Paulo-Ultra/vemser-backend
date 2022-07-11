@@ -44,13 +44,13 @@ public class ContatoController {
     }
 
     @GetMapping("/byIdPessoa") //localhost:8080/contato/byIdPessoa?idPessoa=1
-    public List<ContatoDTO> listByIdPessoaParams (@RequestParam("idPessoa") Integer idPessoa) {
-        return contatoService.listByIdPessoa(idPessoa);
+    public ResponseEntity<List<ContatoDTO>> listByIdPessoaParams (@RequestParam("idPessoa") Integer idPessoa) throws RegraDeNegocioException {
+        return new ResponseEntity<>(contatoService.listByIdPessoa(idPessoa), HttpStatus.OK);
     }
 
     @GetMapping("/{idPessoa}") //localhost:8080/contato/2
-    public List<ContatoDTO> listByIdPessoa(@PathVariable ("idPessoa") Integer idPessoa) {
-        return contatoService.listByIdPessoa(idPessoa);
+    public ResponseEntity<List<ContatoDTO>> listByIdPessoa(@PathVariable ("idPessoa") Integer idPessoa) throws RegraDeNegocioException {
+        return new ResponseEntity<>(contatoService.listByIdPessoa(idPessoa), HttpStatus.OK);
     }
 
     @PutMapping("/{idContato}") //localhost:8080/contato/{idContato}

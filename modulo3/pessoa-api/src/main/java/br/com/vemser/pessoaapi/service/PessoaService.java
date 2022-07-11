@@ -2,6 +2,7 @@ package br.com.vemser.pessoaapi.service;
 
 import br.com.vemser.pessoaapi.dto.PessoaCreateDTO;
 import br.com.vemser.pessoaapi.dto.PessoaDTO;
+import br.com.vemser.pessoaapi.entity.Endereco;
 import br.com.vemser.pessoaapi.entity.Pessoa;
 import br.com.vemser.pessoaapi.exception.RegraDeNegocioException;
 import br.com.vemser.pessoaapi.repository.PessoaRepository;
@@ -72,23 +73,23 @@ public class PessoaService {
     }
 
     public void delete(Integer id) throws RegraDeNegocioException {
-        list().stream()
-                .filter(pessoa -> pessoa.getIdPessoa().equals(id))
-                .findFirst()
-                .orElseThrow(() -> new RegraDeNegocioException("Pessoa não encontrada"));
+        Pessoa pessoaRecuperada = findByIdPessoa(id);
+        pessoaRepository.list().remove(pessoaRecuperada);
         log.warn("Deletando a pessoa...");
         log.info("Pessoa id " + id + " deletada!");
     }
 
-    public List<PessoaDTO> listByName(String nome) {
-        List<PessoaDTO> pessoasDTO = new ArrayList<>();
-        List<Pessoa> pessoas = pessoaRepository.list().stream()
-                .filter(pessoa -> pessoa.getNome().toUpperCase().contains(nome.toUpperCase()))
-                .collect(Collectors.toList());
-        for (Pessoa pessoa : pessoas) {
-            pessoasDTO.add(objectMapper.convertValue(pessoa, PessoaDTO.class));
+    public List<PessoaDTO> listByName(String nome) throws RegraDeNegocioException {
+        log.info("Listando pessoa pelo nome...");
+        if(findByName(nome).isEmpty()){
+            log.info("Nome não encontrado");
+            throw new RegraDeNegocioException("Nome não encontrado");
+        } else {
+            log.info("Nome encontrado...");
+            return findByName(nome).stream()
+                    .map(pessoa -> objectMapper.convertValue(pessoa, PessoaDTO.class))
+                    .collect(Collectors.toList());
         }
-        return pessoasDTO;
     }
 
     public Pessoa findByIdPessoa(Integer idPessoa) throws RegraDeNegocioException {
@@ -99,14 +100,9 @@ public class PessoaService {
     }
 
     //Teste para verificar se consigo recuperar pessoa pelo nome
-//    public List<Pessoa> findByName(String nome) throws RegraDeNegocioException {
-//        objectMapper.convertValue(nome, Pessoa.class);
-//        Pessoa pessoaNomeRecuperado = pessoaRepository.list().stream()
-//                .filter(pessoa -> pessoa.getNome().equals(nome))
-//                .findFirst()
-//                .orElseThrow(() -> new RegraDeNegocioException("Nome da Pessoa não encontrado"));
-//        PessoaDTO pessoaDTO;
-//        pessoaDTO = objectMapper.convertValue(pessoaNomeRecuperado, PessoaDTO.class);
-//        return pessoaDTO;
-//    }
+    public List<Pessoa> findByName(String nome) throws RegraDeNegocioException {
+        return pessoaRepository.list().stream()
+                .filter(pessoa -> pessoa.getNome().toUpperCase().contains(nome.toUpperCase()))
+                .collect(Collectors.toList());
+    }
 }

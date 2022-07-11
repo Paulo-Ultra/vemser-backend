@@ -58,8 +58,8 @@ public class PessoaController {
     }
 
     @GetMapping("/byname") // localhost:8080/pessoa/byname?nome=Paulo
-    public List<PessoaDTO> listByName(@RequestParam("nome") String nome) {
-        return pessoaService.listByName(nome);
+    public ResponseEntity<List<PessoaDTO>> listByName(@RequestParam("nome") String nome) throws RegraDeNegocioException {
+        return new ResponseEntity<>(pessoaService.listByName(nome), HttpStatus.OK);
     }
 
     @PutMapping("/{idPessoa}")
