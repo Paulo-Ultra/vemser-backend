@@ -25,6 +25,9 @@ public class PessoaService {
     @Autowired
     private ObjectMapper objectMapper;
 
+    @Autowired
+    private EmailService emailService;
+
 //    public PessoaService(){
 //        pessoaRepository = new PessoaRepository();
 //    }
@@ -68,6 +71,7 @@ public class PessoaService {
         pessoaRecuperada.setCpf(pessoaAtualizar.getCpf());
         pessoaRecuperada.setNome(pessoaAtualizar.getNome());
         pessoaRecuperada.setDataNascimento(pessoaAtualizar.getDataNascimento());
+        pessoaRecuperada.setEmail(pessoaAtualizar.getEmail());
         log.info("Pessoa " + pessoaRecuperada.getNome() + " alterada!");
         return objectMapper.convertValue(pessoaRecuperada, PessoaDTO.class);
     }

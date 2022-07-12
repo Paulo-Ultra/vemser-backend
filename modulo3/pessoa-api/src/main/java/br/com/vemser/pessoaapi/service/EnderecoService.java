@@ -8,10 +8,12 @@ import br.com.vemser.pessoaapi.entity.Pessoa;
 import br.com.vemser.pessoaapi.exception.RegraDeNegocioException;
 import br.com.vemser.pessoaapi.repository.EnderecoRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import freemarker.template.TemplateException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,6 +23,8 @@ import java.util.stream.Collectors;
 public class EnderecoService {
 
     @Autowired
+    private EmailService emailService;
+    @Autowired
     private EnderecoRepository enderecoRepository;
 
     @Autowired
@@ -29,15 +33,17 @@ public class EnderecoService {
     @Autowired
     private ObjectMapper objectMapper;
 
-    public EnderecoDTO create(Integer idPessoa, EnderecoCreateDTO endereco) throws RegraDeNegocioException {
+    public EnderecoDTO create(Integer idPessoa, EnderecoCreateDTO endereco) throws RegraDeNegocioException, TemplateException, IOException {
 
         log.info("Criando o endereço...");
-        pessoaService.findByIdPessoa(idPessoa);
+        Pessoa pessoa = pessoaService.findByIdPessoa(idPessoa);
         Endereco enderecoEntity = objectMapper.convertValue(endereco, Endereco.class);
         enderecoEntity = enderecoRepository.create(enderecoEntity);
         enderecoEntity.setIdPessoa(idPessoa);
         log.info("Endereço da pessoa " + idPessoa + " criado!");
-        return objectMapper.convertValue(enderecoEntity, EnderecoDTO.class);
+        EnderecoDTO enderecoDTO = objectMapper.convertValue(enderecoEntity, EnderecoDTO.class);
+        emailService.sendEmailCriarEndereco(pessoa, enderecoDTO);
+        return enderecoDTO;
     }
 
     public List<EnderecoDTO> list() {
@@ -46,8 +52,8 @@ public class EnderecoService {
                      .collect(Collectors.toList());
     }
 
-    public EnderecoDTO update(Integer id, EnderecoCreateDTO enderecoAtualizar) throws RegraDeNegocioException {
-        pessoaService.findByIdPessoa(enderecoAtualizar.getIdPessoa());
+    public EnderecoDTO update(Integer id, EnderecoCreateDTO enderecoAtualizar) throws RegraDeNegocioException, TemplateException, IOException {
+        Pessoa pessoa = pessoaService.findByIdPessoa(enderecoAtualizar.getIdPessoa());
 
         Endereco enderecoAtualizado = finByIdEndereco(id);
         enderecoAtualizado.setIdPessoa(enderecoAtualizar.getIdPessoa());
@@ -62,14 +68,19 @@ public class EnderecoService {
 
         log.info("Alterando endereço...");
         log.info("Endereço " + enderecoAtualizado.getIdEndereco() + " alterado!");
-        return objectMapper.convertValue(enderecoAtualizado, EnderecoDTO.class);
+        EnderecoDTO enderecoDTO = objectMapper.convertValue(enderecoAtualizado, EnderecoDTO.class);
+        emailService.sendEmailAlterarEndereco(pessoa, enderecoDTO);
+        return enderecoDTO;
     }
 
-    public void delete(Integer id) throws RegraDeNegocioException {
-       Endereco enderecoRecuperado = finByIdEndereco(id);
+    public void delete(Integer id) throws RegraDeNegocioException, TemplateException, IOException {
+        Endereco enderecoRecuperado = finByIdEndereco(id);
+        Pessoa pessoaRecuperada = pessoaService.findByIdPessoa(enderecoRecuperado.getIdPessoa());
        enderecoRepository.list().remove(enderecoRecuperado);
         log.warn("Deletando o endereço...");
         log.info("Endereço " + id + " deletado!");
+        EnderecoDTO enderecoDTO = objectMapper.convertValue(enderecoRecuperado, EnderecoDTO.class);
+        emailService.sendEmailExcluirEndereco(pessoaRecuperada, enderecoDTO);
     }
 
     public EnderecoDTO listByIdEndereco(Integer idEndereco) throws RegraDeNegocioException {
