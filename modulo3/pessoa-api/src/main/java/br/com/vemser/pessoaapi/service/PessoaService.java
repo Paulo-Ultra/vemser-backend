@@ -7,10 +7,12 @@ import br.com.vemser.pessoaapi.entity.Pessoa;
 import br.com.vemser.pessoaapi.exception.RegraDeNegocioException;
 import br.com.vemser.pessoaapi.repository.PessoaRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import freemarker.template.TemplateException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,7 +34,7 @@ public class PessoaService {
 //        pessoaRepository = new PessoaRepository();
 //    }
 
-    public PessoaDTO create(PessoaCreateDTO pessoa) throws RegraDeNegocioException {
+    public PessoaDTO create(PessoaCreateDTO pessoa) throws RegraDeNegocioException, TemplateException, IOException {
 //        boolean pessoaExiste = ObjectUtils.isEmpty(pessoa.getDataNascimento());
 //        boolean nomeEmBranco = StringUtils.isBlank(pessoa.getNome());
 ////        boolean cpfEmBranco = StringUtils.isBlank(pessoa.getCpf());
@@ -44,6 +46,7 @@ public class PessoaService {
 
         PessoaDTO pessoaDTO = objectMapper.convertValue(pessoaEntity, PessoaDTO.class);
         log.info("Pessoa " + pessoaDTO.getNome() + " criada!");
+        emailService.sendEmailCriarPessoa(pessoaDTO);
         return pessoaDTO;
 //        } else {
 //            throw new RegraDeNegocioException("Pessoa não foi criada");
@@ -62,7 +65,7 @@ public class PessoaService {
                 .collect(Collectors.toList());
     }
 
-    public PessoaDTO update(Integer id, PessoaCreateDTO pessoaAtualizar) throws RegraDeNegocioException {
+    public PessoaDTO update(Integer id, PessoaCreateDTO pessoaAtualizar) throws RegraDeNegocioException, TemplateException, IOException {
         //Somente um teste
 //        findByName(String.valueOf(pessoaAtualizar));
         log.info("Alterando a pessoa...");
@@ -73,12 +76,16 @@ public class PessoaService {
         pessoaRecuperada.setDataNascimento(pessoaAtualizar.getDataNascimento());
         pessoaRecuperada.setEmail(pessoaAtualizar.getEmail());
         log.info("Pessoa " + pessoaRecuperada.getNome() + " alterada!");
-        return objectMapper.convertValue(pessoaRecuperada, PessoaDTO.class);
+        PessoaDTO pessoaDTO = objectMapper.convertValue(pessoaRecuperada, PessoaDTO.class);
+        emailService.sendEmailAlterarPessoa(pessoaDTO);
+        return pessoaDTO;
     }
 
-    public void delete(Integer id) throws RegraDeNegocioException {
+    public void delete(Integer id) throws RegraDeNegocioException, TemplateException, IOException {
         Pessoa pessoaRecuperada = findByIdPessoa(id);
         pessoaRepository.list().remove(pessoaRecuperada);
+        PessoaDTO pessoaDTO = objectMapper.convertValue(pessoaRecuperada, PessoaDTO.class);
+        emailService.sendEmailDeletarPessoa(pessoaDTO);
         log.warn("Deletando a pessoa...");
         log.info("Pessoa id " + id + " deletada!");
     }

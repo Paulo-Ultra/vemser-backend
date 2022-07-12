@@ -19,7 +19,7 @@
                         </div>
 
                         <div style="font-size: 24px; color: #555100;">
-                            <br> Olá ${nome}, <br> Seus dados foram atualizados no nosso sistema <b>DBC Company !!!</b> <br>
+                            <br> Olá ${nome}, <br> Seus dados foram criados no nosso sistema <b>DBC Company !!!</b> <br>
                         </div>
                         <div>
                             <br>"Qualquer dúvida é só contatar o suporte pelo e-mail ${email}" <br> <br>
