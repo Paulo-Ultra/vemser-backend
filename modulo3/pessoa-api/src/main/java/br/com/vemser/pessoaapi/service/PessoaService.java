@@ -4,6 +4,7 @@ import br.com.vemser.pessoaapi.dto.PessoaCreateDTO;
 import br.com.vemser.pessoaapi.dto.PessoaDTO;
 import br.com.vemser.pessoaapi.entity.Endereco;
 import br.com.vemser.pessoaapi.entity.Pessoa;
+import br.com.vemser.pessoaapi.enums.TipoEmail;
 import br.com.vemser.pessoaapi.exception.RegraDeNegocioException;
 import br.com.vemser.pessoaapi.repository.PessoaRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -46,7 +47,8 @@ public class PessoaService {
 
         PessoaDTO pessoaDTO = objectMapper.convertValue(pessoaEntity, PessoaDTO.class);
         log.info("Pessoa " + pessoaDTO.getNome() + " criada!");
-        emailService.sendEmailCriarPessoa(pessoaDTO);
+        String emailTipo = TipoEmail.CREATE.getTipo();
+        emailService.sendEmailPessoa(pessoaDTO, emailTipo);
         return pessoaDTO;
 //        } else {
 //            throw new RegraDeNegocioException("Pessoa não foi criada");
@@ -77,7 +79,8 @@ public class PessoaService {
         pessoaRecuperada.setEmail(pessoaAtualizar.getEmail());
         log.info("Pessoa " + pessoaRecuperada.getNome() + " alterada!");
         PessoaDTO pessoaDTO = objectMapper.convertValue(pessoaRecuperada, PessoaDTO.class);
-        emailService.sendEmailAlterarPessoa(pessoaDTO);
+        String emailTipo = TipoEmail.PUT.getTipo();
+        emailService.sendEmailPessoa(pessoaDTO, emailTipo);
         return pessoaDTO;
     }
 
@@ -85,7 +88,8 @@ public class PessoaService {
         Pessoa pessoaRecuperada = findByIdPessoa(id);
         pessoaRepository.list().remove(pessoaRecuperada);
         PessoaDTO pessoaDTO = objectMapper.convertValue(pessoaRecuperada, PessoaDTO.class);
-        emailService.sendEmailDeletarPessoa(pessoaDTO);
+        String emailTipo = TipoEmail.DELETE.getTipo();
+        emailService.sendEmailPessoa(pessoaDTO, emailTipo);
         log.warn("Deletando a pessoa...");
         log.info("Pessoa id " + id + " deletada!");
     }

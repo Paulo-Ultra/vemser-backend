@@ -5,6 +5,7 @@ import br.com.vemser.pessoaapi.dto.EnderecoDTO;
 import br.com.vemser.pessoaapi.dto.PessoaDTO;
 import br.com.vemser.pessoaapi.entity.Endereco;
 import br.com.vemser.pessoaapi.entity.Pessoa;
+import br.com.vemser.pessoaapi.enums.TipoEmail;
 import br.com.vemser.pessoaapi.exception.RegraDeNegocioException;
 import br.com.vemser.pessoaapi.repository.EnderecoRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -42,7 +43,8 @@ public class EnderecoService {
         enderecoEntity.setIdPessoa(idPessoa);
         log.info("Endereço da pessoa " + idPessoa + " criado!");
         EnderecoDTO enderecoDTO = objectMapper.convertValue(enderecoEntity, EnderecoDTO.class);
-        emailService.sendEmailCriarEndereco(pessoa, enderecoDTO);
+        String emailTipo = TipoEmail.CREATE.getTipo();
+        emailService.sendEmailEndereco(pessoa, enderecoDTO, emailTipo);
         return enderecoDTO;
     }
 
@@ -69,7 +71,8 @@ public class EnderecoService {
         log.info("Alterando endereço...");
         log.info("Endereço " + enderecoAtualizado.getIdEndereco() + " alterado!");
         EnderecoDTO enderecoDTO = objectMapper.convertValue(enderecoAtualizado, EnderecoDTO.class);
-        emailService.sendEmailAlterarEndereco(pessoa, enderecoDTO);
+        String emailTipo = TipoEmail.PUT.getTipo();
+        emailService.sendEmailEndereco(pessoa, enderecoDTO, emailTipo);
         return enderecoDTO;
     }
 
@@ -80,7 +83,8 @@ public class EnderecoService {
         log.warn("Deletando o endereço...");
         log.info("Endereço " + id + " deletado!");
         EnderecoDTO enderecoDTO = objectMapper.convertValue(enderecoRecuperado, EnderecoDTO.class);
-        emailService.sendEmailExcluirEndereco(pessoaRecuperada, enderecoDTO);
+        String emailTipo = TipoEmail.DELETE.getTipo();
+        emailService.sendEmailEndereco(pessoaRecuperada, enderecoDTO, emailTipo);
     }
 
     public EnderecoDTO listByIdEndereco(Integer idEndereco) throws RegraDeNegocioException {
