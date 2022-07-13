@@ -73,7 +73,7 @@ public class EmailService {
             MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
 
             mimeMessageHelper.setFrom(from);
-            mimeMessageHelper.setTo(from);
+            mimeMessageHelper.setTo("prfultra@yahoo.com.br");
             mimeMessageHelper.setSubject("Assunto 3");
             mimeMessageHelper.setText(getContentFromTemplate(), true);
 
