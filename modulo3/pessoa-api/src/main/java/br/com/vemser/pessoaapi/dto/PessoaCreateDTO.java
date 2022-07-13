@@ -21,7 +21,7 @@ public class PessoaCreateDTO {
     @Size(min = 11, max = 11, message = "CPF deve conter {max} números")
     @Schema(description = "CPF")
     private String cpf;
-    @Schema(description = "E-mail")
+    @Schema(description = "E-mail", example="prfultra@yahoo.com.br")
     @NotBlank
     private String email;
 }
