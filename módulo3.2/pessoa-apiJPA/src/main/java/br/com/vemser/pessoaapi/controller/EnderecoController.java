@@ -33,9 +33,9 @@ public class EnderecoController {
                     @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
             }
     )
-    @PostMapping("/{idPessoa}")
-    public ResponseEntity<EnderecoDTO> create(@PathVariable("idPessoa") Integer idPessoa, @RequestBody @Valid EnderecoCreateDTO endereco) throws RegraDeNegocioException, TemplateException, IOException {
-        return new ResponseEntity<>(enderecoService.create(idPessoa, endereco), HttpStatus.CREATED);
+    @PostMapping
+    public ResponseEntity<EnderecoDTO> create(@RequestBody @Valid EnderecoCreateDTO endereco) throws RegraDeNegocioException, TemplateException, IOException {
+        return new ResponseEntity<>(enderecoService.create(endereco), HttpStatus.CREATED);
     }
 
     @Operation(summary = "Lista Endereços", description = "Lista todas os endereços do banco")
@@ -64,23 +64,23 @@ public class EnderecoController {
         return new ResponseEntity<>(enderecoService.listByIdEndereco(idEndereco), HttpStatus.OK);
     }
 
-    @Operation(summary = "Lista Endereços", description = "Mostra o endereço do banco pelo Id da pessoa")
-    @ApiResponses(
-            value = {
-                    @ApiResponse(responseCode = "200", description = "Retorna a lista de endereços"),
-                    @ApiResponse(responseCode = "400", description = "Requisição inválida"),
-                    @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
-            }
-    )
-    @GetMapping("/{idPessoa}/pessoa")
-    public ResponseEntity<List<EnderecoDTO>> listByIdPessoa (@PathVariable ("idPessoa") Integer idPessoa) throws RegraDeNegocioException {
-        return new ResponseEntity<>(enderecoService.listByIdPessoa(idPessoa), HttpStatus.OK);
-    }
+//    @Operation(summary = "Lista Endereços", description = "Mostra o endereço do banco pelo Id da pessoa")
+//    @ApiResponses(
+//            value = {
+//                    @ApiResponse(responseCode = "200", description = "Retorna a lista de endereços"),
+//                    @ApiResponse(responseCode = "400", description = "Requisição inválida"),
+//                    @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
+//            }
+//    )
+//    @GetMapping("/{idPessoa}/pessoa")
+//    public ResponseEntity<List<EnderecoDTO>> listByIdPessoa (@PathVariable ("idPessoa") Integer idPessoa) throws RegraDeNegocioException {
+//        return new ResponseEntity<>(enderecoService.listByIdPessoa(idPessoa), HttpStatus.OK);
+//    }
 
     @Operation(summary = "Altera Endereços", description = "Altera os endereços do banco")
     @ApiResponses(
             value = {
-                    @ApiResponse(responseCode = "200", description = "Retorna o endereço do ID selecionado"),
+                    @ApiResponse(responseCode = "202", description = "Retorna o endereço do ID selecionado"),
                     @ApiResponse(responseCode = "400", description = "Requisição inválida"),
                     @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
             }

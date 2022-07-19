@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "ENDERECO")
+@Entity(name = "ENDERECO_PESSOA")
 public class EnderecoEntity {
 
     @Id
@@ -18,6 +18,7 @@ public class EnderecoEntity {
     @Column(name = "id_endereco")
     private Integer idEndereco;
 
+    @Enumerated(EnumType.ORDINAL)
     @Column(name = "tipo")
     private TipoEndereco tipo;
 

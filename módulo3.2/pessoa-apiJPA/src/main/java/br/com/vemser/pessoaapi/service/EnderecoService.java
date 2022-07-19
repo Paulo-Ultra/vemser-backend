@@ -2,11 +2,8 @@ package br.com.vemser.pessoaapi.service;
 
 import br.com.vemser.pessoaapi.dto.EnderecoCreateDTO;
 import br.com.vemser.pessoaapi.dto.EnderecoDTO;
-import br.com.vemser.pessoaapi.dto.PessoaCreateDTO;
-import br.com.vemser.pessoaapi.dto.PessoaDTO;
 import br.com.vemser.pessoaapi.entity.EnderecoEntity;
 import br.com.vemser.pessoaapi.entity.PessoaEntity;
-import br.com.vemser.pessoaapi.enums.TipoEmail;
 import br.com.vemser.pessoaapi.exception.RegraDeNegocioException;
 import br.com.vemser.pessoaapi.repository.EnderecoRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -32,17 +29,17 @@ public class EnderecoService {
     @Autowired
     private ObjectMapper objectMapper;
 
-    public EnderecoDTO create(Integer idPessoa, EnderecoCreateDTO endereco) throws RegraDeNegocioException, TemplateException, IOException {
+    public EnderecoDTO create(EnderecoCreateDTO endereco) throws RegraDeNegocioException, TemplateException, IOException {
 
         log.info("Criando o endereço...");
 
         EnderecoEntity enderecoEntity = convertEnderecoEntity(endereco);
         enderecoEntity = enderecoRepository.save(enderecoEntity);
         log.info("Endereço da pessoa " + enderecoEntity + " criado!");
-        EnderecoDTO enderecoDTO = objectMapper.convertValue(enderecoEntity, EnderecoDTO.class);
+//        EnderecoDTO enderecoDTO = objectMapper.convertValue(enderecoEntity, EnderecoDTO.class);
 //        String emailTipo = TipoEmail.CREATE.getTipo();
 //        emailService.sendEmailEndereco(pessoa, enderecoDTO, emailTipo);
-        return enderecoDTO;
+        return convertEnderecoDTO(enderecoEntity);
     }
 
     public List<EnderecoDTO> list() {
@@ -52,7 +49,7 @@ public class EnderecoService {
     }
 
     public EnderecoDTO update(Integer id, EnderecoCreateDTO enderecoAtualizar) throws RegraDeNegocioException, TemplateException, IOException {
-        PessoaEntity pessoa = pessoaService.findByIdPessoa(enderecoAtualizar.getIdPessoa());
+//        PessoaEntity pessoa = pessoaService.findByIdPessoa(id);
 
         EnderecoEntity enderecoAtualizado = finByIdEndereco(id);
         enderecoAtualizado.setTipo(enderecoAtualizar.getTipo());
@@ -87,21 +84,6 @@ public class EnderecoService {
     public EnderecoDTO listByIdEndereco(Integer idEndereco) throws RegraDeNegocioException {
         return objectMapper.convertValue(finByIdEndereco(idEndereco), EnderecoDTO.class);
         }
-
-    public List<EnderecoDTO> listByIdPessoa(Integer idPessoa) throws RegraDeNegocioException {
-        pessoaService.findByIdPessoa(idPessoa);
-        return enderecoRepository.findById(idPessoa).stream()
-                .filter(endereco -> {
-                    try {
-                        pessoaService.findByIdPessoa(idPessoa);
-                    } catch (RegraDeNegocioException e) {
-                        throw new RuntimeException(e);
-                    }
-                    return false;
-                })
-                .map(this::convertEnderecoDTO)
-                .collect(Collectors.toList());
-    }
 
     public EnderecoEntity finByIdEndereco(Integer idEndereco) throws RegraDeNegocioException {
         EnderecoEntity enderecoById = enderecoRepository.findById(idEndereco)
