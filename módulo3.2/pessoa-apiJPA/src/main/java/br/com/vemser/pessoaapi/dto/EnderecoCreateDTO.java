@@ -2,15 +2,21 @@ package br.com.vemser.pessoaapi.dto;
 
 import br.com.vemser.pessoaapi.enums.TipoEndereco;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Data;
+import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
+import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class EnderecoCreateDTO {
+    @NotNull
+    private Integer idPessoa;
     @NotNull
     @Schema(description = "Tipo do Endereço")
     private TipoEndereco tipo;

@@ -1,8 +1,9 @@
 package br.com.vemser.pessoaapi.dto;
 
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
 public class EnderecoDTO extends EnderecoCreateDTO {
     private Integer idEndereco;
 }

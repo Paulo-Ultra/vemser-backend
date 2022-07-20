@@ -1,9 +1,9 @@
 package br.com.vemser.pessoaapi.dto;
 
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
 public class ContatoDTO extends ContatoCreateDTO {
     private Integer idContato;
-    private Integer idPessoa;
 }

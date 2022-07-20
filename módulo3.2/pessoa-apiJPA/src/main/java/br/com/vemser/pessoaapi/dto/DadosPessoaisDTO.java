@@ -1,11 +1,10 @@
 package br.com.vemser.pessoaapi.dto;
 
 import br.com.vemser.pessoaapi.enums.Sexo;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class DadosPessoaisDTO {

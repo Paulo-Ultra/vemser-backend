@@ -2,14 +2,13 @@ package br.com.vemser.pessoaapi.dto;
 
 import br.com.vemser.pessoaapi.enums.Sexo;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.validation.constraints.*;
 import java.time.LocalDate;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class PessoaDadosPessoaisCreateDTO{

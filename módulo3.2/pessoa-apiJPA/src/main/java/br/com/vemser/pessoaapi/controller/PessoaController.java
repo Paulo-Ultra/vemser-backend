@@ -3,14 +3,15 @@ package br.com.vemser.pessoaapi.controller;
 import br.com.vemser.pessoaapi.config.PropertieReader;
 import br.com.vemser.pessoaapi.dto.PessoaCreateDTO;
 import br.com.vemser.pessoaapi.dto.PessoaDTO;
+import br.com.vemser.pessoaapi.entity.PessoaEntity;
 import br.com.vemser.pessoaapi.exception.RegraDeNegocioException;
+import br.com.vemser.pessoaapi.repository.PessoaRepository;
 import br.com.vemser.pessoaapi.service.EmailService;
 import br.com.vemser.pessoaapi.service.PessoaService;
 import freemarker.template.TemplateException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -104,6 +105,29 @@ public class PessoaController {
         return new ResponseEntity<>(pessoaService.listByName(nome), HttpStatus.OK);
     }
 
+    @GetMapping("/{cpf}") // localhost:8080/pessoa/byname?nome=Paulo
+    public ResponseEntity<List<PessoaDTO>> listByCpf(@PathVariable("cpf") String cpf) throws RegraDeNegocioException {
+        return new ResponseEntity<>(pessoaService.findByCpf(cpf), HttpStatus.OK);
+    }
+
+    @GetMapping("/byNomeIgnore/{nome}")
+    public ResponseEntity<List<PessoaDTO>> listByNomeIgnoreCase(@PathVariable("nome") String nome) throws RegraDeNegocioException {
+        return new ResponseEntity<>(pessoaService.findByNomeIgnoreCase(nome), HttpStatus.OK);
+    }
+
+//    @Operation(summary = "listar pessoas", description = "Lista as pessoas do banco pelo nome")
+//    @ApiResponses(
+//            value = {
+//                    @ApiResponse(responseCode = "200", description = "Retorna a pessoa pelo nome"),
+//                    @ApiResponse(responseCode = "400", description = "Requisição inválida"),
+//                    @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
+//            }
+//    )
+//    @GetMapping("/{idPessoa}")
+//    public ResponseEntity<PessoaDTO> findByIdPessoa(@PathVariable("idPessoa") Integer id) throws RegraDeNegocioException {
+//        return new ResponseEntity<>(pessoaService.lis(id), HttpStatus.OK);
+//    }
+
     @Operation(summary = "Altera pessoas", description = "Altera as pessoas do banco")
     @ApiResponses(
             value = {
@@ -130,4 +154,18 @@ public class PessoaController {
         pessoaService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @GetMapping("/listar-com-enderecos")
+    public ResponseEntity<List<PessoaDTO>> listPessoaEndereco(@RequestParam(required = false) Integer idPessoa) throws RegraDeNegocioException {
+        return new ResponseEntity<>(pessoaService.listEnderecos(idPessoa), HttpStatus.OK);
+    }
+    @GetMapping("/listar-com-contatos")
+    public ResponseEntity<List<PessoaDTO>> listPessoaContato(@RequestParam(required = false) Integer idPessoa) throws RegraDeNegocioException {
+        return new ResponseEntity<>(pessoaService.listContatos(idPessoa), HttpStatus.OK);
+    }
+    @GetMapping("/listar-com-pets")
+    public ResponseEntity<List<PessoaDTO>> listPessoaPet(@RequestParam(required = false) Integer idPessoa) throws RegraDeNegocioException {
+        return new ResponseEntity<>(pessoaService.listPet(idPessoa), HttpStatus.OK);
+    }
+
 }

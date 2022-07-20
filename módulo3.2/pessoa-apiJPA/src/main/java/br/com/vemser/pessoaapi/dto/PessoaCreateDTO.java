@@ -1,12 +1,15 @@
 package br.com.vemser.pessoaapi.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Data;
+import lombok.*;
 
 import javax.validation.constraints.*;
 import java.time.LocalDate;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class PessoaCreateDTO {
     @Schema(description = "Nome da PessoaEntity")
     @NotBlank(message = "Insira um nome!" )

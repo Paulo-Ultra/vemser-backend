@@ -46,16 +46,15 @@ public class ContatoService {
 
     public ContatoDTO update(Integer id, ContatoCreateDTO contatoAtualizar) throws RegraDeNegocioException{
 
-        pessoaService.findByIdPessoa(id);
         ContatoEntity contatoAtualizado = findByIdContato(id);
-        contatoAtualizado.setIdPessoa(id);
+        contatoAtualizado.setIdPessoa(contatoAtualizar.getIdPessoa());
         contatoAtualizado.setTipoContato(contatoAtualizar.getTipoContato());
         contatoAtualizado.setNumero(contatoAtualizar.getNumero());
         contatoAtualizado.setDescricao(contatoAtualizar.getDescricao());
 
         log.info("Alterando contato...");
         log.info("ContatoEntity " + contatoAtualizado.getIdContato() + " alterado!");
-        return convertContatoDTO(contatoAtualizado);
+        return convertContatoDTO(contatoRepository.save(contatoAtualizado));
     }
 
     public void delete(Integer id) throws RegraDeNegocioException {
@@ -75,7 +74,7 @@ public class ContatoService {
 
     public ContatoEntity findByIdContato(Integer idContato) throws RegraDeNegocioException {
         ContatoEntity contatoById = contatoRepository.findAll().stream()
-                .filter(endereco -> endereco.getIdContato().equals(idContato))
+                .filter(contato -> contato.getIdContato().equals(idContato))
                 .findFirst()
                 .orElseThrow(() -> new RegraDeNegocioException("ContatoEntity não encontrado"));
         return contatoById;
