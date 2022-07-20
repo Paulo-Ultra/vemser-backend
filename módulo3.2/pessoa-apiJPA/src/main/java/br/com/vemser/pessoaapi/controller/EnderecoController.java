@@ -2,7 +2,9 @@ package br.com.vemser.pessoaapi.controller;
 
 import br.com.vemser.pessoaapi.dto.EnderecoCreateDTO;
 import br.com.vemser.pessoaapi.dto.EnderecoDTO;
+import br.com.vemser.pessoaapi.entity.EnderecoEntity;
 import br.com.vemser.pessoaapi.exception.RegraDeNegocioException;
+import br.com.vemser.pessoaapi.repository.EnderecoRepository;
 import br.com.vemser.pessoaapi.service.EnderecoService;
 import freemarker.template.TemplateException;
 import io.swagger.v3.oas.annotations.Operation;
@@ -21,6 +23,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/endereco")
 public class EnderecoController {
+
+    @Autowired
+    private EnderecoRepository enderecoRepository;
 
     @Autowired
     private EnderecoService enderecoService;
@@ -104,4 +109,8 @@ public class EnderecoController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    @GetMapping("/IdPessoa")
+    public List<EnderecoEntity> getEnderecoPorIdPessoa(Integer idPessoa) {
+       return enderecoRepository.listEnderecosPorIdPessoa(idPessoa);
+    }
 }

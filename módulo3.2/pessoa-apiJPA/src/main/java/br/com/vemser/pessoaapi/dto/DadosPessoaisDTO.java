@@ -3,10 +3,7 @@ package br.com.vemser.pessoaapi.dto;
 import br.com.vemser.pessoaapi.enums.Sexo;
 import lombok.*;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
 public class DadosPessoaisDTO {
     private String cnh;
     private String cpf;

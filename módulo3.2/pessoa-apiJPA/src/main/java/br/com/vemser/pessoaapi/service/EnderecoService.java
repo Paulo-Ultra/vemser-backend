@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -35,8 +36,9 @@ public class EnderecoService {
 
         log.info("Criando o endereço...");
         PessoaEntity pessoa = pessoaService.findByIdPessoa(idPessoa);
-        endereco.setIdPessoa(pessoa.getIdPessoa());
         EnderecoEntity enderecoEntity = convertEnderecoEntity(endereco);
+        enderecoEntity.setPessoas(Set.of(pessoa));
+
         enderecoEntity = enderecoRepository.save(enderecoEntity);
         log.info("Endereço da pessoa " + enderecoEntity + " criado!");
         EnderecoDTO enderecoDTO = convertEnderecoDTO(enderecoEntity);
@@ -55,14 +57,15 @@ public class EnderecoService {
         PessoaEntity pessoa = pessoaService.findByIdPessoa(enderecoAtualizar.getIdPessoa());
 
         EnderecoEntity enderecoAtualizado = finByIdEndereco(id);
-        enderecoAtualizado.setTipo(enderecoAtualizar.getTipo());
-        enderecoAtualizado.setLogradouro(enderecoAtualizar.getLogradouro());
-        enderecoAtualizado.setNumero(enderecoAtualizar.getNumero());
-        enderecoAtualizado.setComplemento(enderecoAtualizar.getComplemento());
-        enderecoAtualizado.setCep(enderecoAtualizar.getCep());
-        enderecoAtualizado.setCidade(enderecoAtualizar.getCidade());
-        enderecoAtualizado.setEstado(enderecoAtualizar.getEstado());
-        enderecoAtualizado.setPais(enderecoAtualizar.getPais());
+        enderecoAtualizado.setPessoas(Set.of(pessoa));
+//        enderecoAtualizado.setTipo(enderecoAtualizar.getTipo());
+//        enderecoAtualizado.setLogradouro(enderecoAtualizar.getLogradouro());
+//        enderecoAtualizado.setNumero(enderecoAtualizar.getNumero());
+//        enderecoAtualizado.setComplemento(enderecoAtualizar.getComplemento());
+//        enderecoAtualizado.setCep(enderecoAtualizar.getCep());
+//        enderecoAtualizado.setCidade(enderecoAtualizar.getCidade());
+//        enderecoAtualizado.setEstado(enderecoAtualizar.getEstado());
+//        enderecoAtualizado.setPais(enderecoAtualizar.getPais());
 
         log.info("Alterando endereço...");
         log.info("Endereço " + enderecoAtualizado.getIdEndereco() + " alterado!");
@@ -77,10 +80,10 @@ public class EnderecoService {
         enderecoRepository.delete(enderecoRecuperado);
         log.warn("Deletando o endereço...");
         log.info("Endereço " + id + " deletado!");
-        PessoaEntity pessoaRecuperada = pessoaService.findByIdPessoa(enderecoRecuperado.getIdPessoa());
+        Set<PessoaEntity> pessoaRecuperada = enderecoRecuperado.getPessoas();
         EnderecoDTO enderecoDTO = convertEnderecoDTO(enderecoRecuperado);
         String emailTipo = TipoEmail.DELETE.getTipo();
-        emailService.sendEmailEndereco(pessoaRecuperada, enderecoDTO, emailTipo);
+        emailService.sendEmailEndereco((PessoaEntity) pessoaRecuperada, enderecoDTO, emailTipo);
     }
 
     public EnderecoDTO listByIdEndereco(Integer idEndereco) throws RegraDeNegocioException {
@@ -95,7 +98,7 @@ public class EnderecoService {
 
         public List<EnderecoDTO> listByIdPessoa(@Valid EnderecoCreateDTO enderecoCreateDTO, Integer idPessoa) {
         return enderecoRepository.findAll().stream()
-                .filter(endereco -> endereco.getIdPessoa().equals(idPessoa))
+                .filter(endereco -> endereco.getPessoas().equals(idPessoa))
                 .map(this::convertEnderecoDTO)
                 .toList();
     }

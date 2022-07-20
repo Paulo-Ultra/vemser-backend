@@ -20,9 +20,6 @@ public class EnderecoEntity {
     @Column(name = "id_endereco")
     private Integer idEndereco;
 
-    @Column(name = "id_pessoa")
-    private Integer idPessoa;
-
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "tipo")
     private TipoEndereco tipo;
@@ -49,7 +46,7 @@ public class EnderecoEntity {
     private String pais;
 
     @JsonIgnore
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "Pessoa_X_Pessoa_Endereco",
                 joinColumns = @JoinColumn(name="id_endereco"),
                 inverseJoinColumns = @JoinColumn(name = "id_pessoa"))

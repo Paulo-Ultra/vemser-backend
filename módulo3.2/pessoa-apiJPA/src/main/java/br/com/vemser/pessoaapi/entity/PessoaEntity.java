@@ -18,24 +18,24 @@ public class PessoaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PESSOA_SEQ")
     @SequenceGenerator(name = "PESSOA_SEQ", sequenceName = "seq_pessoa2", allocationSize = 1)
-    @Column(name = "id_pessoa")
+    @Column(name = "ID_PESSOA")
     private Integer idPessoa;
 
-    @Column(name = "nome")
+    @Column(name = "NOME")
     private String nome;
 
-    @Column(name = "data_nascimento")
+    @Column(name = "DATA_NASCIMENTO")
     private LocalDate dataNascimento;
 
-    @Column(name = "cpf")
+    @Column(name = "CPF")
     private String cpf;
 
-    @Column(name = "email")
+    @Column(name = "EMAIL")
     private String email;
 
     @JsonIgnore
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_pet", referencedColumnName = "id_pet")
+    @JoinColumn(name = "ID_PET", referencedColumnName = "ID_PET")
     private PetEntity pet;
 
     @JsonIgnore
@@ -45,7 +45,7 @@ public class PessoaEntity {
     private Set<ContatoEntity> contatos;
 
     @JsonIgnore
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "Pessoa_X_Pessoa_Endereco",
                 joinColumns = @JoinColumn(name="id_pessoa"),
                 inverseJoinColumns = @JoinColumn(name = "id_endereco"))

@@ -6,10 +6,7 @@ import lombok.*;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
 public class PessoaCreateDTO {
     @Schema(description = "Nome da PessoaEntity")
     @NotBlank(message = "Insira um nome!" )

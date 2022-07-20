@@ -2,7 +2,10 @@ package br.com.vemser.pessoaapi.controller;
 
 import br.com.vemser.pessoaapi.dto.ContatoCreateDTO;
 import br.com.vemser.pessoaapi.dto.ContatoDTO;
+import br.com.vemser.pessoaapi.entity.ContatoEntity;
+import br.com.vemser.pessoaapi.enums.TipoContato;
 import br.com.vemser.pessoaapi.exception.RegraDeNegocioException;
+import br.com.vemser.pessoaapi.repository.ContatoRepository;
 import br.com.vemser.pessoaapi.service.ContatoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -29,6 +32,8 @@ public class ContatoController {
 //        contatoService = new ContatoService();
 //    }
 
+    @Autowired
+    private ContatoRepository contatoRepository;
     @Autowired
     private ContatoService contatoService;
 
@@ -100,5 +105,11 @@ public class ContatoController {
     public ResponseEntity<Void> delete(@PathVariable("idContato") Integer id) throws RegraDeNegocioException {
         contatoService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/porTipo")
+    public List<ContatoEntity> getContatosPorTipo(TipoContato tipoContato) {
+        List<ContatoEntity> contatosEntities = contatoRepository.listContatoPorTipoContato(tipoContato);
+        return contatosEntities;
     }
 }

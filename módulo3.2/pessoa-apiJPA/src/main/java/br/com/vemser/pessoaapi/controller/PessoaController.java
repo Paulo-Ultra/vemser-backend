@@ -74,9 +74,6 @@ public class PessoaController {
     )
     @PostMapping
     public ResponseEntity<PessoaDTO> create(@RequestBody @Valid PessoaCreateDTO pessoa) throws RegraDeNegocioException, TemplateException, IOException {
-//        return ResponseEntity.ok(pessoaService.create(pessoa));
-        //Um ou outro
-
         return new ResponseEntity<>(pessoaService.create(pessoa), HttpStatus.CREATED);
     }
     @Operation(summary = "Listar pessoas", description = "Lista todas as pessoas do banco")
