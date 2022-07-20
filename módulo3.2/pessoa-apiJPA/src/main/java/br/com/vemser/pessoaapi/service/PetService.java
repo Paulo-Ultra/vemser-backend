@@ -48,7 +48,7 @@ public class PetService {
         PetEntity petEntityAtualizado = findByIdPet(id);
         petEntityAtualizado.setIdPessoa(petAtualizar.getIdPessoa());
         petEntityAtualizado.setNome(petAtualizar.getNome());
-        petEntityAtualizado.setNome(petAtualizar.getTipo().toString());
+        petEntityAtualizado.setTipo(petAtualizar.getTipo());
         return convertPetDTO(petRepository.save(petEntityAtualizado));
     }
 
