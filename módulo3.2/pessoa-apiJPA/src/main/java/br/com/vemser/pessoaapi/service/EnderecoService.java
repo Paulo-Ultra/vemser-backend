@@ -58,9 +58,9 @@ public class EnderecoService {
         enderecoAtualizado.setPessoas(Set.of(pessoa));
         log.info("Alterando endereço...");
         log.info("Endereço " + enderecoAtualizado.getIdEndereco() + " alterado!");
-        String emailTipo = TipoEmail.PUT.getTipo();
-        EnderecoDTO enderecoDTO = convertEnderecoDTO(enderecoAtualizado);
-        emailService.sendEmailEndereco(pessoa, enderecoDTO, emailTipo);
+//        String emailTipo = TipoEmail.PUT.getTipo();
+//        EnderecoPessoaDTO enderecoPessoaDTO = convertEnderecoPessoaDTO(enderecoAtualizado);
+//        emailService.sendEmailEndereco(pessoa, enderecoPessoaDTO, emailTipo);
         return convertEnderecoDTO(enderecoRepository.save(enderecoAtualizado));
     }
 

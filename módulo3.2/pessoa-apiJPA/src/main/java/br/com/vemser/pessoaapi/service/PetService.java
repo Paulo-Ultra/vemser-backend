@@ -42,14 +42,20 @@ public class PetService {
     }
 
     public PetDTO update(PetCreateDTO petAtualizar, Integer id) throws RegraDeNegocioException, TemplateException, IOException {
-        PessoaEntity pessoa = pessoaService.findByIdPessoa(petAtualizar.getIdPessoa());
         log.info("Criando o pet...");
 
         PetEntity petEntityAtualizado = findByIdPet(id);
+        PessoaEntity pessoa = petEntityAtualizado.getPessoa();
+        pessoa.setPet(null);
+        PessoaEntity pessoaEntity = pessoaService.findByIdPessoa(petAtualizar.getIdPessoa());
         petEntityAtualizado.setNome(petAtualizar.getNome());
         petEntityAtualizado.setTipo(petAtualizar.getTipo());
         petEntityAtualizado.setPessoa(pessoa);
         pessoa.setPet(petEntityAtualizado);
+
+        if(! pessoa.getIdPessoa().equals(pessoaEntity.getIdPessoa())){
+            pessoaService.salvar(pessoaEntity);
+        }
         return convertPetDTO(petRepository.save(petEntityAtualizado));
     }
 

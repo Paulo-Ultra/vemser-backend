@@ -231,4 +231,8 @@ public class PessoaService {
     public List<RelatorioPersonalizadoDTO> relatorioPersonalizadoDTO (Integer idPessoa){
         return pessoaRepository.listRelatorioDTO(idPessoa);
     }
+
+    public PessoaEntity salvar(PessoaEntity pessoaEntity) {
+        return this.pessoaRepository.save(pessoaEntity);
+    }
 }
