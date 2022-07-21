@@ -4,6 +4,7 @@ import br.com.vemser.pessoaapi.dto.*;
 import br.com.vemser.pessoaapi.entity.ContatoEntity;
 import br.com.vemser.pessoaapi.entity.EnderecoEntity;
 import br.com.vemser.pessoaapi.entity.PessoaEntity;
+import br.com.vemser.pessoaapi.enums.TipoContato;
 import br.com.vemser.pessoaapi.exception.RegraDeNegocioException;
 import br.com.vemser.pessoaapi.repository.ContatoRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -78,6 +79,11 @@ public class ContatoService {
                 .findFirst()
                 .orElseThrow(() -> new RegraDeNegocioException("ContatoEntity não encontrado"));
         return contatoById;
+    }
+
+    public List<ContatoEntity> contatosPorTipoQueryParam(TipoContato tipoContato) {
+        List<ContatoEntity> contatosEntities = contatoRepository.listContatoPorTipoContato(tipoContato);
+        return contatosEntities;
     }
 
     public ContatoEntity convertContatoEntity(ContatoCreateDTO contatoCreateDTO) {

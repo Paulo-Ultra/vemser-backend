@@ -107,9 +107,17 @@ public class ContatoController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    @Operation(summary = "Lista Contatos por tipo", description = "Lista os contatos do banco pelo tipo de contato da pessoa")
+    @ApiResponses(
+            value = {
+                    @ApiResponse(responseCode = "200", description = "Retorna o contato do ID da pessoa selecionada"),
+                    @ApiResponse(responseCode = "400", description = "Requisição inválida"),
+                    @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
+            }
+    )
     @GetMapping("/porTipo")
-    public List<ContatoEntity> getContatosPorTipo(TipoContato tipoContato) {
-        List<ContatoEntity> contatosEntities = contatoRepository.listContatoPorTipoContato(tipoContato);
-        return contatosEntities;
+    public ResponseEntity<List<ContatoEntity>> getContatosPorTipoQueyParam(TipoContato tipoContato) {
+        List<ContatoEntity> contatosEntities = contatoService.contatosPorTipoQueryParam(tipoContato);
+        return new ResponseEntity<>(contatosEntities, HttpStatus.OK);
     }
 }

@@ -109,8 +109,16 @@ public class EnderecoController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    @Operation(summary = "Lista Endereços pelo identificador da Pessoa", description = "Mostra o endereço do banco pelo Id da pessoa")
+    @ApiResponses(
+            value = {
+                    @ApiResponse(responseCode = "200", description = "Retorna a lista de endereços"),
+                    @ApiResponse(responseCode = "400", description = "Requisição inválida"),
+                    @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
+            }
+    )
     @GetMapping("/IdPessoa")
-    public List<EnderecoEntity> getEnderecoPorIdPessoa(Integer idPessoa) {
-       return enderecoRepository.listEnderecosPorIdPessoa(idPessoa);
+    public ResponseEntity<List<EnderecoEntity>> getEnderecoPorIdPessoaQueryParam(Integer idPessoa) {
+       return new ResponseEntity<>(enderecoService.enderecoPorIdPessoaQueryParam(idPessoa), HttpStatus.OK);
     }
 }

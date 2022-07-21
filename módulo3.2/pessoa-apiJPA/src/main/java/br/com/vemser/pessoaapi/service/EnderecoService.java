@@ -13,7 +13,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.validation.Valid;
 import java.io.IOException;
 import java.util.List;
 import java.util.Set;
@@ -38,9 +37,9 @@ public class EnderecoService {
         PessoaEntity pessoa = pessoaService.findByIdPessoa(idPessoa);
         EnderecoEntity enderecoEntity = convertEnderecoEntity(endereco);
         enderecoEntity.setPessoas(Set.of(pessoa));
-        enderecoEntity = enderecoRepository.save(enderecoEntity);
+        EnderecoDTO enderecoDTO = convertEnderecoDTO(enderecoRepository.save(enderecoEntity));
+        log.warn("Endereço com criado!");
         log.info("Endereço da pessoa " + enderecoEntity + " criado!");
-        EnderecoDTO enderecoDTO = convertEnderecoDTO(enderecoEntity);
         String emailTipo = TipoEmail.CREATE.getTipo();
         emailService.sendEmailEndereco(pessoa, enderecoDTO, emailTipo);
         return enderecoDTO;
@@ -54,7 +53,7 @@ public class EnderecoService {
 
     public EnderecoDTO update(Integer id, EnderecoCreateDTO enderecoAtualizar) throws RegraDeNegocioException, TemplateException, IOException {
         PessoaEntity pessoa = pessoaService.findByIdPessoa(enderecoAtualizar.getIdPessoa());
-        EnderecoEntity enderecoAtualizado = finByIdEndereco(id);
+        EnderecoEntity enderecoAtualizado = findByIdEndereco(id);
         enderecoAtualizado.setPessoas(Set.of(pessoa));
         log.info("Alterando endereço...");
         log.info("Endereço " + enderecoAtualizado.getIdEndereco() + " alterado!");
@@ -65,7 +64,7 @@ public class EnderecoService {
     }
 
     public void delete(Integer id) throws RegraDeNegocioException, TemplateException, IOException {
-        EnderecoEntity enderecoRecuperado = finByIdEndereco(id);
+        EnderecoEntity enderecoRecuperado = findByIdEndereco(id);
         enderecoRepository.delete(enderecoRecuperado);
         log.warn("Deletando o endereço...");
         log.info("Endereço " + id + " deletado!");
@@ -76,20 +75,24 @@ public class EnderecoService {
     }
 
     public EnderecoDTO listByIdEndereco(Integer idEndereco) throws RegraDeNegocioException {
-        return objectMapper.convertValue(finByIdEndereco(idEndereco), EnderecoDTO.class);
+        return objectMapper.convertValue(findByIdEndereco(idEndereco), EnderecoDTO.class);
         }
 
-    public EnderecoEntity finByIdEndereco(Integer idEndereco) throws RegraDeNegocioException {
+    public EnderecoEntity findByIdEndereco(Integer idEndereco) throws RegraDeNegocioException {
         EnderecoEntity enderecoById = enderecoRepository.findById(idEndereco)
                 .orElseThrow(() -> new RegraDeNegocioException("Endereço não encontrado"));
         return enderecoById;
     }
 
-        public List<EnderecoDTO> listByIdPessoa(@Valid EnderecoCreateDTO enderecoCreateDTO, Integer idPessoa) {
+        public List<EnderecoDTO> listByIdPessoa(EnderecoCreateDTO enderecoCreateDTO, Integer idPessoa) {
         return enderecoRepository.findAll().stream()
                 .filter(endereco -> endereco.getPessoas().equals(idPessoa))
                 .map(this::convertEnderecoDTO)
                 .toList();
+    }
+
+    public List<EnderecoEntity> enderecoPorIdPessoaQueryParam(Integer idPessoa) {
+        return enderecoRepository.listEnderecosPorIdPessoa(idPessoa);
     }
 
     public EnderecoEntity convertEnderecoEntity(EnderecoCreateDTO enderecoCreateDTO) {
