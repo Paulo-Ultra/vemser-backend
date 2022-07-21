@@ -2,7 +2,9 @@ package br.com.vemser.pessoaapi.service;
 
 import br.com.vemser.pessoaapi.dto.*;
 import br.com.vemser.pessoaapi.entity.ContatoEntity;
+import br.com.vemser.pessoaapi.entity.EnderecoEntity;
 import br.com.vemser.pessoaapi.entity.PessoaEntity;
+import br.com.vemser.pessoaapi.entity.PetEntity;
 import br.com.vemser.pessoaapi.enums.TipoEmail;
 import br.com.vemser.pessoaapi.exception.RegraDeNegocioException;
 import br.com.vemser.pessoaapi.repository.PessoaRepository;
@@ -173,5 +175,60 @@ public class PessoaService {
                         return pessoaDTO;
                     }).toList();
         }
+    }
+
+//    public List<PessoaDTO> listAllMesmo(Integer idPessoa) throws RegraDeNegocioException {
+//        if(idPessoa != null) {
+//            return pessoaRepository.findById(idPessoa).stream()
+//                    .map(pessoaEntity -> {
+//                        PessoaDTO pessoaDTO = convertPessoaDTO(pessoaEntity);
+//                        pessoaDTO.setPetDTO(objectMapper.convertValue(pessoaEntity, PetDTO.class));
+//                        pessoaDTO.setEnderecoDTOS(pessoaDTO.getEnderecoDTOS());
+//                        pessoaDTO.setContatoDTOS(pessoaDTO.getContatoDTOS());
+//                        return pessoaDTO;
+//                    }).toList();
+//        } else {
+//            return pessoaRepository.findAll().stream()
+//                    .map(pessoaEntity -> {
+//                        PessoaDTO pessoaDTO = convertPessoaDTO(pessoaEntity);
+//                        pessoaDTO.setPetDTO(objectMapper.convertValue(pessoaEntity, PetDTO.class));
+//                        pessoaDTO.setEnderecoDTOS(pessoaDTO.getEnderecoDTOS());
+//                        pessoaDTO.setContatoDTOS(pessoaDTO.getContatoDTOS());
+//                        return pessoaDTO;
+//                    }).toList();
+//        }
+//    }
+
+    public List<PessoaDTO> listAllMesmo(Integer idPessoa) throws RegraDeNegocioException {
+        if(idPessoa != null) {
+            return pessoaRepository.findById(idPessoa).stream()
+                    .map(pessoaEntity -> {
+                        PessoaDTO pessoaDTO = convertPessoaDTO(pessoaEntity);
+                        pessoaDTO.setContatoDTOS(pessoaEntity.getContatos().stream()
+                                .map(contatoEntity -> objectMapper.convertValue(contatoEntity, ContatoDTO.class))
+                                .toList());
+                        pessoaDTO.setEnderecoDTOS(pessoaEntity.getEnderecos().stream()
+                                .map(enderecoEntity -> objectMapper.convertValue(enderecoEntity, EnderecoDTO.class))
+                                .toList());
+                        pessoaDTO.setPetDTO(objectMapper.convertValue(pessoaEntity.getPet(), PetDTO.class));
+                        return pessoaDTO;
+                    }).toList();
+        } else {
+            return pessoaRepository.findAll().stream()
+                    .map(pessoaEntity -> {
+                        PessoaDTO pessoaDTO = convertPessoaDTO(pessoaEntity);
+                        pessoaDTO.setContatoDTOS(pessoaEntity.getContatos().stream()
+                                .map(contatoEntity -> objectMapper.convertValue(contatoEntity, ContatoDTO.class))
+                                .toList());
+                        pessoaDTO.setEnderecoDTOS(pessoaEntity.getEnderecos().stream()
+                                .map(enderecoEntity -> objectMapper.convertValue(enderecoEntity, EnderecoDTO.class))
+                                .toList());
+                        pessoaDTO.setPetDTO(objectMapper.convertValue(pessoaEntity.getPet(), PetDTO.class));
+                        return pessoaDTO;
+                    }).toList();
+        }
+    }
+    public List<RelatorioPersonalizadoDTO> relatorioPersonalizadoDTO (Integer idPessoa){
+        return pessoaRepository.listRelatorioDTO(idPessoa);
     }
 }

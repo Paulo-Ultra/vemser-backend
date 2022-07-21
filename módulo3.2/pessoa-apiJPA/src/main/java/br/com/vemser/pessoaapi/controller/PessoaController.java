@@ -3,6 +3,7 @@ package br.com.vemser.pessoaapi.controller;
 import br.com.vemser.pessoaapi.config.PropertieReader;
 import br.com.vemser.pessoaapi.dto.PessoaCreateDTO;
 import br.com.vemser.pessoaapi.dto.PessoaDTO;
+import br.com.vemser.pessoaapi.dto.RelatorioPersonalizadoDTO;
 import br.com.vemser.pessoaapi.entity.PessoaEntity;
 import br.com.vemser.pessoaapi.exception.RegraDeNegocioException;
 import br.com.vemser.pessoaapi.repository.PessoaRepository;
@@ -102,6 +103,14 @@ public class PessoaController {
         return new ResponseEntity<>(pessoaService.listByName(nome), HttpStatus.OK);
     }
 
+    @Operation(summary = "listar pessoas", description = "Lista as pessoas do banco pelo nome")
+    @ApiResponses(
+            value = {
+                    @ApiResponse(responseCode = "200", description = "Retorna a pessoa pelo nome"),
+                    @ApiResponse(responseCode = "400", description = "Requisição inválida"),
+                    @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
+            }
+    )
     @GetMapping("/{cpf}") // localhost:8080/pessoa/byname?nome=Paulo
     public ResponseEntity<List<PessoaDTO>> listByCpf(@PathVariable("cpf") String cpf) throws RegraDeNegocioException {
         return new ResponseEntity<>(pessoaService.findByCpf(cpf), HttpStatus.OK);
@@ -163,6 +172,32 @@ public class PessoaController {
     @GetMapping("/listar-com-pets")
     public ResponseEntity<List<PessoaDTO>> listPessoaPet(@RequestParam(required = false) Integer idPessoa) throws RegraDeNegocioException {
         return new ResponseEntity<>(pessoaService.listPet(idPessoa), HttpStatus.OK);
+    }
+
+    @Operation(summary = "Listar pessoas com informações do endereço, contato e pet", description = "Lista todas as pessoas do banco com informações do endereço, contato e pet")
+    @ApiResponses(
+            value = {
+                    @ApiResponse(responseCode = "200", description = "Retorna a lista de pessoas"),
+                    @ApiResponse(responseCode = "400", description = "Requisição inválida"),
+                    @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
+            }
+    )
+    @GetMapping("/pessoa-completo")
+    public ResponseEntity<List<PessoaDTO>> listPessoaTudo(@RequestParam(required = false) Integer idPessoa) throws RegraDeNegocioException {
+        return new ResponseEntity<>(pessoaService.listAllMesmo(idPessoa), HttpStatus.OK);
+    }
+
+    @Operation(summary = "Listar pessoas com dados personalizados", description = "Lista todas as pessoas do banco com alguns dados de pessoa, contato, endereço e do pet")
+    @ApiResponses(
+            value = {
+                    @ApiResponse(responseCode = "200", description = "Retorna a lista de pessoas"),
+                    @ApiResponse(responseCode = "400", description = "Requisição inválida"),
+                    @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
+            }
+    )
+    @GetMapping("/relatorio-personalizado")
+    public ResponseEntity<List<RelatorioPersonalizadoDTO>> getRelatorioPersonalizado(@RequestParam(required = false) Integer idPessoa) throws RegraDeNegocioException {
+        return new ResponseEntity<>(pessoaService.relatorioPersonalizadoDTO(idPessoa), HttpStatus.OK);
     }
 
 }

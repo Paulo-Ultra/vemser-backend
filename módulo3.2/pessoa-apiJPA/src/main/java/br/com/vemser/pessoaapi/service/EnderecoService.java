@@ -38,7 +38,6 @@ public class EnderecoService {
         PessoaEntity pessoa = pessoaService.findByIdPessoa(idPessoa);
         EnderecoEntity enderecoEntity = convertEnderecoEntity(endereco);
         enderecoEntity.setPessoas(Set.of(pessoa));
-
         enderecoEntity = enderecoRepository.save(enderecoEntity);
         log.info("Endereço da pessoa " + enderecoEntity + " criado!");
         EnderecoDTO enderecoDTO = convertEnderecoDTO(enderecoEntity);
@@ -55,22 +54,12 @@ public class EnderecoService {
 
     public EnderecoDTO update(Integer id, EnderecoCreateDTO enderecoAtualizar) throws RegraDeNegocioException, TemplateException, IOException {
         PessoaEntity pessoa = pessoaService.findByIdPessoa(enderecoAtualizar.getIdPessoa());
-
         EnderecoEntity enderecoAtualizado = finByIdEndereco(id);
         enderecoAtualizado.setPessoas(Set.of(pessoa));
-//        enderecoAtualizado.setTipo(enderecoAtualizar.getTipo());
-//        enderecoAtualizado.setLogradouro(enderecoAtualizar.getLogradouro());
-//        enderecoAtualizado.setNumero(enderecoAtualizar.getNumero());
-//        enderecoAtualizado.setComplemento(enderecoAtualizar.getComplemento());
-//        enderecoAtualizado.setCep(enderecoAtualizar.getCep());
-//        enderecoAtualizado.setCidade(enderecoAtualizar.getCidade());
-//        enderecoAtualizado.setEstado(enderecoAtualizar.getEstado());
-//        enderecoAtualizado.setPais(enderecoAtualizar.getPais());
-
         log.info("Alterando endereço...");
         log.info("Endereço " + enderecoAtualizado.getIdEndereco() + " alterado!");
         String emailTipo = TipoEmail.PUT.getTipo();
-        EnderecoDTO enderecoDTO = objectMapper.convertValue(enderecoAtualizado, EnderecoDTO.class);
+        EnderecoDTO enderecoDTO = convertEnderecoDTO(enderecoAtualizado);
         emailService.sendEmailEndereco(pessoa, enderecoDTO, emailTipo);
         return convertEnderecoDTO(enderecoRepository.save(enderecoAtualizado));
     }
