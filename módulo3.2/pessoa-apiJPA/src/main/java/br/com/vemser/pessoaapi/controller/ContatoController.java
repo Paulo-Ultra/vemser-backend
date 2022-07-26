@@ -11,6 +11,10 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -120,4 +124,12 @@ public class ContatoController {
         List<ContatoEntity> contatosEntities = contatoService.contatosPorTipoQueryParam(tipoContato);
         return new ResponseEntity<>(contatosEntities, HttpStatus.OK);
     }
+
+    @GetMapping("/por-descrição")
+    public Page<ContatoEntity> getDescricao(Integer pagina, Integer quantidadeRegistros, @RequestParam(required = false) String descricao){
+        Sort ordenacao = Sort.by("descricao");
+        Pageable pageable = PageRequest.of(pagina, quantidadeRegistros, ordenacao);
+        return contatoRepository.listContatoPorDescricao(descricao, pageable);
+    }
 }
+

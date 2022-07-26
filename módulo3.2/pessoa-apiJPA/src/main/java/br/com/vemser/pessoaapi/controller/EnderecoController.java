@@ -2,6 +2,7 @@ package br.com.vemser.pessoaapi.controller;
 
 import br.com.vemser.pessoaapi.dto.EnderecoCreateDTO;
 import br.com.vemser.pessoaapi.dto.EnderecoDTO;
+import br.com.vemser.pessoaapi.entity.ContatoEntity;
 import br.com.vemser.pessoaapi.entity.EnderecoEntity;
 import br.com.vemser.pessoaapi.exception.RegraDeNegocioException;
 import br.com.vemser.pessoaapi.repository.EnderecoRepository;
@@ -11,6 +12,10 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -38,7 +43,7 @@ public class EnderecoController {
                     @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
             }
     )
-    @PostMapping
+    @PostMapping("/{idPessoa}")
     public ResponseEntity<EnderecoDTO> create(@RequestBody @Valid EnderecoCreateDTO endereco, @PathVariable ("idPessoa") Integer idPessoa) throws RegraDeNegocioException, TemplateException, IOException {
         return new ResponseEntity<>(enderecoService.create(idPessoa, endereco), HttpStatus.CREATED);
     }
@@ -120,5 +125,19 @@ public class EnderecoController {
     @GetMapping("/IdPessoa")
     public ResponseEntity<List<EnderecoEntity>> getEnderecoPorIdPessoaQueryParam(Integer idPessoa) {
        return new ResponseEntity<>(enderecoService.enderecoPorIdPessoaQueryParam(idPessoa), HttpStatus.OK);
+    }
+
+    @GetMapping("/por-cep")
+    public Page<EnderecoEntity> getEnderecoCep(Integer pagina, Integer quantidadeRegistros, @RequestParam(required = false) String cep){
+        Sort ordenacao = Sort.by("cep");
+        Pageable pageable = PageRequest.of(pagina, quantidadeRegistros, ordenacao);
+        return enderecoRepository.listEnderecoPeloCep(cep, pageable);
+    }
+
+    @GetMapping("/por-país")
+    public Page<EnderecoEntity> getEnderecoPais(Integer pagina, Integer quantidadeRegistros, @RequestParam(required = false) String pais){
+        Sort ordenacao = Sort.by("pais");
+        Pageable pageable = PageRequest.of(pagina, quantidadeRegistros, ordenacao);
+        return enderecoRepository.listEnderecoPeloPais(pais, pageable);
     }
 }
