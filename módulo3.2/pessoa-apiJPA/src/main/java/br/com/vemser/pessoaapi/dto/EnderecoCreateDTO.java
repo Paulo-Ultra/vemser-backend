@@ -13,6 +13,8 @@ import javax.validation.constraints.Size;
 @Data
 public class EnderecoCreateDTO {
     @NotNull
+    private Integer idPessoa;
+    @NotNull
     @Schema(description = "Tipo do Endereço")
     private TipoEndereco tipo;
     @Length(min = 1, max = 250)
