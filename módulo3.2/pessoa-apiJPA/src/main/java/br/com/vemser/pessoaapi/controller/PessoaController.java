@@ -196,7 +196,7 @@ public class PessoaController {
             }
     )
     @GetMapping("/relatorio-personalizado")
-    public ResponseEntity<List<RelatorioPersonalizadoDTO>> getRelatorioPersonalizado(@RequestParam(required = false) Integer idPessoa) throws RegraDeNegocioException {
+    public ResponseEntity<List<RelatorioPersonalizadoDTO>> getRelatorioPersonalizado(@RequestParam(required = false) Integer idPessoa) {
         return new ResponseEntity<>(pessoaService.relatorioPersonalizadoDTO(idPessoa), HttpStatus.OK);
     }
 
