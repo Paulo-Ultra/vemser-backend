@@ -31,26 +31,27 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
 
         filterChain.doFilter(request, response);
     }
-        public void authenticate(Optional<UsuarioEntity> optionalUsuarioEntity){
 
-            if (optionalUsuarioEntity.isPresent()) {
-                UsuarioEntity usuarioEntity = optionalUsuarioEntity.get();
-                SecurityContextHolder.getContext()
-                        .setAuthentication(
-                                new UsernamePasswordAuthenticationToken(
-                                        usuarioEntity.getLogin(), null, Collections.emptyList()));
-            } else {
-                SecurityContextHolder.getContext()
-                        .setAuthentication(null);
-            }
+    public void authenticate(Optional<UsuarioEntity> optionalUsuarioEntity){
 
+        if (optionalUsuarioEntity.isPresent()) {
+            UsuarioEntity usuarioEntity = optionalUsuarioEntity.get();
+            SecurityContextHolder.getContext()
+                    .setAuthentication(
+                            new UsernamePasswordAuthenticationToken(
+                                    usuarioEntity.getLogin(), null, Collections.emptyList()));
+        } else {
+            SecurityContextHolder.getContext()
+                    .setAuthentication(null);
         }
 
-        private String getTokenFromHeader(HttpServletRequest request) {
-            String token = request.getHeader("Authorization");
-            if (token == null) {
-                return null;
-            }
-            return token.replace(BEARER, "");
+    }
+
+    private String getTokenFromHeader(HttpServletRequest request) {
+        String token = request.getHeader("Authorization");
+        if (token == null) {
+            return null;
         }
+        return token.replace(BEARER, "");
+    }
 }

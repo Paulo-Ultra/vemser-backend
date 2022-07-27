@@ -11,6 +11,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+//É um BEAN do Spring, por isso se usa o @Configuration para criar outros BEANS
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
