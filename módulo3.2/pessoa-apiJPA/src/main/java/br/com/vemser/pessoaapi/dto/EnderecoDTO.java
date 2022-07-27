@@ -6,7 +6,6 @@ import javax.validation.constraints.NotNull;
 
 @Data
 public class EnderecoDTO extends EnderecoCreateDTO {
-    private Integer idEndereco;
     @NotNull
-    private Integer idPessoa;
+    private Integer idEndereco;
 }

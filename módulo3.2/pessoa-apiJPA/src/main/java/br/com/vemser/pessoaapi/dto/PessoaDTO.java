@@ -8,8 +8,9 @@ import java.util.List;
 
 @Data
 public class PessoaDTO extends PessoaCreateDTO{
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @Schema(description = "Id Pessoa")
     private Integer idPessoa;
-
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @Schema(description = "Lista de contatos")
     private List<ContatoDTO> contatoDTOS;
