@@ -30,7 +30,8 @@ public class SecurityConfiguration {
                 .cors().and()
                 .csrf().disable()
                 .authorizeHttpRequests((auth) ->
-                        auth.antMatchers("/", "/auth/**").permitAll()
+                        auth.antMatchers().permitAll()
+                                .antMatchers("/pessoa/**").hasRole("ADMIN")
                                 .anyRequest().authenticated());
         http.addFilterBefore(new TokenAuthenticationFilter(tokenService), UsernamePasswordAuthenticationFilter.class);
         return http.build();
@@ -42,7 +43,10 @@ public class SecurityConfiguration {
         return (web) -> web.ignoring().antMatchers("/v3/api-docs",
                 "/v3/api-docs/**",
                 "/swagger-resources/**",
-                "/swagger-ui/**");
+                "/swagger-ui/**",
+                "/auth",
+                "/auth/cadastro",
+                "/");
     }
 
     @Bean

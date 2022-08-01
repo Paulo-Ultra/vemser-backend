@@ -111,7 +111,7 @@ public class PessoaController {
                     @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
             }
     )
-    @GetMapping("/{cpf}") // localhost:8080/pessoa/byname?nome=Paulo
+    @GetMapping("/cpf/{cpf}") // localhost:8080/pessoa/byname?nome=Paulo
     public ResponseEntity<List<PessoaDTO>> listByCpf(@PathVariable("cpf") String cpf) throws RegraDeNegocioException {
         return new ResponseEntity<>(pessoaService.findByCpf(cpf), HttpStatus.OK);
     }
