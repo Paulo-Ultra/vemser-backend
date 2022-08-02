@@ -8,6 +8,8 @@ public class Cliente {
     private ArrayList<Contato> contatosLista;
     private ArrayList<Endereco> enderecosLista;
 
+    public Cliente(){}
+
     public Cliente(String nome, String cpf, ArrayList<Contato> contatosLista,ArrayList<Endereco> enderecosLista) {
         this.nome = nome;
         this.cpf = cpf;

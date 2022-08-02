@@ -3,6 +3,7 @@ package br.com.dbc;
 public class ContaPagamento extends Conta implements Impressao{
     static final Double TAXA_SAQUE = 4.25;
 
+    public ContaPagamento(){}
     public ContaPagamento(Cliente cliente, String numeroConta, String agencia, Double saldo) {
         super(cliente, numeroConta, agencia, saldo);
     }
@@ -32,6 +33,7 @@ public class ContaPagamento extends Conta implements Impressao{
             if (valor <= this.getSaldo() && valor > 0) {
                 this.setSaldo(this.getSaldo() - valor);
                 conta.depositar(valor);
+                return true;
             }
             return false;
         }

@@ -4,6 +4,7 @@ public class ContaPoupanca extends Conta implements Impressao {
 
     static final Double JUROS_MENSAL = 1.01;
 
+    public ContaPoupanca(){}
     public ContaPoupanca(Cliente cliente, String numeroConta, String agencia, Double saldo) {
         super(cliente, numeroConta, agencia, saldo);
     }

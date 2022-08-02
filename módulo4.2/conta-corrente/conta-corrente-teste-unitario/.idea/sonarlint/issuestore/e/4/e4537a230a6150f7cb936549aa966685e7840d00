@@ -1,0 +1,18 @@
+
+ƒ
+java:S1319"mThe type of "contatosLista" should be an interface such as "List" rather than the implementation "ArrayList".(¶”Ãò
+„
+java:S1319"nThe type of "enderecosLista" should be an interface such as "List" rather than the implementation "ArrayList".(¶”Ãò
+†
+java:S1319$"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(àãÒİ
+ƒ
+java:S1319("mThe type of "contatosLista" should be an interface such as "List" rather than the implementation "ArrayList".(ÛøÚ±
+†
+java:S1319,"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(–Î©œ
+„
+java:S13190"nThe type of "enderecosLista" should be an interface such as "List" rather than the implementation "ArrayList".(•òˆë
+N	java:S1069"9Replace this use of System.out or System.err by a logger.(‹é‘
+N	java:S106D"9Replace this use of System.out or System.err by a logger.(‹é‘
+I
+java:S1172J".Remove this unused method parameter "cliente".(ˆ³•Ñùÿÿÿÿ
+N	java:S106K"9Replace this use of System.out or System.err by a logger.(šï¶Š
