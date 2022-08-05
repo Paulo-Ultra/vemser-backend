@@ -29,28 +29,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/55619/OneDrive/Documentos/vemser-backend/vemser-backend/módulo4.2/conta-corrente/conta-corrente-teste-unitario/.idea&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/55619/OneDrive/Documentos/vemser-backend/vemser-backend/módulo4.2/conta-corrente/conta-corrente-teste-unitario",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\55619\OneDrive\Documentos\vemser-backend\vemser-backend\módulo4.2\conta-corrente\conta-corrente-teste-unitario" />
       <recent name="C:\Users\55619\OneDrive\Documentos\vemser-backend\vemser-backend\módulo4.2\conta-corrente\conta-corrente-teste-unitario\.idea" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ContaTest">
+  <component name="RunManager" selected="JUnit.ContaTest.deveTestarSaqueContaPagamentoSemSaldo">
     <configuration name="ContaTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="conta-corrente" />
       <extension name="coverage">
@@ -132,11 +133,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ContaTest.deveTestarSaqueContaPagamentoSemSaldo" />
+        <item itemvalue="JUnit.ContaTest.deveTestarSaqueContaPoupancaEVerificarSaldoComSucesso" />
         <item itemvalue="JUnit.ContaTest" />
         <item itemvalue="JUnit.ContaTest.deveTestarTransferenciaEVerificarSaldoComSucesso" />
-        <item itemvalue="JUnit.ContaTest.deveTestarSaqueContaPagamentoSemSaldo" />
         <item itemvalue="JUnit.ContaTest.deveTestarSaqueContaPoupancaSemSaldo" />
-        <item itemvalue="JUnit.ContaTest.deveTestarSaqueContaPoupancaEVerificarSaldoComSucesso" />
       </list>
     </recent_temporary>
   </component>
@@ -151,6 +152,7 @@
       <workItem from="1659382862598" duration="685000" />
       <workItem from="1659384929747" duration="1419000" />
       <workItem from="1659400096864" duration="4848000" />
+      <workItem from="1659457891757" duration="2536000" />
     </task>
     <servers />
   </component>

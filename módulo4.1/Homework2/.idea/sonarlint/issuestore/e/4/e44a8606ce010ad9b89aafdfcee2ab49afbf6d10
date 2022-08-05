@@ -1,0 +1,23 @@
+
+\
+java:S1192"GDefine a constant instead of duplicating this literal "Status" 4 times.(ê¶ñ3
+`
+java:S1192"KDefine a constant instead of duplicating this literal "DISPONIVEL" 3 times.(ê¶ñ3
+_
+java:S1192 "JDefine a constant instead of duplicating this literal "Chevrolet" 3 times.(éú-
+]
+java:S1192"GDefine a constant instead of duplicating this literal "modelo" 9 times.(¬Ì­ó
+[
+java:S1192 "FDefine a constant instead of duplicating this literal "marca" 7 times.(éú-
+c
+java:S1192!"MDefine a constant instead of duplicating this literal "preco_diaria" 7 times.(†¦™æ
+0
+java:S1220""Move this file to a named package.
+S	java:S106:"9Replace this use of System.out or System.err by a logger.(ö„ƒÙúÿÿÿÿ
+N	java:S106;"9Replace this use of System.out or System.err by a logger.(Øÿå²
+U	java:S106E"9Replace this use of System.out or System.err by a logger.(´Œ€…8³„ºò¦0
+Z	java:S106K"9Replace this use of System.out or System.err by a logger.(È¨–Òşÿÿÿÿ8¿€Àò¦0
+U	java:S106R"9Replace this use of System.out or System.err by a logger.(„óì”8õ»Éò¦0
+U	java:S106W"9Replace this use of System.out or System.err by a logger.(„óì”8ö»Éò¦0
+H
+java:S1128"+Remove this unused import 'java.util.Date'.(¸…¼ü8ŒãÉò¦0

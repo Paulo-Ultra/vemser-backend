@@ -10,13 +10,13 @@ K
 T
 $src/br/com/dbc/MeuTesteAulaTest.java,9\3\93e3fc88d541c58c1eb1b8f69cc634c0142fd9c0
 Q
-!src/br/com/dbc/ContaPoupanca.java,a\4\a42a1c002736f1c82f31c8cc0b5d7d6454eff850
-K
-src/br/com/dbc/Cliente.java,e\4\e4537a230a6150f7cb936549aa966685e7840d00
+!src/br/com/dbc/ContaCorrente.java,1\e\1e3234104eec0d31a8f3adc6d37c6ac4177a176a
 I
 src/br/com/dbc/Conta.java,9\6\9641220b5365f5badbeb34b41c3ae8ea84e9be2f
 Q
-!src/br/com/dbc/ContaCorrente.java,1\e\1e3234104eec0d31a8f3adc6d37c6ac4177a176a
+!src/br/com/dbc/ContaPoupanca.java,a\4\a42a1c002736f1c82f31c8cc0b5d7d6454eff850
+K
+src/br/com/dbc/Cliente.java,e\4\e4537a230a6150f7cb936549aa966685e7840d00
 R
 "src/br/com/dbc/ContaPagamento.java,5\3\535ed2a6cdb31083e24eaad5a95801b49812e173
 V

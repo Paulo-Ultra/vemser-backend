@@ -1,17 +1,0 @@
-
-@
-java:S5411O"*Use the primitive boolean expression here.(¤ ™¡
-O
-java:S5993	"9Change the visibility of this constructor to "protected".(˜ÚŸ­
-U
-java:S5993"9Change the visibility of this constructor to "protected".(ÕœÜ>8”÷ÛØ¥0
-N	java:S1066"9Replace this use of System.out or System.err by a logger.(Ïúê
-N	java:S1069"9Replace this use of System.out or System.err by a logger.(§æ·‚
-M	java:S106D"9Replace this use of System.out or System.err by a logger.(¶şñ\
-7
-java:S1116G"Remove this empty statement.(Ì£ì´øÿÿÿÿ
-N	java:S106H"9Replace this use of System.out or System.err by a logger.(÷èò½
-S	java:S106I"9Replace this use of System.out or System.err by a logger.(˜ú­´ùÿÿÿÿ
-M	java:S106P"9Replace this use of System.out or System.err by a logger.(ŒÅä|
-S	java:S106S"9Replace this use of System.out or System.err by a logger.(ê‰şşÿÿÿÿ
-M	java:S106V"9Replace this use of System.out or System.err by a logger.(„¢¤z
