@@ -1,4 +1,4 @@
-package br.com.vemserdbc.produtorconsumidor.controller;
+package br.com.vemserdbc.produtorconsumidor.config;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
