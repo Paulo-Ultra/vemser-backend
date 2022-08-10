@@ -1,4 +1,4 @@
-package br.com.vemserdbc.veiculoprodutorconsumidor.config;
+package br.com.vemserdbc.chatkafka.config;
 
 import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.models.Components;

@@ -1,4 +1,4 @@
-package br.com.vemserdbc.veiculoprodutorconsumidor.config;
+package br.com.vemserdbc.chatkafka.config;
 
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;

@@ -1,7 +1,8 @@
-package br.com.vemserdbc.veiculoprodutorconsumidor.controller;
+package br.com.vemserdbc.chatkafka.controller;
 
-import br.com.vemserdbc.veiculoprodutorconsumidor.dto.SensorVeiculoDTO;
-import br.com.vemserdbc.veiculoprodutorconsumidor.service.ProdutorService;
+import br.com.vemserdbc.chatkafka.dto.MensagemDTO;
+import br.com.vemserdbc.chatkafka.enums.OpcoesEnvio;
+import br.com.vemserdbc.chatkafka.service.ProdutorService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -11,26 +12,16 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/kafka")
+@RequestMapping("/chat")
 @RequiredArgsConstructor
 public class ProdutorController {
 
     private final ProdutorService produtorService;
 
-    @PostMapping("/enviar")
-    public ResponseEntity<Void> enviarMensagemParaOTopico(String mensagem) {
-       produtorService.enviarMensagemString(mensagem);
+    @PostMapping("/enviar-geral")
+    public ResponseEntity<Void> enviarMensagem(@RequestBody MensagemDTO mensagem, @RequestParam List<OpcoesEnvio> listaEnvio) throws JsonProcessingException {
+       produtorService.enviarMensagemGeral(mensagem, listaEnvio);
        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PostMapping("/enviar-sensor")
-    public ResponseEntity<Void> enviarMensagemParaOSensor(@RequestBody SensorVeiculoDTO sensorVeiculoDTO) throws JsonProcessingException {
-        produtorService.enviarMensagemObjeto(sensorVeiculoDTO);
-        return new ResponseEntity<>(HttpStatus.CREATED);
-    }
-
-    @GetMapping("/listar")
-    public ResponseEntity<List<SensorVeiculoDTO>> list(){
-        return new ResponseEntity<>(produtorService.getAllSensorVeiculos(), HttpStatus.OK);
-    }
 }

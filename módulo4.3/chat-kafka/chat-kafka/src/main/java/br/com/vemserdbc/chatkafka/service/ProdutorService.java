@@ -1,8 +1,7 @@
-package br.com.vemserdbc.veiculoprodutorconsumidor.service;
+package br.com.vemserdbc.chatkafka.service;
 
-import br.com.vemserdbc.veiculoprodutorconsumidor.dto.SensorVeiculoDTO;
-import br.com.vemserdbc.veiculoprodutorconsumidor.entity.SensorVeiculoEntity;
-import br.com.vemserdbc.veiculoprodutorconsumidor.repository.SensorVeiculoRepository;
+import br.com.vemserdbc.chatkafka.dto.MensagemDTO;
+import br.com.vemserdbc.chatkafka.enums.OpcoesEnvio;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -25,24 +25,18 @@ import java.util.UUID;
 @Slf4j
 public class ProdutorService {
 
-    private final SensorVeiculoRepository sensorVeiculoRepository;
     private final KafkaTemplate kafkaTemplate;
 
     private final ObjectMapper objectMapper;
 
-    @Value("${kafka.topic}")
-    private String topico;
+    @Value("${kafka.user}")
+    private String paulo;
 
-    @Value("${kafka.topic-veiculo}")
-    private String topicoVeiculo;
-
-    public void enviarMensagemObjeto(SensorVeiculoDTO sensorVeiculoDTO) throws JsonProcessingException {
-        String sensorObjetoString = objectMapper.writeValueAsString(sensorVeiculoDTO);
-        enviarMensagemKafka(sensorObjetoString, topicoVeiculo);
-    }
-
-    public void enviarMensagemString(String mensagem) {
-        enviarMensagemKafka(mensagem, topico);
+    public void enviarMensagemGeral(MensagemDTO mensagemDTO, List<OpcoesEnvio> listaEnvio) throws JsonProcessingException {
+        mensagemDTO.setUsuario(paulo);
+        mensagemDTO.setDataCriacao(LocalDateTime.now());
+        String enviar = objectMapper.writeValueAsString(mensagemDTO);
+        listaEnvio.forEach(lista -> enviarMensagemKafka(enviar, lista.getChat()));
     }
 
     private void enviarMensagemKafka(String mensagem, String topico) {
@@ -64,19 +58,5 @@ public class ProdutorService {
                 log.info(" Log enviado para o kafka com o texto: {} ", mensagem);
             }
         });
-    }
-
-    public List<SensorVeiculoDTO> getAllSensorVeiculos() {
-        return sensorVeiculoRepository.findAll().stream()
-                .map(sensorVeiculoEntity -> {
-                    SensorVeiculoDTO sensorVeiculoDTO = convertDTO(sensorVeiculoEntity);
-                    return sensorVeiculoDTO;
-                }).toList();
-    }
-
-
-
-    public SensorVeiculoDTO convertDTO (SensorVeiculoEntity sensorVeiculoEntity){
-        return objectMapper.convertValue(sensorVeiculoEntity, SensorVeiculoDTO.class);
     }
 }

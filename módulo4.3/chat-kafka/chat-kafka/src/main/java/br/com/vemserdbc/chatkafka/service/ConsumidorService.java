@@ -1,8 +1,6 @@
-package br.com.vemserdbc.veiculoprodutorconsumidor.service;
+package br.com.vemserdbc.chatkafka.service;
 
-import br.com.vemserdbc.veiculoprodutorconsumidor.dto.SensorVeiculoDTO;
-import br.com.vemserdbc.veiculoprodutorconsumidor.entity.SensorVeiculoEntity;
-import br.com.vemserdbc.veiculoprodutorconsumidor.repository.SensorVeiculoRepository;
+import br.com.vemserdbc.chatkafka.dto.MensagemDTO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -13,36 +11,38 @@ import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
+import java.time.format.DateTimeFormatter;
+
 @Service
 @Slf4j
 @RequiredArgsConstructor
 public class ConsumidorService {
 
     private final ObjectMapper objectMapper;
-    private final SensorVeiculoRepository sensorVeiculoRepository;
+
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
     @KafkaListener(
             topics = "${kafka.topic}",
-            groupId = "group1",
+            groupId = "${kafka.user}",
             containerFactory = "listenerContainerFactory",
-            clientIdPrefix = "primeiroTopico")
+            clientIdPrefix = "chat-geral")
     public void consumir(@Payload String mensagem,
                          @Header(KafkaHeaders.RECEIVED_MESSAGE_KEY) String key,
-                         @Header(KafkaHeaders.OFFSET) Long offset) {
-        log.info("####{consume} offset -> '{}' key -> '{}' -> Consumed Object message -> '{}' ", offset, key, mensagem);
+                         @Header(KafkaHeaders.OFFSET) Long offset) throws JsonProcessingException {
+        MensagemDTO mensagemDTO = objectMapper.readValue(mensagem, MensagemDTO.class);
+        log.info(mensagemDTO.getDataCriacao().format(formatter) + " [ " + mensagemDTO.getUsuario() + " ]: " + mensagemDTO.getMensagem());
     }
 
     @KafkaListener(
-            topics = "${kafka.topic-veiculo}",
-            groupId = "group1",
+            topics = "${kafka.topic-privado}",
+            groupId = "${kafka.user}",
             containerFactory = "listenerContainerFactory",
-            clientIdPrefix = "sensor")
+            clientIdPrefix = "paulo")
     public void consumirSensor(@Payload String mensagem,
                                @Header(KafkaHeaders.RECEIVED_MESSAGE_KEY) String key,
                                @Header(KafkaHeaders.OFFSET) Long offset) throws JsonProcessingException {
-        SensorVeiculoDTO sensorVeiculoDTO = objectMapper.readValue(mensagem, SensorVeiculoDTO.class);
-        sensorVeiculoRepository.save(objectMapper.convertValue(sensorVeiculoDTO, SensorVeiculoEntity.class));
-        log.info("####{consume} offset -> '{}' key -> '{}' -> Consumed Object message -> '{}'  ", offset, key, sensorVeiculoDTO);
-    }
+        MensagemDTO mensagemDTO = objectMapper.readValue(mensagem, MensagemDTO.class);
+        log.info(mensagemDTO.getDataCriacao().format(formatter) + " [" + mensagemDTO.getUsuario() + "] " + "(privada): " + mensagemDTO.getMensagem());    }
 
 }
